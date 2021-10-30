@@ -23,6 +23,7 @@ module.exports = {
       },
       __key: "images",
     },
-    "gatsby-plugin-typescript"
+    "gatsby-plugin-typescript",
+    "gatsby-plugin-postcss"
   ],
 };
