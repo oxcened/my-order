@@ -1,10 +1,9 @@
 import * as React from "react"
 
-// markup
 const IndexPage = () => {
   return (
     <main>
-      Test!!!!!
+      Hello world!
     </main>
   )
 }
