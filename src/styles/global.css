@@ -12,3 +12,7 @@
     font-weight: bold;
     src: url('../fonts/Nunito-Bold.ttf');
 }
+
+body {
+    @apply bg-gray-50 h-full;
+}
