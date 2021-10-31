@@ -14,12 +14,16 @@ const OrderMenu = ({ menu, onAddProduct }: {
 }) => {
   const mCategories = menu.categories.map(({ id, title, products }) => {
     const mProducts = products.map(p => {
-      return <div key={p.id} className='bg-white p-3 border rounded-md sm:max-w-md'>
+      return <div
+        key={p.id}
+        className='bg-white p-3 border rounded-md sm:max-w-md cursor-pointer'
+        onClick={() => onAddProduct?.(p)}
+      >
         <div className='flex justify-between'>
           <span className='font-bold text-md'>{p.title}</span>
 
           <IconButton className='w-7 h-7' color='primary'>
-            <PlusIcon className='w-4' onClick={() => onAddProduct?.(p)} />
+            <PlusIcon className='w-4' />
           </IconButton>
         </div>
 
@@ -38,9 +42,13 @@ const OrderMenu = ({ menu, onAddProduct }: {
     </Accordion>;
   });
 
-  return <AccordionList>
-    {mCategories}
-  </AccordionList>;
+  return <div className='flex-1 mt-6 sm:mt-0 sm:mr-10'>
+    <p className='text-3xl pb-1'>Menu</p>
+
+    <AccordionList>
+      {mCategories}
+    </AccordionList>
+  </div>;
 };
 
 export default OrderMenu;

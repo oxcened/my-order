@@ -36,11 +36,11 @@ const Orders = ({ orders }: { orders: Order[] }) => {
         </span>
 
           <div className='flex'>
-            <IconButton className='h-6 w-6' color='white'>
+            <IconButton className='h-7 w-7' color='white'>
               <PencilIcon className='w-5 h-5' />
             </IconButton>
 
-            <IconButton className='h-6 w-6 ml-3' color='white'>
+            <IconButton className='h-7 w-7 ml-3' color='white'>
               <TrashIcon className='w-5 h-5 text-red-500' />
             </IconButton>
           </div>
