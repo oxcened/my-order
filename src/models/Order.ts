@@ -1,6 +1,8 @@
+import { Product } from './Product';
+
 export type Order = {
   id: string;
   created: string;
   author: string;
-  content: string[];
+  products: Product[];
 };

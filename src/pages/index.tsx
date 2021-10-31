@@ -2,7 +2,7 @@ import * as React from "react"
 import { ClipboardListIcon, PlusIcon } from '@heroicons/react/solid';
 import Button from '../components/Button';
 import Orders from '../components/Orders';
-import ordersApi from '../redux/apis/orders';
+import ordersApi from '../redux/apis/orders.api';
 import { navigate } from 'gatsby';
 
 const IndexPage = () => {

@@ -10,14 +10,32 @@ const ordersApi = createApi({
       queryFn: () => {
         return {
           data: [{
-            id: 'adasd',
+            id: '1',
             author: 'Alen',
-            content: ['Acqua', 'Carbonara', 'Acqua'],
+            products: [{
+              id: '1',
+              title: 'Carbonara'
+            }, {
+              id: '2',
+              title: 'Acqua'
+            }, {
+              id: '2',
+              title: 'Acqua'
+            }],
             created: '12-10-2021'
           }, {
-            id: 'adasd',
+            id: '2',
             author: 'Alen',
-            content: ['Acqua', 'Carbonara', 'Carbonara', 'Acqua', 'Pizza margherita'],
+            products: [{
+              id: '1',
+              title: 'Carbonara'
+            }, {
+              id: '2',
+              title: 'Acqua'
+            }, {
+              id: '3',
+              title: 'Acqua'
+            }],
             created: '12-10-2021'
           }]
         };
@@ -29,7 +47,16 @@ const ordersApi = createApi({
           data: {
             id: 'adasd',
             author: 'Alen',
-            content: ['Acqua', 'Carbonara', 'Acqua'],
+            products: [{
+              id: '1',
+              title: 'Carbonara'
+            }, {
+              id: '2',
+              title: 'Acqua'
+            }, {
+              id: '3',
+              title: 'Acqua'
+            }],
             created: '12-10-2021'
           }
         };

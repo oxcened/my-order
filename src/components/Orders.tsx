@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Order } from '../models/Order';
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import IconButton from './IconButton';
+import { groupProducts } from '../core/utils';
 
 const Orders = ({ orders }: { orders: Order[] }) => {
   const mOrders = () => {
@@ -9,25 +10,7 @@ const Orders = ({ orders }: { orders: Order[] }) => {
       return <span className='text-gray-500'>Be the first one to make an order!</span>;
     }
 
-    return orders.map(({ id, author, content }) => {
-      const getContent = (content: string[]) => {
-        const groupedMap = content.reduce((previousValue, currentValue) => {
-          const quantity = previousValue.get(currentValue);
-
-          if (quantity) {
-            previousValue.set(currentValue, quantity + 1);
-          } else {
-            previousValue.set(currentValue, 1);
-          }
-
-          return previousValue;
-        }, new Map<string, number>());
-
-        return [...groupedMap.entries()].map(([key, value]) => {
-          return `${value}x ${key}`;
-        });
-      }
-
+    return orders.map(({ id, author, products }) => {
       return <div key={id} className='bg-white rounded-md p-3 max-w-md border'>
         <div className='flex justify-between'>
           <span className='font-bold text-lg'>
@@ -46,7 +29,7 @@ const Orders = ({ orders }: { orders: Order[] }) => {
         </div>
 
         <div>
-          {getContent(content).map(c => (
+          {groupProducts(products).map(c => (
             <div key={c}>
               {c}
             </div>

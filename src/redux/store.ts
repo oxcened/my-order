@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import ordersApi from './apis/orders';
+import ordersApi from './apis/orders.api';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import restaurantsApi from './apis/restaurants';
+import restaurantsApi from './apis/restaurants.api';
 
 const store = configureStore({
   devTools: true,
