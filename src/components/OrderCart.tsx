@@ -19,8 +19,12 @@ const OrderCart = ({ order }: {
       }, []);
 
     return mapped.map(([product, quantity]) => {
-      return <div key={product.id} className='py-3 flex justify-between items-center'>
-        <span>{quantity}x {product.title}</span>
+      return <div key={product.id} className='py-3 flex items-center cursor-pointer'>
+        <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
+          {quantity}
+        </div>
+
+        <span className='ml-3'>{product.title}</span>
       </div>;
     });
   };
