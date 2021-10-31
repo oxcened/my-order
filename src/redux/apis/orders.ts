@@ -22,6 +22,18 @@ const ordersApi = createApi({
           }]
         };
       }
+    }),
+    getOrder: builder.query<Order, string>({
+      queryFn: () => {
+        return {
+          data: {
+            id: 'adasd',
+            author: 'Alen',
+            content: ['Acqua', 'Carbonara', 'Acqua'],
+            created: '12-10-2021'
+          }
+        };
+      }
     })
   })
 });
