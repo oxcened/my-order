@@ -2,13 +2,25 @@ import * as React from 'react';
 import { Order } from '../models/Order';
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import IconButton from './IconButton';
-import { groupProducts } from '../core/utils';
+import { Product } from '../models/Product';
+import { groupByKey } from '../core/utils';
 
 const Orders = ({ orders }: { orders: Order[] }) => {
   const mOrders = () => {
     if (!orders.length) {
       return <span className='text-gray-500'>Be the first one to make an order!</span>;
     }
+
+    const getProducts = (products: Product[]) => {
+      return Object.entries(groupByKey(products, 'id'))
+        .reduce((prev: [Product, number][], [, products]) => {
+          const newItem = [products[0], products.length] as ([Product, number]);
+          return [...prev, newItem];
+        }, [])
+        .map(([prod, quantity]) => {
+          return `${quantity}x ${prod.title}`;
+        });
+    };
 
     return orders.map(({ id, author, products }) => {
       return <div key={id} className='bg-white rounded-md p-3 max-w-md border'>
@@ -29,7 +41,7 @@ const Orders = ({ orders }: { orders: Order[] }) => {
         </div>
 
         <div>
-          {groupProducts(products).map(c => (
+          {getProducts(products).map(c => (
             <div key={c}>
               {c}
             </div>

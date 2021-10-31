@@ -33,7 +33,10 @@ const ordersApi = createApi({
               id: '2',
               title: 'Acqua'
             }, {
-              id: '3',
+              id: '2',
+              title: 'Acqua'
+            }, {
+              id: '2',
               title: 'Acqua'
             }],
             created: '12-10-2021'

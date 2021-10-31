@@ -24,6 +24,7 @@ module.exports = {
       __key: "images",
     },
     "gatsby-plugin-typescript",
-    "gatsby-plugin-postcss"
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-lodash"
   ],
 };
