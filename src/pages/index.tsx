@@ -15,7 +15,7 @@ const IndexPage = () => {
   return (
     <main>
       <div className='px-4 pt-6 sm:pt-8 sm:px-8'>
-        <p className='text-black text-3xl sm:text-5xl'>Welcome to WinkEat</p>
+        <p className='text-black text-3xl sm:text-5xl'>Good morning, Alen</p>
         <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Today's orders</p>
 
         <div className='flex mt-3 sm:mt-5'>

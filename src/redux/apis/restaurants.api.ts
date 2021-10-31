@@ -16,26 +16,35 @@ const restaurantsApi = createApi({
               products: [{
                 id: '1',
                 title: 'Carbonara'
-              },{
+              }, {
                 id: '2',
-                title: 'Carbonara'
-              },{
+                title: 'Amatriciana'
+              }, {
                 id: '3',
-                title: 'Carbonara'
+                title: 'Arrabbiata'
               }]
             }, {
               id: '2',
-              title: 'Pasta',
+              title: 'Insalata',
               products: [{
-                id: '1',
-                title: 'Carbonara'
+                id: '4',
+                title: 'Mista'
+              }, {
+                id: '5',
+                title: 'Caprese'
               }]
             }, {
               id: '3',
-              title: 'Pasta',
+              title: 'Bevande',
               products: [{
-                id: '1',
-                title: 'Carbonara'
+                id: '6',
+                title: 'Coca cola'
+              }, {
+                id: '7',
+                title: 'Sprite'
+              }, {
+                id: '8',
+                title: 'Acqua minerale'
               }]
             }]
           }

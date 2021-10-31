@@ -18,7 +18,13 @@ const Orders = ({ orders }: { orders: Order[] }) => {
           return [...prev, newItem];
         }, [])
         .map(([prod, quantity]) => {
-          return `${quantity}x ${prod.title}`;
+          return <div key={prod.id} className='flex items-center py-1'>
+            <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
+              {quantity}
+            </div>
+
+            <span className='ml-3'>{prod.title}</span>
+          </div>;
         });
     };
 
@@ -40,12 +46,8 @@ const Orders = ({ orders }: { orders: Order[] }) => {
           </div>
         </div>
 
-        <div>
-          {getProducts(products).map(c => (
-            <div key={c}>
-              {c}
-            </div>
-          ))}
+        <div className='mt-1'>
+          {getProducts(products)}
         </div>
       </div>
     });

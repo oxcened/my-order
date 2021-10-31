@@ -14,7 +14,7 @@ const OrderMenu = ({ menu, onAddProduct }: {
 }) => {
   const mCategories = menu.categories.map(({ id, title, products }) => {
     const mProducts = products.map(p => {
-      return <div key={p.id} className='bg-white p-3 border rounded-md max-w-md'>
+      return <div key={p.id} className='bg-white p-3 border rounded-md sm:max-w-md'>
         <div className='flex justify-between'>
           <span className='font-bold text-md'>{p.title}</span>
 
