@@ -3,9 +3,10 @@ import * as React from 'react';
 import { useRef } from 'react';
 import '../styles/components/_accordion-body.scss';
 
-const AccordionBody = ({ children, isOpen }: {
+const AccordionBody = ({ children, isOpen, className }: {
   children?: React.ReactNode;
   isOpen?: boolean;
+  className?: string;
 }) => {
   const ref = useRef<HTMLDivElement>();
 
@@ -17,7 +18,7 @@ const AccordionBody = ({ children, isOpen }: {
         : 0
     }}
   >
-    <div ref={ref} className='p-3 border-t'>
+    <div ref={ref} className={classNames('p-3 border-t', className)}>
       {children}
     </div>
   </div>;
