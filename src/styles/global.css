@@ -19,3 +19,7 @@ body {
     background: #fcfbfb;
     font-family: Nunito, sans-serif;
 }
+
+main {
+    @apply px-4 pt-6 sm:pt-8 sm:px-8;
+}

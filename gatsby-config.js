@@ -25,6 +25,12 @@ module.exports = {
     },
     "gatsby-plugin-typescript",
     "gatsby-plugin-postcss",
-    "gatsby-plugin-lodash"
+    "gatsby-plugin-lodash",
+    {
+      resolve: "gatsby-plugin-react-redux-persist",
+      options: {
+        pathToCreateStoreModule: './src/redux/store',
+      }
+    }
   ],
 };

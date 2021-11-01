@@ -25,6 +25,7 @@
     "gatsby-plugin-image": "^2.0.0",
     "gatsby-plugin-lodash": "^5.0.0",
     "gatsby-plugin-manifest": "^4.0.0",
+    "gatsby-plugin-react-redux-persist": "^1.1.0",
     "gatsby-plugin-sass": "^5.0.0",
     "gatsby-plugin-sharp": "^4.0.1",
     "gatsby-plugin-sitemap": "^5.0.0",
@@ -36,12 +37,14 @@
     "react-redux": "^7.2.6",
     "react-transition-group": "^4.4.2",
     "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
     "sass": "^1.43.4"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/classnames": "^2.3.1",
     "@types/react-transition-group": "^4.4.4",
+    "@types/redux-persist": "^4.3.1",
     "autoprefixer": "^10.4.0",
     "gatsby-plugin-postcss": "^5.0.0",
     "postcss": "^8.3.11",
