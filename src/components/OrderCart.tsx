@@ -3,10 +3,15 @@ import * as React from 'react';
 import { Order } from '../models/Order';
 import { groupByKey } from '../core/utils';
 import { Product } from '../models/Product';
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CheckCircleIcon } from '@heroicons/react/solid';
 
-const OrderCart = ({ order, onProductClick }: {
+const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
   order: Order;
+  loadingMakeOrder?: boolean;
   onProductClick?: (product: Product, quantity: number) => void;
+  onMakeOrder?: () => void;
 }) => {
   const getOrderProducts = () => {
     if (!order.products.length) {
@@ -44,9 +49,15 @@ const OrderCart = ({ order, onProductClick }: {
     <Button
       color='primary'
       className='mt-2 w-full justify-center'
-      disabled={!order.products.length}
+      disabled={!order.products.length || loadingMakeOrder}
+      onClick={onMakeOrder}
     >
-      Make Order
+      <div className='mr-2'>
+        {loadingMakeOrder
+          ? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mt-0.5 -mb-0.5' />
+          : <CheckCircleIcon className='h-5' />}
+      </div>
+      Place Order
     </Button>
   </div>;
 };

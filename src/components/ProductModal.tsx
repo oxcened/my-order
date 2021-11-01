@@ -1,5 +1,5 @@
 import IconButton from './IconButton';
-import { MinusIcon, PlusIcon } from '@heroicons/react/solid';
+import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/solid';
 import Button from './Button';
 import Modal from './Modal';
 import * as React from 'react';
@@ -89,6 +89,7 @@ const ProductModal = (
           className='w-full justify-center'
           onClick={onSubmitClick}
         >
+          <ShoppingCartIcon className='h-5 opacity-100 mr-2'/>
           {isUpdated
             ? 'Update'
             : isEdit

@@ -64,6 +64,15 @@ const ordersApi = createApi({
           }
         };
       }
+    }),
+    makeOrder: builder.query<void, Order>({
+      queryFn: (arg) => {
+        return new Promise((resolve => {
+          window.setTimeout(() => {
+            resolve({ data: void 0 });
+          }, 1500);
+        }));
+      }
     })
   })
 });

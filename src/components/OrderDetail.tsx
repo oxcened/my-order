@@ -7,10 +7,15 @@ import { Order } from '../models/Order';
 import { Product } from '../models/Product';
 import OrderCart from './OrderCart';
 import ProductModal from './ProductModal';
+import { navigate } from 'gatsby';
+import SuccessModal from './SuccessModal';
+
+const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
 const OrderDetail = ({ id }: { id?: string }) => {
   const { data: menu } = restaurantsApi.useGetRestaurantMenuQuery();
   const [getOrder, cachedOrder] = ordersApi.useLazyGetOrderQuery();
+  const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
 
   const [order, setOrder] = useState<Readonly<Order>>({
     id: '',
@@ -29,6 +34,15 @@ const OrderDetail = ({ id }: { id?: string }) => {
       getOrder(id);
     }
   }, [])
+
+  useEffect(() => {
+    if (makeOrderResult.isSuccess) {
+      window.setTimeout(() => {
+        navigate('/');
+      }, TIMEOUT_SUCCESS_MODAL_MS);
+    }
+    console.log(makeOrderResult.isLoading);
+  }, [makeOrderResult]);
 
   const onOpenProduct = (product: Product, quantity?: number, isEdit?: boolean) => {
     setShowProductModal(true);
@@ -95,7 +109,9 @@ const OrderDetail = ({ id }: { id?: string }) => {
     <div className='pt-6 sm:pt-8 px-4 sm:px-8 flex w-full flex-col sm:flex-row-reverse'>
       <OrderCart
         order={order}
+        loadingMakeOrder={makeOrderResult.isLoading}
         onProductClick={(p, q) => onOpenProduct(p, q, true)}
+        onMakeOrder={() => makeOrder(order)}
       />
 
       <OrderMenu
@@ -104,8 +120,8 @@ const OrderDetail = ({ id }: { id?: string }) => {
     </div>
 
     <ProductModal
-      product={productModalPayload?.product}
       isOpen={showProductModal}
+      product={productModalPayload?.product}
       quantity={productModalPayload?.quantity}
       isEdit={productModalPayload?.isEdit}
       onBackdropClick={cleanOpenedProduct}
@@ -114,6 +130,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
       onUpdate={onUpdateProduct}
       onConfirm={cleanOpenedProduct}
     />
+
+    <SuccessModal isOpen={makeOrderResult.isSuccess}>
+      Your order has been placed
+    </SuccessModal>
   </>;
 };
 

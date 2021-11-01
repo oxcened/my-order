@@ -6,9 +6,7 @@ import Navbar from "./src/components/Navbar";
 
 export const wrapRootElement = ({ element }, options) => {
   return <Provider store={store}>
-    <div className='font-nunito'>
-      <Navbar />
-      {element}
-    </div>
+    <Navbar />
+    {element}
   </Provider>
 };
