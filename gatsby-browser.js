@@ -7,6 +7,8 @@ import Navbar from "./src/components/Navbar";
 export const wrapRootElement = ({ element }, options) => {
   return <Provider store={store}>
     <Navbar />
-    {element}
+    <div className='px-4 pt-6 sm:pt-8 sm:px-8'>
+      {element}
+    </div>
   </Provider>
 };

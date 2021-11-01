@@ -40,7 +40,7 @@ const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
   };
 
   return <div className='flex-1 sm:max-w-md'>
-    <p className='text-3xl'>Your Order</p>
+    <p className='text-3xl md:text-4xl lg:text-5xl'>Your Order</p>
 
     <div className='bg-white border rounded-md px-3 py-1 divide-y mt-2 sm:mt-3'>
       {getOrderProducts()}

@@ -3,7 +3,7 @@ import { Order } from '../models/Order';
 import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import IconButton from './IconButton';
 import { Product } from '../models/Product';
-import { groupByKey } from '../core/utils';
+import { groupByKeyQuantity } from '../core/utils';
 
 const Orders = ({ orders }: { orders: Order[] }) => {
   const mOrders = () => {
@@ -12,20 +12,15 @@ const Orders = ({ orders }: { orders: Order[] }) => {
     }
 
     const getProducts = (products: Product[]) => {
-      return Object.entries(groupByKey(products, 'id'))
-        .reduce((prev: [Product, number][], [, products]) => {
-          const newItem = [products[0], products.length] as ([Product, number]);
-          return [...prev, newItem];
-        }, [])
-        .map(([prod, quantity]) => {
-          return <div key={prod.id} className='flex items-center py-1'>
-            <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
-              {quantity}
-            </div>
+      return groupByKeyQuantity(products, 'id').map(([prod, quantity]) => {
+        return <div key={prod.id} className='flex items-center'>
+          <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
+            {quantity}
+          </div>
 
-            <span className='ml-3'>{prod.title}</span>
-          </div>;
-        });
+          <span className='ml-3'>{prod.title}</span>
+        </div>;
+      });
     };
 
     return orders.map(({ id, author, products }) => {
@@ -46,7 +41,7 @@ const Orders = ({ orders }: { orders: Order[] }) => {
           </div>
         </div>
 
-        <div className='mt-1'>
+        <div className='mt-2 space-y-3'>
           {getProducts(products)}
         </div>
       </div>

@@ -105,8 +105,8 @@ const OrderDetail = ({ id }: { id?: string }) => {
     return null;
   }
 
-  return <>
-    <div className='pt-6 sm:pt-8 px-4 sm:px-8 flex w-full flex-col sm:flex-row-reverse'>
+  return <main>
+    <div className='flex w-full flex-col sm:flex-row-reverse'>
       <OrderCart
         order={order}
         loadingMakeOrder={makeOrderResult.isLoading}
@@ -134,7 +134,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
     <SuccessModal isOpen={makeOrderResult.isSuccess}>
       Your order has been placed
     </SuccessModal>
-  </>;
+  </main>;
 };
 
 export default OrderDetail;
