@@ -3,48 +3,55 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/solid';
 import Button from './Button';
 import Modal from './Modal';
 import * as React from 'react';
-import { ComponentPropsWithoutRef, useEffect, useRef, useState } from 'react';
+import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { Product } from '../models/Product';
 
-const ANIM_DURATON_MS = 350;
-
-const ProductModal = ({ product, onSubmit, ...props }: {
-  product?: Product,
-  onSubmit?: (quantity: number) => void;
-} & ComponentPropsWithoutRef<typeof Modal>) => {
+const ProductModal = (
+  {
+    product,
+    quantity: pQuantity,
+    isEdit = false,
+    onSubmit,
+    onUpdate,
+    onDelete,
+    onConfirm,
+    ...props
+  }: {
+    product?: Product,
+    quantity?: number;
+    isEdit?: boolean;
+    onSubmit?: (quantity: number) => void;
+    onUpdate?: (quantity: number) => void;
+    onDelete?: () => void;
+    onConfirm?: () => void;
+  } & ComponentPropsWithoutRef<typeof Modal>) => {
   const [quantity, setQuantity] = useState(1);
-  const [cachedProduct, setCachedProduct] = useState<Product>();
-  const cacheTimeout = useRef<number>();
 
   useEffect(() => {
-    if (!product) {
-      // Clean quantity on product change
-      setQuantity(1);
+    if (props.isOpen) {
+      setQuantity(pQuantity ?? 1);
     }
+  }, [props.isOpen]);
 
-    if (cacheTimeout.current) {
-      // Clear any previous timeout
-      window.clearTimeout(cacheTimeout.current);
-    }
+  const isUpdated = isEdit && pQuantity !== quantity;
 
-    if (product) {
-      setCachedProduct(product);
+  const onSubmitClick = () => {
+    if (isUpdated) {
+      onUpdate?.(quantity);
+    } else if (isEdit) {
+      onConfirm?.();
     } else {
-      cacheTimeout.current = window.setTimeout(() => {
-        cacheTimeout.current = undefined;
-        setCachedProduct(product);
-      }, ANIM_DURATON_MS);
+      onSubmit?.(quantity);
     }
-  }, [product]);
+  };
 
   return <Modal
     className='text-center'
-    isOpen={!!product}
     {...props}
   >
-    {cachedProduct
+    {product
     && <>
-      <div className='text-xl font-bold'>{cachedProduct.title}</div>
+      <div className='text-xl font-bold'>{product.title}</div>
 
       <div className='flex items-center justify-center space-x-5 mt-8'>
         <IconButton
@@ -67,13 +74,28 @@ const ProductModal = ({ product, onSubmit, ...props }: {
         </IconButton>
       </div>
 
-      <Button
-        color='primary'
-        className='mt-8 w-full justify-center'
-        onClick={() => onSubmit?.(quantity)}
-      >
-        Add to Order
-      </Button>
+      <div className='mt-8'>
+        {isEdit
+        && <Button
+          color='danger'
+          className='w-full justify-center mb-2'
+          onClick={onDelete}
+        >
+          Remove from order
+        </Button>}
+
+        <Button
+          color='primary'
+          className='w-full justify-center'
+          onClick={onSubmitClick}
+        >
+          {isUpdated
+            ? 'Update'
+            : isEdit
+              ? 'Confirm'
+              : 'Add to Order'}
+        </Button>
+      </div>
     </>}
   </Modal>;
 };

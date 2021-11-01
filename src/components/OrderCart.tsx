@@ -4,8 +4,9 @@ import { Order } from '../models/Order';
 import { groupByKey } from '../core/utils';
 import { Product } from '../models/Product';
 
-const OrderCart = ({ order }: {
-  order: Order
+const OrderCart = ({ order, onProductClick }: {
+  order: Order;
+  onProductClick?: (product: Product, quantity: number) => void;
 }) => {
   const getOrderProducts = () => {
     if (!order.products.length) {
@@ -19,7 +20,11 @@ const OrderCart = ({ order }: {
       }, []);
 
     return mapped.map(([product, quantity]) => {
-      return <div key={product.id} className='py-3 flex items-center cursor-pointer'>
+      return <div
+        key={product.id}
+        className='py-3 flex items-center cursor-pointer'
+        onClick={() => onProductClick?.(product, quantity)}
+      >
         <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
           {quantity}
         </div>

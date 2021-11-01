@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
 import ordersApi from '../redux/apis/orders.api';
 import restaurantsApi from '../redux/apis/restaurants.api';
 import OrderMenu from './OrderMenu';
@@ -19,7 +19,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
     created: ''
   });
 
-  const [openedProduct, setOpenedProduct] = useState<Product>();
+  const [showProductModal, setShowProductModal] = useState(false);
+
+  const [productModalPayload, setProductModalPayload] =
+    useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();
 
   useEffect(() => {
     if (id) {
@@ -27,23 +30,61 @@ const OrderDetail = ({ id }: { id?: string }) => {
     }
   }, [])
 
-  const onOpenProduct = (product: Product) => {
-    setOpenedProduct(product);
+  const onOpenProduct = (product: Product, quantity?: number, isEdit?: boolean) => {
+    setShowProductModal(true);
+    setProductModalPayload({
+      product,
+      quantity: quantity ?? 1,
+      isEdit: isEdit ?? false
+    });
   };
 
   const onAddProduct = (quantity: number) => {
-    if (!openedProduct) {
+    if (!productModalPayload?.product) {
       return;
     }
 
-    const newProducts = new Array(quantity).fill(openedProduct);
+    const newProducts = new Array(quantity).fill(productModalPayload.product);
 
     setOrder(prevState => ({
       ...prevState,
       products: [...prevState.products, ...newProducts]
     }));
 
-    setOpenedProduct(undefined);
+    cleanOpenedProduct();
+  };
+
+  const onDeleteProduct = () => {
+    if (!productModalPayload?.product) {
+      return;
+    }
+
+    setOrder(order => ({
+      ...order,
+      products: order.products.filter(p => p.id !== productModalPayload.product?.id)
+    }));
+
+    cleanOpenedProduct();
+  };
+
+  const onUpdateProduct = (quantity: number) => {
+    if (!productModalPayload?.product) {
+      return;
+    }
+
+    setOrder(order => ({
+      ...order,
+      products: [
+        ...order.products.filter(p => p.id !== productModalPayload?.product?.id),
+        ...new Array(quantity).fill(productModalPayload.product)
+      ]
+    }));
+
+    cleanOpenedProduct();
+  }
+
+  const cleanOpenedProduct = () => {
+    setShowProductModal(false);
   };
 
   if (!menu) {
@@ -52,7 +93,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
   return <>
     <div className='pt-6 sm:pt-8 px-4 sm:px-8 flex w-full flex-col sm:flex-row-reverse'>
-      <OrderCart order={order} />
+      <OrderCart
+        order={order}
+        onProductClick={(p, q) => onOpenProduct(p, q, true)}
+      />
 
       <OrderMenu
         menu={menu}
@@ -60,9 +104,15 @@ const OrderDetail = ({ id }: { id?: string }) => {
     </div>
 
     <ProductModal
-      product={openedProduct}
-      onBackdropClick={() => setOpenedProduct(undefined)}
+      product={productModalPayload?.product}
+      isOpen={showProductModal}
+      quantity={productModalPayload?.quantity}
+      isEdit={productModalPayload?.isEdit}
+      onBackdropClick={cleanOpenedProduct}
       onSubmit={onAddProduct}
+      onDelete={onDeleteProduct}
+      onUpdate={onUpdateProduct}
+      onConfirm={cleanOpenedProduct}
     />
   </>;
 };
