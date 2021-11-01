@@ -4,9 +4,11 @@ import Button from '../components/Button';
 import Orders from '../components/Orders';
 import ordersApi from '../redux/apis/orders.api';
 import { navigate } from 'gatsby';
+import { useAuth } from '../core/hooks';
 
 const IndexPage = () => {
   const { data = [] } = ordersApi.useGetTodayOrdersQuery();
+  const { user } = useAuth();
 
   const onMakeOrder = () => {
     navigate('/order/new');
@@ -14,7 +16,7 @@ const IndexPage = () => {
 
   return (
     <main>
-      <p className='text-black text-3xl sm:text-5xl'>Good morning, Alen</p>
+      <p className='text-black text-3xl sm:text-5xl'>Good morning, {user?.name ?? 'John Doe'}</p>
       <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Today's orders</p>
 
       <div className='flex mt-3 sm:mt-5'>
