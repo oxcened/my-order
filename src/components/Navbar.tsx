@@ -34,7 +34,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
           className='user-button'
           onClick={() => setOpenDropdown(state => !state)}
         >
-          {user?.name ?? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin'/>}
+          {user?.name ?? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin' />}
           <ChevronDownIcon className='h-5 ml-1' />
         </Button>
 
