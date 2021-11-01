@@ -19,3 +19,21 @@
   opacity: 0;
   transition: opacity 350ms ease;
 }
+
+.user-container.user-trans-enter {
+  opacity: 0;
+}
+
+.user-container.user-trans-enter-active {
+  opacity: 1;
+  transition: opacity 350ms ease;
+}
+
+.user-container.user-trans-exit {
+  opacity: 1;
+}
+
+.user-container.user-trans-exit-active {
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
