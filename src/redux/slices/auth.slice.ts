@@ -14,10 +14,13 @@ export const authSlice = createSlice({
   reducers: {
     setUser: (state, { payload }: PayloadAction<AuthState['user']>) => {
       state.user = payload;
+    },
+    cleanUser: (state) => {
+      state.user = undefined;
     }
   }
 });
 
 export default authSlice;
 
-export const { setUser } = authSlice.actions;
+export const { setUser, cleanUser } = authSlice.actions;

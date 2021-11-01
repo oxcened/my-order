@@ -21,10 +21,10 @@ export const wrapRootElement = ({ element }) => {
 
 export const wrapPageElement = ({ element }) => {
   const App = ({ element }) => {
-    const { user } = useAuth();
+    const { user, logout } = useAuth();
 
     return <>
-      <Navbar user={user} />
+      <Navbar user={user} onLogout={logout} />
       {element}
       <LoginModal isOpen={!user} />
     </>;
