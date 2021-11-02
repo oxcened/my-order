@@ -1,46 +1,28 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { Order } from '../../models/Order';
 import { createApi } from '@reduxjs/toolkit/query/react';
+import { addDoc, collection, getDocs, query, getDocsFromServer } from 'firebase/firestore';
+import { firestore as db } from '../../core/firebase';
+import { DbCollection } from '../../models/DbCollection';
+import { User } from '../../models/User';
+import { serverTimestamp } from 'firebase/firestore';
 
 const ordersApi = createApi({
   reducerPath: 'orders',
   baseQuery: fakeBaseQuery(),
   endpoints: builder => ({
     getTodayOrders: builder.query<Order[], void>({
-      queryFn: () => {
+      queryFn: async () => {
+        const orderQuery = query(
+          collection(db, DbCollection.ORDERS)
+          //where('created', '<=', new Date().valueOf())
+        );
+
+        const response = await getDocsFromServer(orderQuery);
+        console.log(response);
+
         return {
-          data: [{
-            id: '1',
-            author: 'Alen',
-            products: [{
-              id: '1',
-              title: 'Carbonara'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }],
-            created: '12-10-2021'
-          }, {
-            id: '2',
-            author: 'Alen',
-            products: [{
-              id: '1',
-              title: 'Carbonara'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }],
-            created: '12-10-2021'
-          }]
+          data: response.docs.map(d => d.data() as Order)
         };
       }
     }),
@@ -66,12 +48,19 @@ const ordersApi = createApi({
       }
     }),
     makeOrder: builder.query<void, Order>({
-      queryFn: (arg) => {
-        return new Promise((resolve => {
-          window.setTimeout(() => {
-            resolve({ data: void 0 });
-          }, 1500);
-        }));
+      queryFn: async ({ products }, { getState }) => {
+        const { auth: { user } } = getState() as { auth: { user: User } };
+
+        const ref = collection(db, DbCollection.ORDERS);
+
+        await addDoc(ref, {
+          created: serverTimestamp(),
+          author: user,
+          products
+        });
+        return {
+          data: void 0
+        };
       }
     })
   })

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useEffect } from "react"
 import { ClipboardListIcon, PlusIcon } from '@heroicons/react/solid';
 import Button from '../components/Button';
 import Orders from '../components/Orders';
@@ -7,8 +8,12 @@ import { navigate } from 'gatsby';
 import { useAuth } from '../core/hooks';
 
 const IndexPage = () => {
-  const { data = [] } = ordersApi.useGetTodayOrdersQuery();
+  const { data = [], refetch } = ordersApi.useGetTodayOrdersQuery();
   const { user } = useAuth();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   const onMakeOrder = () => {
     navigate('/order/new');

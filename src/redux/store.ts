@@ -16,7 +16,8 @@ const reducer = combineReducers(reducerMap);
 
 const persistedReducer = persistReducer({
   key: 'root',
-  storage
+  storage,
+  whitelist: [authSlice.name]
 }, reducer);
 
 export default (preloadedState = {}) => {

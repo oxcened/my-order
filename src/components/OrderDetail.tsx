@@ -9,6 +9,7 @@ import OrderCart from './OrderCart';
 import ProductModal from './ProductModal';
 import { navigate } from 'gatsby';
 import SuccessModal from './SuccessModal';
+import { useAuth } from '../core/hooks';
 
 const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
@@ -17,10 +18,11 @@ const OrderDetail = ({ id }: { id?: string }) => {
   const [getOrder, cachedOrder] = ordersApi.useLazyGetOrderQuery();
   const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
 
+  const { user } = useAuth();
   const [order, setOrder] = useState<Readonly<Order>>({
     id: '',
     products: [],
-    author: '',
+    author: { name: '' },
     created: ''
   });
 

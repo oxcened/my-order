@@ -27,7 +27,7 @@ const Orders = ({ orders }: { orders: Order[] }) => {
       return <div key={id} className='bg-white rounded-md p-3 max-w-md border'>
         <div className='flex justify-between'>
           <span className='font-bold text-lg'>
-          {author}'s order
+          {author.name}'s order
         </span>
 
           <div className='flex'>
