@@ -20,7 +20,7 @@ const AccordionBody = ({ children, isOpen, className }: {
   function onEntering(node: any) {
     setStyle({
       height: node.scrollHeight,
-      overflow: 'auto',
+      overflow: 'hidden',
       transition: TRANSITION
     });
   }
@@ -35,7 +35,7 @@ const AccordionBody = ({ children, isOpen, className }: {
     const unused = node.scrollHeight;
     setStyle({
       height: 0,
-      overflow: 'auto',
+      overflow: 'hidden',
       transition: TRANSITION
     });
   }

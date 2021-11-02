@@ -19,7 +19,7 @@ const Summary = () => {
     return groupByKeyQuantity(products, 'id').map(([product, quantity]) => {
       return <div
         key={product.id}
-        className='flex items-center cursor-pointer'
+        className='flex items-center'
       >
         <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
           {quantity}

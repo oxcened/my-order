@@ -10,11 +10,11 @@ import { Product } from '../models/Product';
 import LoadingAccordion from './LoadingAccordion';
 
 const OrderMenu = ({ menu, isLoading, onAddProduct }: {
-  menu: Menu;
+  menu?: Menu;
   isLoading?: boolean;
   onAddProduct?: (product: Product) => void;
 }) => {
-  const mCategories = menu.categories.map(({ id, title, products }) => {
+  const mCategories = menu?.categories.map(({ id, title, products }) => {
     const mProducts = products.map(p => {
       return <div
         key={p.id}
@@ -48,7 +48,7 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
     <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>Menu</p>
 
     {isLoading
-      ? new Array(2)
+      ? new Array(3)
         .fill(undefined)
         .map((value, index) => <LoadingAccordion key={index} />)
       : <AccordionList>

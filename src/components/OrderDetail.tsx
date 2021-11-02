@@ -88,10 +88,6 @@ const OrderDetail = ({ id }: { id?: string }) => {
     setShowProductModal(false);
   };
 
-  if (!menu) {
-    return null;
-  }
-
   return <main>
     <div className='flex w-full flex-col sm:flex-row-reverse'>
       <OrderCart
