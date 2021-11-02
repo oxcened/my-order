@@ -18,7 +18,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
         return;
       }
 
-      if (!e.target.className.includes('user-button')) {
+      if (!e.target.classList.contains('user-button')) {
         setOpenDropdown(false);
       }
     };
