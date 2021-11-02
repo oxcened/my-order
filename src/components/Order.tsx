@@ -4,11 +4,14 @@ import * as React from 'react';
 import { Order as OrderM } from '../models/Order';
 import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
+import { useAuth } from '../core/hooks';
 
 const Order = ({ order: { id, author, products }, onDelete }: {
   order: OrderM;
   onDelete?: () => void;
 }) => {
+  const { user } = useAuth();
+
   const getProducts = (products: Product[]) => {
     return groupByKeyQuantity(products, 'id').map(([prod, quantity]) => {
       return <div key={prod.id} className='flex items-center'>
@@ -34,12 +37,13 @@ const Order = ({ order: { id, author, products }, onDelete }: {
               <PencilIcon className='w-5 h-5' />
             </IconButton>*/}
 
-        <IconButton
+        {user?.name === author.name
+        && <IconButton
           className='h-7 w-7 ml-3'
           color='white'
           onClick={() => onDelete?.()}>
           <TrashIcon className='w-5 h-5 text-red-500' />
-        </IconButton>
+        </IconButton>}
       </div>
     </div>
 
