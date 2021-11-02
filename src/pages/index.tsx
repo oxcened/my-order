@@ -8,7 +8,7 @@ import { navigate } from 'gatsby';
 import { useAuth } from '../core/hooks';
 
 const IndexPage = () => {
-  const { data = [], refetch } = ordersApi.useGetTodayOrdersQuery();
+  const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [deleteOrder, deleteOrderResult] = ordersApi.useLazyDeleteOrderQuery();
   const { user } = useAuth();
 
@@ -43,7 +43,10 @@ const IndexPage = () => {
         </Button>
       </div>
 
-      <Orders orders={data} onDelete={({ id }) => deleteOrder(id)} />
+      <Orders
+        orders={data}
+        isLoading={isLoading}
+        onDelete={({ id }) => deleteOrder(id)} />
 
       <Button
         color='primary'
