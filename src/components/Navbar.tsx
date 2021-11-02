@@ -1,7 +1,7 @@
 import Button from './Button';
 import { ChevronDownIcon, LogoutIcon } from '@heroicons/react/solid';
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 import { User } from '../models/User';
 import '../styles/components/_navbar.scss';
@@ -11,6 +11,24 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
+
+  useEffect(() => {
+    const listener: EventListener = (e) => {
+      if (!e.target || !(e.target instanceof Element)) {
+        return;
+      }
+
+      if (!e.target.className.includes('user-button')) {
+        setOpenDropdown(false);
+      }
+    };
+
+    document.addEventListener('click', listener);
+
+    return () => {
+      document.removeEventListener('click', listener);
+    };
+  }, []);
 
   const onLogoutClick = () => {
     setOpenDropdown(false);
