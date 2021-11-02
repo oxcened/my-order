@@ -35,7 +35,6 @@ const OrderDetail = ({ id }: { id?: string }) => {
         navigate('/');
       }, TIMEOUT_SUCCESS_MODAL_MS);
     }
-    console.log(makeOrderResult.isLoading);
   }, [makeOrderResult]);
 
   const onOpenProduct = (product: Product, quantity?: number, isEdit?: boolean) => {
