@@ -14,7 +14,7 @@ const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
 }) => {
   const getOrderProducts = () => {
     if (!order.length) {
-      return <p className='my-2'>Pick something from the Menu to get started</p>;
+      return <p className='my-3'>Pick something from the Menu to get started</p>;
     }
 
     const mapped = Object.entries(groupByKey(order, 'id'))
