@@ -35,7 +35,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
     onLogout?.();
   };
 
-  return <div className='sticky top-0 bg-primary-500 h-14 flex items-center py-3 px-4 justify-between shadow-sm'>
+  return <div className='sticky top-0 bg-primary-500 h-14 flex items-center py-3 px-4 justify-between shadow-sm z-10'>
     <div className='font-bold text-white sm:text-xl cursor-pointer' onClick={() => navigate('/')}>
       WinkEat
     </div>
