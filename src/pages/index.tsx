@@ -5,13 +5,14 @@ import Button from '../components/Button';
 import Orders from '../components/Orders';
 import ordersApi from '../redux/apis/orders.api';
 import { navigate } from 'gatsby';
-import { useAuth } from '../core/hooks';
+import { useAuth, useConfirmModal } from '../core/hooks';
 import { DateTime } from 'luxon';
 
 const IndexPage = () => {
   const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [deleteOrder, deleteOrderResult] = ordersApi.useLazyDeleteOrderQuery();
   const { user } = useAuth();
+  const { getConfirmModal, askConfirm } = useConfirmModal();
 
   useEffect(() => {
     refetch();
@@ -61,7 +62,7 @@ const IndexPage = () => {
       <Orders
         orders={data}
         isLoading={isLoading}
-        onDelete={({ id }) => deleteOrder(id)} />
+        onDelete={({ id }) => askConfirm(() => deleteOrder(id))} />
 
       <Button
         color='primary'
@@ -71,6 +72,8 @@ const IndexPage = () => {
         <PlusIcon className='h-5 mr-1 cursor-pointer' />
         Make Order
       </Button>
+
+      {getConfirmModal()}
     </main>
   )
 }
