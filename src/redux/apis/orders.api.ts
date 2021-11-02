@@ -50,9 +50,18 @@ const ordersApi = createApi({
       queryFn: async (id) => {
         const ref = doc(db, DbCollection.ORDERS, id);
 
-        const order = await getDocFromServer(ref);
+        try {
+          const order = await getDocFromServer(ref);
 
-        return { data: order.data() as Order }
+          if (order.exists()) {
+            return { data: order.data() as Order }
+          } else {
+            return { error: new Error('Not found') }
+          }
+        } catch (e) {
+          console.log(e);
+          return { error: e };
+        }
       }
     }),
     makeOrder: builder.query<void, Product[]>({

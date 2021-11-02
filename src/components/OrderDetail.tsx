@@ -37,7 +37,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
   useEffect(() => {
     // Could not load order, exit
     if (cachedOrderError) {
-      navigate('/');
+      navigate('/404');
     }
   }, [cachedOrderError]);
 
@@ -145,8 +145,8 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
     <SuccessModal isOpen={makeOrderResult.isSuccess || updateOrderResult.isSuccess}>
       {makeOrderResult.isSuccess
-      ? 'Your order has been placed'
-      : 'Your order has been updated'}
+        ? 'Your order has been placed'
+        : 'Your order has been updated'}
     </SuccessModal>
   </main>;
 };
