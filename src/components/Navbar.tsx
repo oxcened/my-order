@@ -35,7 +35,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
     onLogout?.();
   };
 
-  return <div className='sticky top-0 bg-primary h-14 flex items-center py-3 px-4 justify-between shadow-sm'>
+  return <div className='sticky top-0 bg-primary-500 h-14 flex items-center py-3 px-4 justify-between shadow-sm'>
     <div className='font-bold text-white sm:text-xl cursor-pointer' onClick={() => navigate('/')}>
       WinkEat
     </div>
@@ -63,7 +63,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
           timeout={350}>
           <div className='dropdown absolute top-11 right-0 shadow-md rounded-md pt-1 w-56'>
             <Button color='white' className='w-full py-4' onClick={onLogoutClick}>
-              <LogoutIcon className='h-5 mr-2 text-primary' />
+              <LogoutIcon className='h-5 mr-2 text-primary-500' />
               Logout
             </Button>
           </div>

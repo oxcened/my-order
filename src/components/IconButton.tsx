@@ -10,7 +10,7 @@ const IconButton = (props: {
     !props.disabled
       ? {
         'hover:bg-gray-200 ': props.color === 'white',
-        'text-primary bg-primary bg-opacity-10 hover:bg-opacity-20': props.color === 'primary'
+        'text-primary-500 bg-primary-500 bg-opacity-10 hover:bg-opacity-20': props.color === 'primary'
       } : {
         'bg-gray-100 text-gray-400 cursor-not-allowed': props.disabled
       }

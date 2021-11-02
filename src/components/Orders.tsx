@@ -32,7 +32,7 @@ const Orders = (
     });
   };
 
-  return <div className='mt-4 sm:mt-6 space-y-4'>
+  return <div className='mt-4 sm:mt-6 space-y-4 mb-4 sm:mb-6'>
     {mOrders()}
   </div>;
 };

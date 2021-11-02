@@ -10,7 +10,7 @@ const Button = (props: { color: 'primary' | 'white' | 'danger' } & React.Detaile
       {
         ...!props.disabled
           ? {
-            'bg-primary bg-opacity-10 text-primary hover:bg-opacity-20': props.color === 'primary',
+            'bg-primary-100 text-primary-500 hover:bg-primary-200': props.color === 'primary',
             'bg-white hover:bg-gray-200': props.color === 'white',
             'bg-white bg-opacity-10 text-red-500 hover:bg-gray-200': props.color === 'danger',
           }

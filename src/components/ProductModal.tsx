@@ -68,7 +68,7 @@ const ProductModal = (
           disabled={quantity < 2}
           onClick={() => setQuantity(q => q - 1)}
         >
-          <MinusIcon className='h-5 text-primary' />
+          <MinusIcon className='h-5 text-primary-500' />
         </IconButton>
 
         <p className='text-3xl'>{quantity}</p>
@@ -78,7 +78,7 @@ const ProductModal = (
           className='w-7 h-7'
           onClick={() => setQuantity(q => q + 1)}
         >
-          <PlusIcon className='h-5 text-primary' />
+          <PlusIcon className='h-5 text-primary-500' />
         </IconButton>
       </div>
 
