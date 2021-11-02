@@ -1,11 +1,9 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { Menu } from '../../models/Menu';
-import { DateTime } from 'luxon';
-import { collection, getDocsFromServer, query, where, limit } from 'firebase/firestore';
+import { collection, getDocsFromServer, limit, query } from 'firebase/firestore';
 import { firestore as db } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
-import { Order } from '../../models/Order';
 
 const restaurantsApi = createApi({
   reducerPath: 'restaurants',

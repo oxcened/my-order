@@ -1,7 +1,7 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { Order } from '../../models/Order';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { addDoc, collection, getDocsFromServer, query, serverTimestamp, where } from 'firebase/firestore';
+import { addDoc, collection, getDocsFromServer, query, serverTimestamp, where, orderBy } from 'firebase/firestore';
 import { firestore as db } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
 import { Product } from '../../models/Product';
@@ -18,13 +18,19 @@ const ordersApi = createApi({
 
         const orderQuery = query(
           collection(db, DbCollection.ORDERS),
-          where('created', '>=', today.toJSDate())
+          where('created', '>=', today.toJSDate()),
+          orderBy('created', 'desc')
         );
 
         const response = await getDocsFromServer(orderQuery);
 
         return {
-          data: response.docs.map(d => d.data() as Order)
+          data: response.docs.map(d => {
+            return {
+              ...d.data(),
+              id: d.id
+            } as Order
+          })
         };
       }
     }),
