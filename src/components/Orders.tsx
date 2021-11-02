@@ -33,9 +33,9 @@ const Orders = ({ orders, onDelete }: { orders: Order[]; onDelete?: (order: Orde
         </span>
 
           <div className='flex'>
-            <IconButton className='h-7 w-7' color='white'>
+            {/*<IconButton className='h-7 w-7' color='white'>
               <PencilIcon className='w-5 h-5' />
-            </IconButton>
+            </IconButton>*/}
 
             <IconButton
               className='h-7 w-7 ml-3'
