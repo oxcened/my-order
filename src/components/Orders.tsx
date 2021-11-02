@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Order } from '../models/Order';
 import OrderComponent from '../components/Order';
 import LoadingCard from './LoadingCard';
+import { navigate } from 'gatsby';
 
 const Orders = (
   { orders, isLoading, onDelete }: {
@@ -28,6 +29,7 @@ const Orders = (
         key={order.id}
         order={order}
         onDelete={() => onDelete?.(order)}
+        onEdit={() => navigate(`/order/${order.id}`)}
       />;
     });
   };

@@ -6,8 +6,9 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 
-const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
+const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrder }: {
   order: Product[];
+  isEdit?: boolean;
   loadingMakeOrder?: boolean;
   onProductClick?: (product: Product, quantity: number) => void;
   onMakeOrder?: () => void;
@@ -56,7 +57,9 @@ const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
           ? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mt-0.5 -mb-0.5' />
           : <CheckCircleIcon className='h-5' />}
       </div>
-      Place Order
+      {isEdit
+        ? 'Update Order'
+        : 'Place Order'}
     </Button>
   </div>;
 };

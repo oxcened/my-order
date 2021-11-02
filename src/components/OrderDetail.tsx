@@ -13,8 +13,13 @@ const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
 const OrderDetail = ({ id }: { id?: string }) => {
   const { data: menu, isLoading } = restaurantsApi.useGetRestaurantMenuQuery();
-  const [getOrder, cachedOrder] = ordersApi.useLazyGetOrderQuery();
+  const [getOrder, {
+    data: cachedOrder,
+    isSuccess: cachedOrderSuccess,
+    error: cachedOrderError
+  }] = ordersApi.useLazyGetOrderQuery();
   const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
+  const [updateOrder, updateOrderResult] = ordersApi.useLazyUpdateOrderQuery();
 
   const [order, setOrder] = useState<Product[]>([]);
 
@@ -27,15 +32,30 @@ const OrderDetail = ({ id }: { id?: string }) => {
     if (id) {
       getOrder(id);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    if (makeOrderResult.isSuccess) {
+    // Could not load order, exit
+    if (cachedOrderError) {
+      navigate('/');
+    }
+  }, [cachedOrderError]);
+
+  useEffect(() => {
+    if (cachedOrder) {
+      setOrder(cachedOrder.products);
+    }
+  }, [cachedOrder]);
+
+  useEffect(() => {
+    if (makeOrderResult.isSuccess || updateOrderResult.isSuccess) {
       window.setTimeout(() => {
         navigate('/');
       }, TIMEOUT_SUCCESS_MODAL_MS);
     }
-  }, [makeOrderResult]);
+  }, [makeOrderResult, updateOrderResult]);
+
+  const isEdit = !!id;
 
   const onOpenProduct = (product: Product, quantity?: number, isEdit?: boolean) => {
     setShowProductModal(true);
@@ -87,13 +107,22 @@ const OrderDetail = ({ id }: { id?: string }) => {
     setShowProductModal(false);
   };
 
+  const onMakeOrder = () => {
+    if (isEdit && id) {
+      updateOrder({ id, products: order });
+    } else {
+      makeOrder(order);
+    }
+  };
+
   return <main>
     <div className='flex w-full flex-col sm:flex-row-reverse'>
       <OrderCart
         order={order}
+        isEdit={isEdit}
         loadingMakeOrder={makeOrderResult.isLoading}
         onProductClick={(p, q) => onOpenProduct(p, q, true)}
-        onMakeOrder={() => makeOrder(order)}
+        onMakeOrder={onMakeOrder}
       />
 
       <OrderMenu
@@ -114,8 +143,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
       onConfirm={cleanOpenedProduct}
     />
 
-    <SuccessModal isOpen={makeOrderResult.isSuccess}>
-      Your order has been placed
+    <SuccessModal isOpen={makeOrderResult.isSuccess || updateOrderResult.isSuccess}>
+      {makeOrderResult.isSuccess
+      ? 'Your order has been placed'
+      : 'Your order has been updated'}
     </SuccessModal>
   </main>;
 };

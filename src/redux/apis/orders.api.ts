@@ -6,10 +6,12 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDocFromServer,
   getDocsFromServer,
   orderBy,
   query,
   serverTimestamp,
+  updateDoc,
   where
 } from 'firebase/firestore';
 import { firestore as db } from '../../core/firebase';
@@ -45,24 +47,12 @@ const ordersApi = createApi({
       }
     }),
     getOrder: builder.query<Order, string>({
-      queryFn: () => {
-        return {
-          data: {
-            id: 'adasd',
-            author: { name: 'Alen' },
-            products: [{
-              id: '1',
-              title: 'Carbonara'
-            }, {
-              id: '2',
-              title: 'Acqua'
-            }, {
-              id: '3',
-              title: 'Acqua'
-            }],
-            created: '12-10-2021'
-          }
-        };
+      queryFn: async (id) => {
+        const ref = doc(db, DbCollection.ORDERS, id);
+
+        const order = await getDocFromServer(ref);
+
+        return { data: order.data() as Order }
       }
     }),
     makeOrder: builder.query<void, Product[]>({
@@ -76,6 +66,17 @@ const ordersApi = createApi({
           author: user,
           products
         });
+
+        return {
+          data: void 0
+        };
+      }
+    }),
+    updateOrder: builder.query<void, { id: string; products: Product[]; }>({
+      queryFn: async ({ id, products }) => {
+        const ref = doc(db, DbCollection.ORDERS, id);
+
+        await updateDoc(ref, { products });
 
         return {
           data: void 0

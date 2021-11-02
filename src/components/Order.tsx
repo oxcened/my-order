@@ -1,14 +1,15 @@
 import IconButton from './IconButton';
-import { TrashIcon } from '@heroicons/react/solid';
+import { PencilIcon, TrashIcon } from '@heroicons/react/solid';
 import * as React from 'react';
 import { Order as OrderM } from '../models/Order';
 import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
 import { useAuth } from '../core/hooks';
 
-const Order = ({ order: { id, author, products }, onDelete }: {
+const Order = ({ order: { id, author, products }, onDelete, onEdit }: {
   order: OrderM;
   onDelete?: () => void;
+  onEdit?: () => void;
 }) => {
   const { user } = useAuth();
 
@@ -24,6 +25,8 @@ const Order = ({ order: { id, author, products }, onDelete }: {
     });
   };
 
+  const isOwn = user?.name === author.name;
+
   return <div
     key={id}
     className='bg-white rounded-md p-3 max-w-md border'>
@@ -32,19 +35,23 @@ const Order = ({ order: { id, author, products }, onDelete }: {
           {author.name}'s order
       </span>
 
-      <div className='flex'>
-        {/*<IconButton className='h-7 w-7' color='white'>
-              <PencilIcon className='w-5 h-5' />
-            </IconButton>*/}
+      {isOwn
+      && <div className='flex'>
+        <IconButton
+          className='h-7 w-7'
+          color='white'
+          onClick={() => onEdit?.()}
+        >
+          <PencilIcon className='w-5 h-5 text-yellow-500' />
+        </IconButton>
 
-        {user?.name === author.name
-        && <IconButton
+        <IconButton
           className='h-7 w-7 ml-3'
           color='white'
           onClick={() => onDelete?.()}>
           <TrashIcon className='w-5 h-5 text-red-500' />
-        </IconButton>}
-      </div>
+        </IconButton>
+      </div>}
     </div>
 
     <div className='mt-2 space-y-3'>
