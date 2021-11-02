@@ -1,53 +1,27 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { Menu } from '../../models/Menu';
+import { DateTime } from 'luxon';
+import { collection, getDocsFromServer, query, where, limit } from 'firebase/firestore';
+import { firestore as db } from '../../core/firebase';
+import { DbCollection } from '../../models/DbCollection';
+import { Order } from '../../models/Order';
 
 const restaurantsApi = createApi({
   reducerPath: 'restaurants',
   baseQuery: fakeBaseQuery(),
   endpoints: builder => ({
     getRestaurantMenu: builder.query<Menu, void>({
-      queryFn: (arg, { getState }) => {
+      queryFn: async (arg, { getState }) => {
+        const orderQuery = query(
+          collection(db, DbCollection.RESTAURANTS),
+          limit(1)
+        );
+
+        const response = await getDocsFromServer(orderQuery);
+
         return {
-          data: {
-            categories: [{
-              id: '1',
-              title: 'Pasta',
-              products: [{
-                id: '1',
-                title: 'Carbonara'
-              }, {
-                id: '2',
-                title: 'Amatriciana'
-              }, {
-                id: '3',
-                title: 'Arrabbiata'
-              }]
-            }, {
-              id: '2',
-              title: 'Insalata',
-              products: [{
-                id: '4',
-                title: 'Mista'
-              }, {
-                id: '5',
-                title: 'Caprese'
-              }]
-            }, {
-              id: '3',
-              title: 'Bevande',
-              products: [{
-                id: '6',
-                title: 'Coca cola'
-              }, {
-                id: '7',
-                title: 'Sprite'
-              }, {
-                id: '8',
-                title: 'Acqua minerale'
-              }]
-            }]
-          }
+          data: response.docs[0].data() as Menu
         };
       }
     })

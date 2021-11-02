@@ -22,7 +22,6 @@ const ordersApi = createApi({
         );
 
         const response = await getDocsFromServer(orderQuery);
-        console.log(response);
 
         return {
           data: response.docs.map(d => d.data() as Order)
@@ -34,7 +33,7 @@ const ordersApi = createApi({
         return {
           data: {
             id: 'adasd',
-            author: 'Alen',
+            author: { name: 'Alen' },
             products: [{
               id: '1',
               title: 'Carbonara'
