@@ -6,6 +6,7 @@ import Orders from '../components/Orders';
 import ordersApi from '../redux/apis/orders.api';
 import { navigate } from 'gatsby';
 import { useAuth } from '../core/hooks';
+import { DateTime } from 'luxon';
 
 const IndexPage = () => {
   const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
@@ -26,9 +27,23 @@ const IndexPage = () => {
     navigate('/order/new');
   };
 
+  const getTitle = () => {
+    const now = DateTime.now().get('hour');
+
+    if (now >= 0 && now <= 6) {
+      return 'Good night';
+    } else if (now >= 7 && now <= 12) {
+      return 'Good morning';
+    } else if (now >= 13 && now <= 19) {
+      return 'Good afternoon';
+    } else {
+      return 'Good evening';
+    }
+  };
+
   return (
     <main>
-      <p className='text-black text-3xl sm:text-5xl'>Good morning, {user?.name ?? 'John Doe'}</p>
+      <p className='text-black text-3xl sm:text-5xl'>{getTitle()}, {user?.name ?? 'John Doe'}</p>
       <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Today's orders</p>
 
       <div className='flex mt-3 sm:mt-5'>
