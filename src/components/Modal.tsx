@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { CSSTransition } from 'react-transition-group';
 import '../styles/components/_modal.scss';
+import { XIcon } from '@heroicons/react/solid';
 
 const ANIM_DURATON_MS = 350;
 

@@ -1,5 +1,5 @@
 import IconButton from './IconButton';
-import { MinusIcon, PlusIcon, ShoppingCartIcon } from '@heroicons/react/solid';
+import { MinusIcon, PlusIcon, ShoppingCartIcon, XIcon } from '@heroicons/react/solid';
 import Button from './Button';
 import Modal from './Modal';
 import * as React from 'react';
@@ -51,7 +51,15 @@ const ProductModal = (
   >
     {product
     && <>
-      <div className='text-xl font-bold'>{product.title}</div>
+      <div className='flex'>
+        <div className='flex-1' />
+        <div className='text-xl font-bold flex-1'>{product.title}</div>
+        <div className='flex-1'>
+          <IconButton color='white' className='ml-auto p-1' onClick={onConfirm}>
+            <XIcon className='h-6' />
+          </IconButton>
+        </div>
+      </div>
 
       <div className='flex items-center justify-center space-x-5 mt-8'>
         <IconButton
@@ -89,7 +97,7 @@ const ProductModal = (
           className='w-full justify-center'
           onClick={onSubmitClick}
         >
-          <ShoppingCartIcon className='h-5 opacity-100 mr-2'/>
+          <ShoppingCartIcon className='h-5 opacity-100 mr-2' />
           {isUpdated
             ? 'Update'
             : isEdit
