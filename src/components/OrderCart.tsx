@@ -1,6 +1,5 @@
 import Button from './Button';
 import * as React from 'react';
-import { Order } from '../models/Order';
 import { groupByKey } from '../core/utils';
 import { Product } from '../models/Product';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
@@ -8,17 +7,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 
 const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
-  order: Order;
+  order: Product[];
   loadingMakeOrder?: boolean;
   onProductClick?: (product: Product, quantity: number) => void;
   onMakeOrder?: () => void;
 }) => {
   const getOrderProducts = () => {
-    if (!order.products.length) {
+    if (!order.length) {
       return <p className='my-2'>Pick something from the Menu to get started</p>;
     }
 
-    const mapped = Object.entries(groupByKey(order.products, 'id'))
+    const mapped = Object.entries(groupByKey(order, 'id'))
       .reduce((prev: [Product, number][], [, products]) => {
         const newItem = [products[0], products.length] as ([Product, number]);
         return [...prev, newItem];
@@ -49,7 +48,7 @@ const OrderCart = ({ order, loadingMakeOrder, onProductClick, onMakeOrder }: {
     <Button
       color='primary'
       className='mt-2 w-full justify-center'
-      disabled={!order.products.length || loadingMakeOrder}
+      disabled={!order.length || loadingMakeOrder}
       onClick={onMakeOrder}
     >
       <div className='mr-2'>

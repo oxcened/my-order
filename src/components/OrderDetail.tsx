@@ -3,13 +3,11 @@ import { ComponentProps, useEffect, useState } from 'react';
 import ordersApi from '../redux/apis/orders.api';
 import restaurantsApi from '../redux/apis/restaurants.api';
 import OrderMenu from './OrderMenu';
-import { Order } from '../models/Order';
 import { Product } from '../models/Product';
 import OrderCart from './OrderCart';
 import ProductModal from './ProductModal';
 import { navigate } from 'gatsby';
 import SuccessModal from './SuccessModal';
-import { useAuth } from '../core/hooks';
 
 const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
@@ -18,13 +16,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
   const [getOrder, cachedOrder] = ordersApi.useLazyGetOrderQuery();
   const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
 
-  const { user } = useAuth();
-  const [order, setOrder] = useState<Readonly<Order>>({
-    id: '',
-    products: [],
-    author: { name: '' },
-    created: ''
-  });
+  const [order, setOrder] = useState<Product[]>([]);
 
   const [showProductModal, setShowProductModal] = useState(false);
 
@@ -62,10 +54,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
     const newProducts = new Array(quantity).fill(productModalPayload.product);
 
-    setOrder(prevState => ({
-      ...prevState,
-      products: [...prevState.products, ...newProducts]
-    }));
+    setOrder(prevState => [...prevState, ...newProducts]);
 
     cleanOpenedProduct();
   };
@@ -75,10 +64,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
       return;
     }
 
-    setOrder(order => ({
-      ...order,
-      products: order.products.filter(p => p.id !== productModalPayload.product?.id)
-    }));
+    setOrder(order => order.filter(p => p.id !== productModalPayload.product?.id));
 
     cleanOpenedProduct();
   };
@@ -88,13 +74,12 @@ const OrderDetail = ({ id }: { id?: string }) => {
       return;
     }
 
-    setOrder(order => ({
-      ...order,
-      products: [
-        ...order.products.filter(p => p.id !== productModalPayload?.product?.id),
+    setOrder(order => {
+      return [
+        ...order.filter(p => p.id !== productModalPayload?.product?.id),
         ...new Array(quantity).fill(productModalPayload.product)
       ]
-    }));
+    });
 
     cleanOpenedProduct();
   }

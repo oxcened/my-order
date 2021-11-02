@@ -1,11 +1,12 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { Order } from '../../models/Order';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { addDoc, collection, getDocs, query, getDocsFromServer } from 'firebase/firestore';
+import { addDoc, collection, getDocsFromServer, query, serverTimestamp, where } from 'firebase/firestore';
 import { firestore as db } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
-import { User } from '../../models/User';
-import { serverTimestamp } from 'firebase/firestore';
+import { Product } from '../../models/Product';
+import { RootState } from '../store';
+import { DateTime } from 'luxon';
 
 const ordersApi = createApi({
   reducerPath: 'orders',
@@ -13,9 +14,11 @@ const ordersApi = createApi({
   endpoints: builder => ({
     getTodayOrders: builder.query<Order[], void>({
       queryFn: async () => {
+        const today = DateTime.now().startOf('day');
+
         const orderQuery = query(
-          collection(db, DbCollection.ORDERS)
-          //where('created', '<=', new Date().valueOf())
+          collection(db, DbCollection.ORDERS),
+          where('created', '>=', today.toJSDate())
         );
 
         const response = await getDocsFromServer(orderQuery);
@@ -47,9 +50,9 @@ const ordersApi = createApi({
         };
       }
     }),
-    makeOrder: builder.query<void, Order>({
-      queryFn: async ({ products }, { getState }) => {
-        const { auth: { user } } = getState() as { auth: { user: User } };
+    makeOrder: builder.query<void, Product[]>({
+      queryFn: async (products, { getState }) => {
+        const { auth: { user } } = getState() as RootState;
 
         const ref = collection(db, DbCollection.ORDERS);
 
@@ -58,6 +61,7 @@ const ordersApi = createApi({
           author: user,
           products
         });
+
         return {
           data: void 0
         };
