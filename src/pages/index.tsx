@@ -9,11 +9,18 @@ import { useAuth } from '../core/hooks';
 
 const IndexPage = () => {
   const { data = [], refetch } = ordersApi.useGetTodayOrdersQuery();
+  const [deleteOrder, deleteOrderResult] = ordersApi.useLazyDeleteOrderQuery();
   const { user } = useAuth();
 
   useEffect(() => {
     refetch();
   }, []);
+
+  useEffect(() => {
+    if (deleteOrderResult.isSuccess) {
+      refetch();
+    }
+  }, [deleteOrderResult]);
 
   const onMakeOrder = () => {
     navigate('/order/new');
@@ -36,7 +43,7 @@ const IndexPage = () => {
         </Button>
       </div>
 
-      <Orders orders={data} />
+      <Orders orders={data} onDelete={({ id }) => deleteOrder(id)} />
 
       <Button
         color='primary'

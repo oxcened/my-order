@@ -1,7 +1,17 @@
 import { fakeBaseQuery } from '@reduxjs/toolkit/query';
 import { Order } from '../../models/Order';
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { addDoc, collection, getDocsFromServer, query, serverTimestamp, where, orderBy } from 'firebase/firestore';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocsFromServer,
+  orderBy,
+  query,
+  serverTimestamp,
+  where
+} from 'firebase/firestore';
 import { firestore as db } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
 import { Product } from '../../models/Product';
@@ -66,6 +76,17 @@ const ordersApi = createApi({
           author: user,
           products
         });
+
+        return {
+          data: void 0
+        };
+      }
+    }),
+    deleteOrder: builder.query<void, string>({
+      queryFn: async (id, { getState }) => {
+        const ref = doc(db, DbCollection.ORDERS, id);
+
+        await deleteDoc(ref);
 
         return {
           data: void 0

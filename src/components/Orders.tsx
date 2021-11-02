@@ -5,7 +5,7 @@ import IconButton from './IconButton';
 import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
 
-const Orders = ({ orders }: { orders: Order[] }) => {
+const Orders = ({ orders, onDelete }: { orders: Order[]; onDelete?: (order: Order) => void; }) => {
   const mOrders = () => {
     if (!orders.length) {
       return <span className='text-gray-500'>Be the first one to make an order!</span>;
@@ -23,7 +23,9 @@ const Orders = ({ orders }: { orders: Order[] }) => {
       });
     };
 
-    return orders.map(({ id, author, products }) => {
+    return orders.map((order) => {
+      const { id, author, products } = order;
+
       return <div key={id} className='bg-white rounded-md p-3 max-w-md border'>
         <div className='flex justify-between'>
           <span className='font-bold text-lg'>
@@ -35,7 +37,10 @@ const Orders = ({ orders }: { orders: Order[] }) => {
               <PencilIcon className='w-5 h-5' />
             </IconButton>
 
-            <IconButton className='h-7 w-7 ml-3' color='white'>
+            <IconButton
+              className='h-7 w-7 ml-3'
+              color='white'
+              onClick={() => onDelete?.(order)}>
               <TrashIcon className='w-5 h-5 text-red-500' />
             </IconButton>
           </div>
