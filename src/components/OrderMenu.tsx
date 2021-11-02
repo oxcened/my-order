@@ -7,10 +7,12 @@ import AccordionHeader from './AccordionHeader';
 import AccordionBody from './AccordionBody';
 import { Menu } from '../models/Menu';
 import { Product } from '../models/Product';
+import LoadingAccordion from './LoadingAccordion';
 
-const OrderMenu = ({ menu, onAddProduct }: {
+const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   menu: Menu;
-  onAddProduct?: (product: Product) => void
+  isLoading?: boolean;
+  onAddProduct?: (product: Product) => void;
 }) => {
   const mCategories = menu.categories.map(({ id, title, products }) => {
     const mProducts = products.map(p => {
@@ -45,9 +47,13 @@ const OrderMenu = ({ menu, onAddProduct }: {
   return <div className='flex-1 mt-6 sm:mt-0 sm:mr-10'>
     <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>Menu</p>
 
-    <AccordionList>
-      {mCategories}
-    </AccordionList>
+    {isLoading
+      ? new Array(2)
+        .fill(undefined)
+        .map((value, index) => <LoadingAccordion key={index} />)
+      : <AccordionList>
+        {mCategories}
+      </AccordionList>}
   </div>;
 };
 

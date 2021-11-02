@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Order } from '../models/Order';
-import OrderComponent, { EMPTY_ORDER } from '../components/Order';
+import OrderComponent from '../components/Order';
+import LoadingCard from './LoadingCard';
 
 const Orders = (
   { orders, isLoading, onDelete }: {
@@ -14,10 +15,7 @@ const Orders = (
       return new Array(3)
         .fill(undefined)
         .map((value, index) => {
-          return <OrderComponent
-            key={index}
-            order={EMPTY_ORDER}
-          />
+          return <LoadingCard key={index} />
         });
     }
 

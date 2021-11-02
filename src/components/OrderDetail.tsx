@@ -12,7 +12,7 @@ import SuccessModal from './SuccessModal';
 const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
 const OrderDetail = ({ id }: { id?: string }) => {
-  const { data: menu } = restaurantsApi.useGetRestaurantMenuQuery();
+  const { data: menu, isLoading } = restaurantsApi.useGetRestaurantMenuQuery();
   const [getOrder, cachedOrder] = ordersApi.useLazyGetOrderQuery();
   const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
 
@@ -103,6 +103,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
       <OrderMenu
         menu={menu}
+        isLoading={isLoading}
         onAddProduct={onOpenProduct} />
     </div>
 

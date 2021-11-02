@@ -2,9 +2,10 @@ import * as React from 'react';
 import ordersApi from '../redux/apis/orders.api';
 import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
+import LoadingCard from '../components/LoadingCard';
 
 const Summary = () => {
-  const { data } = ordersApi.useGetTodayOrdersQuery();
+  const { data, isLoading } = ordersApi.useGetTodayOrdersQuery();
 
   const getProducts = () => {
     if (!data?.length) {
@@ -33,9 +34,11 @@ const Summary = () => {
     <p className='text-black text-3xl sm:text-5xl'>Today's orders</p>
     <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Summary</p>
 
-    <div className='mt-3 sm:mt-5 bg-white border rounded-md px-3 py-5 space-y-5 sm:max-w-md'>
-      {getProducts()}
-    </div>
+    {isLoading
+      ? <LoadingCard className='mt-3 sm:mt-5' />
+      : <div className='mt-3 sm:mt-5 bg-white border rounded-md px-3 py-5 space-y-5 sm:max-w-md'>
+        {getProducts()}
+      </div>}
   </main>;
 };
 
