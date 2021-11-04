@@ -16,18 +16,22 @@ const Summary = () => {
       return [...res, ...curr.products];
     }, [] as Product[]);
 
-    return groupByKeyQuantity(products, 'id').map(([product, quantity]) => {
-      return <div
-        key={product.id}
-        className='flex items-center'
-      >
-        <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
-          {quantity}
-        </div>
+    return (
+      <div className='py-2 space-y-5'>
+        {groupByKeyQuantity(products, 'id').map(([product, quantity]) => {
+          return <div
+            key={product.id}
+            className='flex items-center'
+          >
+            <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
+              {quantity}
+            </div>
 
-        <span className='ml-3'>{product.title}</span>
-      </div>;
-    });
+            <span className='ml-3'>{product.title}</span>
+          </div>;
+        })}
+      </div>
+    );
   };
 
   return <main>
@@ -36,7 +40,7 @@ const Summary = () => {
 
     {isLoading
       ? <LoadingCard className='mt-3 sm:mt-5' />
-      : <div className='mt-3 sm:mt-5 bg-white border rounded-md px-3 py-5 space-y-5 sm:max-w-md'>
+      : <div className='mt-3 sm:mt-5 bg-white border rounded-md px-3 py-3 sm:max-w-md'>
         {getProducts()}
       </div>}
   </main>;
