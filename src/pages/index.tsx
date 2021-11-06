@@ -9,7 +9,7 @@ import { useAuth, useConfirmModal } from '../core/hooks';
 import { DateTime } from 'luxon';
 
 const IndexPage = () => {
-  const { data = [], refetch, isFetching } = ordersApi.useGetTodayOrdersQuery();
+  const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [deleteOrder, deleteOrderResult] = ordersApi.useLazyDeleteOrderQuery();
   const { user } = useAuth();
   const { renderConfirmModal, askConfirm } = useConfirmModal();
@@ -61,7 +61,7 @@ const IndexPage = () => {
 
       <Orders
         orders={data}
-        isLoading={isFetching}
+        isLoading={isLoading}
         onDelete={({ id }) => askConfirm(() => deleteOrder(id))} />
 
       <Button
