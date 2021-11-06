@@ -12,7 +12,7 @@ const IndexPage = () => {
   const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [deleteOrder, deleteOrderResult] = ordersApi.useLazyDeleteOrderQuery();
   const { user } = useAuth();
-  const { getConfirmModal, askConfirm } = useConfirmModal();
+  const { renderConfirmModal, askConfirm } = useConfirmModal();
 
   useEffect(() => {
     refetch();
@@ -73,7 +73,7 @@ const IndexPage = () => {
         Make Order
       </Button>
 
-      {getConfirmModal()}
+      {renderConfirmModal()}
     </main>
   )
 }

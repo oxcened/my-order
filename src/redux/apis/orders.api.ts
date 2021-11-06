@@ -14,7 +14,8 @@ import {
   updateDoc,
   where
 } from 'firebase/firestore';
-import { firestore as db } from '../../core/firebase';
+import { httpsCallable } from 'firebase/functions';
+import { firestore as db, functions } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
 import { Product } from '../../models/Product';
 import { RootState } from '../store';
@@ -59,7 +60,7 @@ const ordersApi = createApi({
             return { error: new Error('Not found') }
           }
         } catch (e) {
-          console.log(e);
+          console.error(e);
           return { error: e };
         }
       }
@@ -101,6 +102,31 @@ const ordersApi = createApi({
         return {
           data: void 0
         };
+      }
+    }),
+    printOrderSummary: builder.query<void, {
+      amount: number;
+      orders: number;
+      paid: boolean;
+    }>({
+      queryFn: async (args) => {
+        try {
+          const fun = httpsCallable<typeof args, {
+            updates: { updatedRows: number }
+          }>(functions, 'printOrderSummary');
+
+          const res = await fun(args);
+
+          if (res.data.updates.updatedRows > 0) {
+            return {
+              data: void 0
+            }
+          } else {
+            return { error: new Error('Something went wrong during submission') };
+          }
+        } catch (error) {
+          return { error };
+        }
       }
     })
   })
