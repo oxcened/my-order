@@ -7,7 +7,7 @@ import { Product } from '../models/Product';
 import OrderCart from './OrderCart';
 import ProductModal from './ProductModal';
 import { navigate } from 'gatsby';
-import SuccessModal from './SuccessModal';
+import { useSuccessModal } from '../core/hooks';
 
 const TIMEOUT_SUCCESS_MODAL_MS = 2000;
 
@@ -15,7 +15,6 @@ const OrderDetail = ({ id }: { id?: string }) => {
   const { data: menu, isFetching } = restaurantsApi.useGetRestaurantMenuQuery();
   const [getOrder, {
     data: cachedOrder,
-    isSuccess: cachedOrderSuccess,
     error: cachedOrderError
   }] = ordersApi.useLazyGetOrderQuery();
   const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
@@ -27,6 +26,13 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
   const [productModalPayload, setProductModalPayload] =
     useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();
+
+  const { renderModal: makeSuccessModal, showModal: showMakeSuccess } = useSuccessModal({
+    children: 'Your order has been placed'
+  });
+  const { renderModal: updateSuccessModal, showModal: showUpdateSuccess } = useSuccessModal({
+    children: 'Your order has been updated'
+  });
 
   useEffect(() => {
     if (id) {
@@ -48,10 +54,16 @@ const OrderDetail = ({ id }: { id?: string }) => {
   }, [cachedOrder]);
 
   useEffect(() => {
-    if (makeOrderResult.isSuccess || updateOrderResult.isSuccess) {
-      window.setTimeout(() => {
-        navigate('/');
-      }, TIMEOUT_SUCCESS_MODAL_MS);
+    if (makeOrderResult.isSuccess) {
+      showMakeSuccess({
+        callback: () => navigate('/')
+      });
+    }
+
+    if (updateOrderResult.isSuccess) {
+      showUpdateSuccess({
+        callback: () => navigate('/')
+      });
     }
   }, [makeOrderResult, updateOrderResult]);
 
@@ -143,11 +155,8 @@ const OrderDetail = ({ id }: { id?: string }) => {
       onConfirm={cleanOpenedProduct}
     />
 
-    <SuccessModal isOpen={makeOrderResult.isSuccess || updateOrderResult.isSuccess}>
-      {makeOrderResult.isSuccess
-        ? 'Your order has been placed'
-        : 'Your order has been updated'}
-    </SuccessModal>
+    {makeSuccessModal}
+    {updateSuccessModal}
   </main>;
 };
 

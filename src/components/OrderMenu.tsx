@@ -45,7 +45,7 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   });
 
   return <div className='flex-1 mt-6 sm:mt-0 sm:mr-10'>
-    <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>Menu</p>
+    <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>{menu ? `${menu.title}'s Menu` : 'Menu'}</p>
 
     {isLoading
       ? new Array(3)
