@@ -33,6 +33,7 @@ const PrintOrderSummaryModal = (
     if (props.isOpen) {
       setAmount(undefined);
       setOrders(pOrders);
+      setPaid(false);
     }
   }, [props.isOpen]);
 
