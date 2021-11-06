@@ -73,7 +73,7 @@ const IndexPage = () => {
         Make Order
       </Button>
 
-      {renderConfirmModal()}
+      {renderConfirmModal}
     </main>
   )
 }

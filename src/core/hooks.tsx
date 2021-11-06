@@ -35,11 +35,12 @@ export const useConfirmModal = (props?: ComponentPropsWithoutRef<typeof ConfirmM
         cleanModal();
       }}
       onNegative={cleanModal}
+      onBackdropClick={cleanModal}
       {...props} />
   );
 
   return {
-    renderConfirmModal: () => modal,
+    renderConfirmModal: modal,
     askConfirm: (func: () => void) => {
       setShowModal(true);
       setCallback(() => func);
