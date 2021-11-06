@@ -27,10 +27,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
   const [productModalPayload, setProductModalPayload] =
     useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();
 
-  const { renderSuccessModal: makeSuccessModal, showSuccess: showMakeSuccess } = useSuccessModal({
+  const { renderModal: makeSuccessModal, showModal: showMakeSuccess } = useSuccessModal({
     children: 'Your order has been placed'
   });
-  const { renderSuccessModal: updateSuccessModal, showSuccess: showUpdateSuccess } = useSuccessModal({
+  const { renderModal: updateSuccessModal, showModal: showUpdateSuccess } = useSuccessModal({
     children: 'Your order has been updated'
   });
 
@@ -55,11 +55,15 @@ const OrderDetail = ({ id }: { id?: string }) => {
 
   useEffect(() => {
     if (makeOrderResult.isSuccess) {
-      showMakeSuccess(() => navigate('/'));
+      showMakeSuccess({
+        callback: () => navigate('/')
+      });
     }
 
     if (updateOrderResult.isSuccess) {
-      showUpdateSuccess(() => navigate('/'));
+      showUpdateSuccess({
+        callback: () => navigate('/')
+      });
     }
   }, [makeOrderResult, updateOrderResult]);
 

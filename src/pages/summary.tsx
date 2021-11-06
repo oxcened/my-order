@@ -7,15 +7,16 @@ import LoadingCard from '../components/LoadingCard';
 import Button from '../components/Button';
 import { CloudUploadIcon } from '@heroicons/react/outline';
 import PrintOrderSummaryModal from '../components/PrintOrderSummaryModal';
-import { useSuccessModal } from '../core/hooks';
+import { useFailureModal, useSuccessModal } from '../core/hooks';
 
 const Summary = () => {
   const { data, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [printOrderSummary, printOrderSummaryRes] = ordersApi.useLazyPrintOrderSummaryQuery();
   const [showPrintModal, setShowPrintModal] = useState(false);
-  const { renderSuccessModal, showSuccess } = useSuccessModal({
+  const { renderModal: renderSuccess, showModal: showSuccess } = useSuccessModal({
     children: 'Submitted successfully'
   });
+  const { renderModal: renderFailure, showModal: showFailure } = useFailureModal();
 
   useEffect(() => {
     if (printOrderSummaryRes.isSuccess) {
@@ -24,8 +25,10 @@ const Summary = () => {
     }
 
     if (printOrderSummaryRes.isError) {
-      // TODO
       setShowPrintModal(false);
+      showFailure({
+        text: (printOrderSummaryRes.error as Error).message
+      });
     }
   }, [printOrderSummaryRes]);
 
@@ -85,7 +88,8 @@ const Summary = () => {
       onConfirm={printOrderSummary}
     />
 
-    {renderSuccessModal}
+    {renderSuccess}
+    {renderFailure}
   </main>;
 };
 
