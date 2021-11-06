@@ -29,16 +29,6 @@ const Summary = () => {
     }
   }, [printOrderSummaryRes]);
 
-  const onPrintOrderSummary = (amount: number, paid: boolean) => {
-    if (!data) return;
-
-    printOrderSummary({
-      amount,
-      orders: data.length,
-      paid
-    });
-  };
-
   const getProducts = () => {
     if (!data?.length) {
       return <p className='my-2'>Looks like there's nothing here</p>;
@@ -89,9 +79,10 @@ const Summary = () => {
     <PrintOrderSummaryModal
       isOpen={showPrintModal}
       isLoading={printOrderSummaryRes.isLoading}
+      orders={data?.length}
       onCancel={() => setShowPrintModal(false)}
       onBackdropClick={() => setShowPrintModal(false)}
-      onConfirm={onPrintOrderSummary}
+      onConfirm={printOrderSummary}
     />
 
     {renderSuccessModal}
