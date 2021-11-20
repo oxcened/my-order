@@ -35,7 +35,7 @@ const Modal = ({ children, isOpen, className, onBackdropClick }: {
   >
     <div
       className={classNames(
-        'top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 fixed flex p-3 overflow-x-hidden overflow-y-auto'
+        'top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 fixed flex p-3 overflow-x-hidden overflow-y-auto z-20'
       )}
       onClick={onBackdropClick}
     >
