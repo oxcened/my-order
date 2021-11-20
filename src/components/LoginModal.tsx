@@ -26,6 +26,7 @@ export const LoginModal = (props: ComponentPropsWithoutRef<typeof Modal>) => {
 
     <form onSubmit={onSubmit}>
       <input
+        required
         className='w-full rounded-md shadow-inner bg-gray-100 mt-3 p-3'
         placeholder='John Doe'
         value={name}

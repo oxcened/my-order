@@ -30,7 +30,7 @@ export const wrapPageElement = ({ element }) => {
       </Helmet>
       <Navbar user={user} onLogout={logout} />
       {element}
-      <LoginModal isOpen={!user} />
+      <LoginModal isOpen={!user || !user.name} />
     </>;
   };
 
