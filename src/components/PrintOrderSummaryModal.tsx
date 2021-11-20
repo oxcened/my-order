@@ -75,6 +75,7 @@ const PrintOrderSummaryModal = (
           placeholder='Insert total amount'
           value={amount}
           type='number'
+          step={.01}
           onChange={onAmountChange}
         />
       </div>
