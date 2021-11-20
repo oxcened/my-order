@@ -113,6 +113,13 @@ const PrintOrderSummaryModal = (
         && <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mr-2' />}
         Submit
       </Button>
+
+      <Button
+        color='white'
+        className='w-full mt-2 justify-center'
+        onClick={onCancel}>
+        Cancel
+      </Button>
     </form>
   </Modal>;
 };
