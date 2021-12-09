@@ -5,6 +5,7 @@ import { Order as OrderM } from '../models/Order';
 import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
 import { useAuth } from '../core/hooks';
+import locale from '../core/locale';
 
 const Order = ({ order: { id, author, products }, onDelete, onEdit }: {
   order: OrderM;
@@ -32,7 +33,7 @@ const Order = ({ order: { id, author, products }, onDelete, onEdit }: {
     className='bg-white rounded-md p-3 max-w-md border'>
     <div className='flex justify-between'>
       <span className='font-bold text-lg'>
-          {author.name}'s order
+        {locale.formatString(locale.components.order.title, author.name)}
       </span>
 
       {isOwn

@@ -20,8 +20,7 @@
       },
       "subtitle": "Today's orders",
       "summaryButton": "Summary",
-      "makeOrderButton": "Place Order",
-      "orderTitle": "{0}'s order"
+      "makeOrderButton": "Place Order"
     },
     "summary": {
       "title": "Today's orders",
@@ -72,6 +71,9 @@
     "confirmModal": {
       "title": "Do you really want to do that?",
       "subtitle": "You won't be able to go back"
+    },
+    "order": {
+      "title": "{0}'s order"
     }
   }
 }

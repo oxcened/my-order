@@ -20,8 +20,7 @@
       },
       "subtitle": "Ordini di oggi",
       "summaryButton": "Resoconto",
-      "makeOrderButton": "Inserisci ordine",
-      "orderTitle": "Ordine di {0}"
+      "makeOrderButton": "Inserisci ordine"
     },
     "summary": {
       "title": "Ordini di oggi",
@@ -72,6 +71,9 @@
     "confirmModal": {
       "title": "Sicuro di volerlo fare?",
       "subtitle": "Non potrai tornare indietro"
+    },
+    "order": {
+      "title": "Ordine di {0}"
     }
   }
 }
