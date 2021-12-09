@@ -68,6 +68,10 @@
     },
     "navbar": {
       "logout": "Esci"
+    },
+    "confirmModal": {
+      "title": "Sicuro di volerlo fare?",
+      "subtitle": "Non potrai tornare indietro"
     }
   }
 }

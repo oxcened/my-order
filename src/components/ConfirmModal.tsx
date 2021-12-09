@@ -2,13 +2,14 @@ import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import Modal from './Modal';
 import Button from './Button';
+import locale from '../core/locale';
 
 const ConfirmModal = (
   {
-    title = 'Do you really want to do that?',
-    text = 'You won\'t be able to go back',
-    positiveButtonText = 'Confirm',
-    negativeButtonText = 'Cancel',
+    title = locale.components.confirmModal.title,
+    text = locale.components.confirmModal.subtitle,
+    positiveButtonText = locale.shared.confirm,
+    negativeButtonText = locale.shared.cancel,
     onPositive,
     onNegative,
     ...props

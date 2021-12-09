@@ -68,6 +68,10 @@
     },
     "navbar": {
       "logout": "Logout"
+    },
+    "confirmModal": {
+      "title": "Do you really want to do that?",
+      "subtitle": "You won't be able to go back"
     }
   }
 }
