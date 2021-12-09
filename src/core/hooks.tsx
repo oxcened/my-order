@@ -5,6 +5,7 @@ import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import ConfirmModal from '../components/ConfirmModal';
 import FeedbackModal from '../components/FeedbackModal';
+import locale from './locale';
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -89,7 +90,7 @@ export const useFeedbackModal = (props?: ComponentPropsWithoutRef<typeof Feedbac
 };
 
 export const useSuccessModal: typeof useFeedbackModal = (props) =>
-  useFeedbackModal({ title: 'Thank you!', ...props, isSuccess: true });
+  useFeedbackModal({ title: locale.components.successModal.title, ...props, isSuccess: true });
 
 export const useFailureModal: typeof useFeedbackModal = (props) =>
-  useFeedbackModal({ title: 'Ouch!', children: 'Something went wrong', ...props, isSuccess: false });
+  useFeedbackModal({ title: locale.components.failureModal.title, children: locale.components.failureModal.description, ...props, isSuccess: false });

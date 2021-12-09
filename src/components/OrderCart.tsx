@@ -5,6 +5,7 @@ import { Product } from '../models/Product';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CheckCircleIcon } from '@heroicons/react/solid';
+import locale from '../core/locale';
 
 const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrder }: {
   order: Product[];
@@ -15,7 +16,7 @@ const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrde
 }) => {
   const getOrderProducts = () => {
     if (!order.length) {
-      return <p className='my-3'>Pick something from the Menu to get started</p>;
+      return <p className='my-3'>{locale.components.orderCart.placeholer}</p>;
     }
 
     const mapped = Object.entries(groupByKey(order, 'id'))
@@ -40,7 +41,7 @@ const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrde
   };
 
   return <div className='flex-1 sm:max-w-md'>
-    <p className='text-3xl md:text-4xl lg:text-5xl'>Your Order</p>
+    <p className='text-3xl md:text-4xl lg:text-5xl'>{locale.components.orderCart.title}</p>
 
     <div className='bg-white border rounded-md px-3 py-1 divide-y mt-2 sm:mt-3'>
       {getOrderProducts()}
@@ -58,8 +59,8 @@ const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrde
           : <CheckCircleIcon className='h-5' />}
       </div>
       {isEdit
-        ? 'Update Order'
-        : 'Place Order'}
+        ? locale.components.orderCart.update
+        : locale.components.orderCart.submit}
     </Button>
   </div>;
 };

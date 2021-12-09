@@ -5,6 +5,7 @@ import Modal from './Modal';
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import { Product } from '../models/Product';
+import locale from '../core/locale';
 
 const ProductModal = (
   {
@@ -89,7 +90,7 @@ const ProductModal = (
           className='w-full justify-center mb-2'
           onClick={onDelete}
         >
-          Remove from order
+          {locale.components.productModal.remove}
         </Button>}
 
         <Button
@@ -99,10 +100,10 @@ const ProductModal = (
         >
           <ShoppingCartIcon className='h-5 opacity-100 mr-2' />
           {isUpdated
-            ? 'Update'
+            ? locale.shared.update
             : isEdit
-              ? 'Confirm'
-              : 'Add to Order'}
+              ? locale.shared.confirm
+              : locale.components.productModal.add}
         </Button>
       </div>
     </>}

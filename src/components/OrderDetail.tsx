@@ -8,8 +8,7 @@ import OrderCart from './OrderCart';
 import ProductModal from './ProductModal';
 import { navigate } from 'gatsby';
 import { useSuccessModal } from '../core/hooks';
-
-const TIMEOUT_SUCCESS_MODAL_MS = 2000;
+import locale from '../core/locale';
 
 const OrderDetail = ({ id }: { id?: string }) => {
   const { data: menu, isLoading } = restaurantsApi.useGetRestaurantMenuQuery();
@@ -28,10 +27,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
     useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();
 
   const { renderModal: makeSuccessModal, showModal: showMakeSuccess } = useSuccessModal({
-    children: 'Your order has been placed'
+    children: locale.pages.orderDetail.orderPlaceSuccess
   });
   const { renderModal: updateSuccessModal, showModal: showUpdateSuccess } = useSuccessModal({
-    children: 'Your order has been updated'
+    children: locale.pages.orderDetail.orderUpdateSuccess
   });
 
   useEffect(() => {

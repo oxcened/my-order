@@ -8,6 +8,7 @@ import '../styles/components/_navbar.scss';
 import { CSSTransition } from 'react-transition-group';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import locale from '../core/locale';
 
 const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
 
   return <div className='sticky top-0 bg-primary-500 h-14 flex items-center py-3 px-4 justify-between shadow-sm z-10'>
     <div className='font-bold text-white sm:text-xl cursor-pointer' onClick={() => navigate('/')}>
-      WinkEat
+      {locale.shared.appName}
     </div>
 
     <CSSTransition

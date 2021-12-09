@@ -8,13 +8,14 @@ import Button from '../components/Button';
 import { CloudUploadIcon } from '@heroicons/react/outline';
 import PrintOrderSummaryModal from '../components/PrintOrderSummaryModal';
 import { useFailureModal, useSuccessModal } from '../core/hooks';
+import locale from '../core/locale';
 
 const Summary = () => {
   const { data, isLoading } = ordersApi.useGetTodayOrdersQuery();
   const [printOrderSummary, printOrderSummaryRes] = ordersApi.useLazyPrintOrderSummaryQuery();
   const [showPrintModal, setShowPrintModal] = useState(false);
   const { renderModal: renderSuccess, showModal: showSuccess } = useSuccessModal({
-    children: 'Submitted successfully'
+    children: locale.pages.summary.submitSuccess
   });
   const { renderModal: renderFailure, showModal: showFailure } = useFailureModal();
 
@@ -60,8 +61,8 @@ const Summary = () => {
   };
 
   return <main>
-    <p className='text-black text-3xl sm:text-5xl'>Today's orders</p>
-    <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Summary</p>
+    <p className='text-black text-3xl sm:text-5xl'>{locale.pages.summary.title}</p>
+    <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>{locale.pages.summary.subtitle}</p>
 
     <Button
       color='primary'
@@ -70,7 +71,7 @@ const Summary = () => {
       onClick={() => setShowPrintModal(true)}
     >
       <CloudUploadIcon className='h-5 mr-2' />
-      Submit to Google Sheets
+      {locale.pages.summary.submitButton}
     </Button>
 
     {isLoading

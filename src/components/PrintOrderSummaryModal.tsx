@@ -7,6 +7,7 @@ import Checkbox from './Checkbox';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UserGroupIcon } from '@heroicons/react/solid';
+import locale from '../core/locale';
 
 const PrintOrderSummaryModal = (
   {
@@ -63,7 +64,7 @@ const PrintOrderSummaryModal = (
   >
 
     <p className='text-xl font-bold'>
-      Submit to Google Sheets
+      {locale.components.submitModal.title}
     </p>
 
     <form onSubmit={onSubmit} className='mt-6'>
@@ -72,7 +73,7 @@ const PrintOrderSummaryModal = (
 
         <input
           className='w-full rounded-md shadow-inner bg-gray-100 p-3'
-          placeholder='Insert total amount'
+          placeholder={locale.components.submitModal.amountPlaceholder}
           value={amount}
           type='number'
           step={.01}
@@ -85,7 +86,7 @@ const PrintOrderSummaryModal = (
 
         <input
           className='w-full rounded-md shadow-inner bg-gray-100 p-3'
-          placeholder='Insert total orders'
+          placeholder={locale.components.submitModal.ordersPlaceholder}
           value={orders}
           type='number'
           onChange={onOrdersChange}
@@ -100,7 +101,7 @@ const PrintOrderSummaryModal = (
         />
 
         <label htmlFor='amount-settled' className='ml-4 cursor-pointer'>
-          Amount settled
+          {locale.components.submitModal.amountSettled}
         </label>
       </div>
 
@@ -111,14 +112,14 @@ const PrintOrderSummaryModal = (
 
         {isLoading
         && <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mr-2' />}
-        Submit
+        {locale.shared.submit}
       </Button>
 
       <Button
         color='white'
         className='w-full mt-2 justify-center'
         onClick={onCancel}>
-        Cancel
+        {locale.shared.cancel}
       </Button>
     </form>
   </Modal>;

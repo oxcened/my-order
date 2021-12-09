@@ -2,6 +2,7 @@
   "extends": "@tsconfig/recommended/tsconfig.json",
   "compilerOptions": {
     "downlevelIteration": true,
-    "jsx": "react"
+    "jsx": "react",
+    "resolveJsonModule": true
   }
 }

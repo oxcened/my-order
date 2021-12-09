@@ -4,6 +4,7 @@ import Modal from './Modal';
 import Button from './Button';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../redux/slices/auth.slice';
+import locale from '../core/locale';
 
 export const LoginModal = (props: ComponentPropsWithoutRef<typeof Modal>) => {
   const dispatch = useDispatch();
@@ -21,14 +22,14 @@ export const LoginModal = (props: ComponentPropsWithoutRef<typeof Modal>) => {
   }, [props.isOpen]);
 
   return <Modal {...props}>
-    <p className='text-xl font-bold'>Welcome to WinkEat</p>
-    <p className='text-gray-500'>To get started, please enter your name down below</p>
+    <p className='text-xl font-bold'>{locale.components.loginModal.title}</p>
+    <p className='text-gray-500'>{locale.components.loginModal.subtitle}</p>
 
     <form onSubmit={onSubmit}>
       <input
         required
         className='w-full rounded-md shadow-inner bg-gray-100 mt-3 p-3'
-        placeholder='John Doe'
+        placeholder={locale.shared.userPlaceholder}
         value={name}
         onChange={e => setName(e.target.value)}
       />
@@ -36,7 +37,7 @@ export const LoginModal = (props: ComponentPropsWithoutRef<typeof Modal>) => {
       <Button
         color='primary'
         className='w-full mt-3 justify-center'>
-        Confirm
+        {locale.shared.confirm}
       </Button>
     </form>
   </Modal>;

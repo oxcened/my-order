@@ -8,6 +8,7 @@ import AccordionBody from './AccordionBody';
 import { Menu } from '../models/Menu';
 import { Product } from '../models/Product';
 import LoadingAccordion from './LoadingAccordion';
+import locale from '../core/locale';
 
 const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   menu?: Menu;
@@ -45,7 +46,9 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   });
 
   return <div className='flex-1 mt-6 sm:mt-0 sm:mr-10'>
-    <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>{menu ? `${menu.title}'s Menu` : 'Menu'}</p>
+    <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>{menu
+      ? locale.formatString(locale.components.orderMenu.namedTitle, menu.title)
+      : locale.components.orderMenu.title}</p>
 
     {isLoading
       ? new Array(3)

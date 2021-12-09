@@ -7,6 +7,7 @@ import ordersApi from '../redux/apis/orders.api';
 import { navigate } from 'gatsby';
 import { useAuth, useConfirmModal } from '../core/hooks';
 import { DateTime } from 'luxon';
+import locale from '../core/locale';
 
 const IndexPage = () => {
   const { data = [], refetch, isLoading } = ordersApi.useGetTodayOrdersQuery();
@@ -31,31 +32,35 @@ const IndexPage = () => {
   const getTitle = () => {
     const now = DateTime.now().get('hour');
 
-    if (now >= 0 && now <= 6) {
-      return 'Good night';
-    } else if (now >= 7 && now <= 12) {
-      return 'Good morning';
-    } else if (now >= 13 && now <= 19) {
-      return 'Good afternoon';
-    } else {
-      return 'Good evening';
-    }
+    const getKey = () => {
+      if (now >= 0 && now <= 6) {
+        return 'night';
+      } else if (now >= 7 && now <= 12) {
+        return 'morning';
+      } else if (now >= 13 && now <= 19) {
+        return 'afternoon';
+      } else {
+        return 'evening';
+      }
+    };
+
+    return locale.formatString(locale.pages.index.title[getKey()], user?.name ?? locale.shared.userPlaceholder);
   };
 
   return (
     <main>
-      <p className='text-black text-3xl sm:text-5xl'>{getTitle()}, {user?.name ?? 'John Doe'}</p>
-      <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>Today's orders</p>
+      <p className='text-black text-3xl sm:text-5xl'>{getTitle()}</p>
+      <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>{locale.pages.index.subtitle}</p>
 
       <div className='flex mt-3 sm:mt-5'>
         <Button className='mr-3' color='primary' onClick={() => navigate('/summary')}>
           <ClipboardListIcon className='h-5 mr-1 cursor-pointer' />
-          Summary
+          {locale.pages.index.summaryButton}
         </Button>
 
         <Button className='items-center hidden sm:flex' color='primary' onClick={onMakeOrder}>
           <PlusIcon className='h-5 mr-1 cursor-pointer' />
-          Make Order
+          {locale.pages.index.makeOrderButton}
         </Button>
       </div>
 
@@ -70,7 +75,7 @@ const IndexPage = () => {
         onClick={onMakeOrder}
       >
         <PlusIcon className='h-5 mr-1 cursor-pointer' />
-        Make Order
+        {locale.pages.index.makeOrderButton}
       </Button>
 
       {renderConfirmModal}
