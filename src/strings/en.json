@@ -73,7 +73,10 @@
       "subtitle": "You won't be able to go back"
     },
     "order": {
-      "title": "{0}'s order"
+      "title": "{0}. {1}'s order"
+    },
+    "orders": {
+      "placeholder": "Be the first one to insert an order!"
     }
   }
 }

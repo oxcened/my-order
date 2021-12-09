@@ -73,7 +73,10 @@
       "subtitle": "Non potrai tornare indietro"
     },
     "order": {
-      "title": "Ordine di {0}"
+      "title": "{0}. Ordine di {1}"
+    },
+    "orders": {
+      "placeholder": "Sembra che tu sia il primo!"
     }
   }
 }

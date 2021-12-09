@@ -3,6 +3,7 @@ import { Order } from '../models/Order';
 import OrderComponent from '../components/Order';
 import LoadingCard from './LoadingCard';
 import { navigate } from 'gatsby';
+import locale from '../core/locale';
 
 const Orders = (
   { orders, isLoading, onDelete }: {
@@ -21,13 +22,14 @@ const Orders = (
     }
 
     if (!orders.length) {
-      return <span className='text-gray-500'>Be the first one to make an order!</span>;
+      return <span className='text-gray-500'>{locale.components.orders.placeholder}</span>;
     }
 
-    return orders.map((order) => {
+    return orders.map((order, index) => {
       return <OrderComponent
         key={order.id}
         order={order}
+        index={index + 1}
         onDelete={() => onDelete?.(order)}
         onEdit={() => navigate(`/order/${order.id}`)}
       />;

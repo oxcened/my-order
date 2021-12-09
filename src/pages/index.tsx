@@ -50,7 +50,14 @@ const IndexPage = () => {
   return (
     <main>
       <p className='text-black text-3xl sm:text-5xl'>{getTitle()}</p>
-      <p className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2'>{locale.pages.index.subtitle}</p>
+      <div className='text-gray-500 text-2xl sm:text-3xl mt-1 sm:mt-2 flex items-center'>
+        {locale.pages.index.subtitle}
+
+        <div
+          className='ml-3 bg-gray-400 text-white rounded-full h-7 sm:h-8 grid place-content-center aspect-ratio-1 bg-opacity-80'>
+          <span className='block text-center text-lg sm:text-xl'>{data?.length ?? 0}</span>
+        </div>
+      </div>
 
       <div className='flex mt-3 sm:mt-5'>
         <Button className='mr-3' color='primary' onClick={() => navigate('/summary')}>
