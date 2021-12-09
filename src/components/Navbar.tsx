@@ -65,7 +65,7 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
           <div className='dropdown absolute top-11 right-0 shadow-md rounded-md pt-1 w-56'>
             <Button color='white' className='w-full py-4' onClick={onLogoutClick}>
               <LogoutIcon className='h-5 mr-2 text-primary-500' />
-              Logout
+              {locale.components.navbar.logout}
             </Button>
           </div>
         </CSSTransition>

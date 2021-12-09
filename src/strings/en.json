@@ -65,6 +65,9 @@
     "failureModal": {
       "title": "Ouch!",
       "description": "Something went wrong"
+    },
+    "navbar": {
+      "logout": "Logout"
     }
   }
 }
