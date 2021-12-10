@@ -20,6 +20,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
   const [updateOrder, updateOrderResult] = ordersApi.useLazyUpdateOrderQuery();
 
   const [order, setOrder] = useState<Product[]>([]);
+  const [notes, setNotes] = useState<string>('');
 
   const [showProductModal, setShowProductModal] = useState(false);
 
@@ -49,6 +50,10 @@ const OrderDetail = ({ id }: { id?: string }) => {
   useEffect(() => {
     if (cachedOrder) {
       setOrder(cachedOrder.products);
+
+      if (cachedOrder.notes) {
+        setNotes(cachedOrder.notes);
+      }
     }
   }, [cachedOrder]);
 
@@ -139,10 +144,12 @@ const OrderDetail = ({ id }: { id?: string }) => {
     <div className='flex w-full flex-col sm:flex-row-reverse'>
       <OrderCart
         order={order}
+        notes={notes}
         isEdit={isEdit}
         loadingMakeOrder={makeOrderResult.isLoading}
         onProductClick={(p, q) => onOpenProduct(p, q, true)}
         onMakeOrder={onMakeOrder}
+        onNotesChange={setNotes}
       />
 
       <OrderMenu
