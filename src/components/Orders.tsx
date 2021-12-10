@@ -36,7 +36,7 @@ const Orders = (
     });
   };
 
-  return <div className='mt-4 sm:mt-6 space-y-4 mb-14 sm:mb-0'>
+  return <div className='mt-4 sm:mt-6 mb-14 sm:mb-0 grid md:grid-cols-2 xl:grid-cols-3 gap-5 max-w-md md:max-w-4xl xl:max-w-7xl'>
     {mOrders()}
   </div>;
 };

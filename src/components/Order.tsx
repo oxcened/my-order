@@ -31,7 +31,7 @@ const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit
 
   return <div
     key={id}
-    className='bg-white rounded-md p-3 max-w-md border'>
+    className='bg-white rounded-md p-3 border'>
     <div className='flex justify-between'>
       <span className='font-bold text-lg'>
         {locale.formatString(locale.components.order.title, index.toString(), author.name)}
