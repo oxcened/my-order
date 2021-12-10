@@ -17,9 +17,9 @@ import {
 import { httpsCallable } from 'firebase/functions';
 import { firestore as db, functions } from '../../core/firebase';
 import { DbCollection } from '../../models/DbCollection';
-import { Product } from '../../models/Product';
 import { RootState } from '../store';
 import { DateTime } from 'luxon';
+import { OrderDraft } from '../../models/OrderDraft';
 
 const ordersApi = createApi({
   reducerPath: 'orders',
@@ -65,8 +65,8 @@ const ordersApi = createApi({
         }
       }
     }),
-    makeOrder: builder.query<void, Product[]>({
-      queryFn: async (products, { getState }) => {
+    makeOrder: builder.query<void, OrderDraft>({
+      queryFn: async (order, { getState }) => {
         const { auth: { user } } = getState() as RootState;
 
         const ref = collection(db, DbCollection.ORDERS);
@@ -74,7 +74,7 @@ const ordersApi = createApi({
         await addDoc(ref, {
           created: serverTimestamp(),
           author: user,
-          products
+          ...order
         });
 
         return {
@@ -82,11 +82,11 @@ const ordersApi = createApi({
         };
       }
     }),
-    updateOrder: builder.query<void, { id: string; products: Product[]; }>({
-      queryFn: async ({ id, products }) => {
+    updateOrder: builder.query<void, { id: string; order: OrderDraft; }>({
+      queryFn: async ({ id, order }) => {
         const ref = doc(db, DbCollection.ORDERS, id);
 
-        await updateDoc(ref, { products });
+        await updateDoc(ref, order);
 
         return {
           data: void 0

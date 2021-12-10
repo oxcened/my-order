@@ -118,11 +118,20 @@ const OrderDetail = ({ id }: { id?: string }) => {
     setShowProductModal(false);
   };
 
-  const onMakeOrder = () => {
+  const onMakeOrder = (notes: string) => {
     if (isEdit && id) {
-      updateOrder({ id, products: order });
+      updateOrder({
+        id,
+        order: {
+          products: order,
+          notes
+        }
+      });
     } else {
-      makeOrder(order);
+      makeOrder({
+        products: order,
+        notes
+      });
     }
   };
 

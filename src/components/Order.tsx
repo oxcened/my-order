@@ -7,7 +7,7 @@ import { groupByKeyQuantity } from '../core/utils';
 import { useAuth } from '../core/hooks';
 import locale from '../core/locale';
 
-const Order = ({ order: { id, author, products }, index, onDelete, onEdit }: {
+const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit }: {
   order: OrderM;
   index: number;
   onDelete?: () => void;
@@ -59,6 +59,11 @@ const Order = ({ order: { id, author, products }, index, onDelete, onEdit }: {
     <div className='mt-2 space-y-3'>
       {getProducts(products)}
     </div>
+
+    {!!notes && <div className='mt-5 flex flex-col'>
+      <span className='font-bold'>{locale.components.order.notesTitle}</span>
+      <span>{notes}</span>
+    </div>}
   </div>;
 }
 

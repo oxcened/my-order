@@ -44,7 +44,8 @@
       "title": "Il tuo ordine",
       "submit": "Inserisci ordine",
       "update": "Aggiorna ordine",
-      "placeholer": "Scegli qualcosa dal Menù per iniziare"
+      "placeholer": "Scegli qualcosa dal Menù per iniziare",
+      "notesPlaceholder": "Inserisci note per l'ordine (opzionale)"
     },
     "orderMenu": {
       "title": "Menù",
@@ -73,7 +74,8 @@
       "subtitle": "Non potrai tornare indietro"
     },
     "order": {
-      "title": "{0}. Ordine di {1}"
+      "title": "{0}. Ordine di {1}",
+      "notesTitle": "Note"
     },
     "orders": {
       "placeholder": "Sembra che tu sia il primo!"

@@ -1,5 +1,6 @@
 import Button from './Button';
 import * as React from 'react';
+import { useState } from 'react';
 import { groupByKey } from '../core/utils';
 import { Product } from '../models/Product';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +13,10 @@ const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrde
   isEdit?: boolean;
   loadingMakeOrder?: boolean;
   onProductClick?: (product: Product, quantity: number) => void;
-  onMakeOrder?: () => void;
+  onMakeOrder?: (notes: string) => void;
 }) => {
+  const [notes, setNotes] = useState('');
+
   const getOrderProducts = () => {
     if (!order.length) {
       return <p className='my-3'>{locale.components.orderCart.placeholer}</p>;
@@ -47,11 +50,19 @@ const OrderCart = ({ order, loadingMakeOrder, isEdit, onProductClick, onMakeOrde
       {getOrderProducts()}
     </div>
 
+    <input
+      className='w-full rounded-md shadow-inner bg-gray-100 p-3 mt-2'
+      placeholder={locale.components.orderCart.notesPlaceholder}
+      value={notes}
+      type='text'
+      onChange={event => setNotes(event.target.value)}
+    />
+
     <Button
       color='primary'
       className='mt-2 w-full justify-center'
       disabled={!order.length || loadingMakeOrder}
-      onClick={onMakeOrder}
+      onClick={() => onMakeOrder?.(notes)}
     >
       <div className='mr-2'>
         {loadingMakeOrder

@@ -44,7 +44,8 @@
       "title": "Your order",
       "submit": "Place order",
       "update": "Update order",
-      "placeholer": "Pick something from the Menu to get started"
+      "placeholer": "Pick something from the Menu to get started",
+      "notesPlaceholder": "Insert order notes (optional)"
     },
     "orderMenu": {
       "title": "Menu",
@@ -73,7 +74,8 @@
       "subtitle": "You won't be able to go back"
     },
     "order": {
-      "title": "{0}. {1}'s order"
+      "title": "{0}. {1}'s order",
+      "notesTitle": "Notes"
     },
     "orders": {
       "placeholder": "Be the first one to insert an order!"

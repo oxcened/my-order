@@ -6,4 +6,5 @@ export type Order = {
   created: string;
   author: User;
   products: Product[];
+  notes?: string;
 };
