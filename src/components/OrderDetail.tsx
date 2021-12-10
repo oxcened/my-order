@@ -51,9 +51,7 @@ const OrderDetail = ({ id }: { id?: string }) => {
     if (cachedOrder) {
       setOrder(cachedOrder.products);
 
-      if (cachedOrder.notes) {
-        setNotes(cachedOrder.notes);
-      }
+      setNotes(cachedOrder.notes ?? '');
     }
   }, [cachedOrder]);
 
