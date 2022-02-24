@@ -67,18 +67,22 @@
       "description": "Something went wrong"
     },
     "navbar": {
-      "logout": "Logout"
+      "logout": "Logout",
+      "avatar": "Change avatar"
     },
     "confirmModal": {
       "title": "Do you really want to do that?",
       "subtitle": "You won't be able to go back"
     },
     "order": {
-      "title": "{0}. {1}'s order",
+      "title": "{1}",
       "notesTitle": "Notes"
     },
     "orders": {
       "placeholder": "Be the first one to insert an order!"
+    },
+    "avatarModal": {
+      "title": "Choose your avatar"
     }
   }
 }

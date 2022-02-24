@@ -26,6 +26,14 @@ module.exports = {
     "gatsby-plugin-typescript",
     "gatsby-plugin-postcss",
     "gatsby-plugin-lodash",
-    "gatsby-plugin-react-helmet"
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /assets/ // See below to configure properly
+        }
+      }
+    }
   ],
 };

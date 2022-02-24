@@ -12,7 +12,7 @@ export const LoginModal = (props: ComponentPropsWithoutRef<typeof Modal>) => {
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    dispatch(setUser({ name }));
+    dispatch(setUser({ name, avatar: 0 }));
   };
 
   useEffect(() => {

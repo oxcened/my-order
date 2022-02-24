@@ -67,18 +67,22 @@
       "description": "Qualcosa è andato storto"
     },
     "navbar": {
-      "logout": "Esci"
+      "logout": "Esci",
+      "avatar": "Cambia avatar"
     },
     "confirmModal": {
       "title": "Sicuro di volerlo fare?",
       "subtitle": "Non potrai tornare indietro"
     },
     "order": {
-      "title": "{0}. Ordine di {1}",
+      "title": "{1}",
       "notesTitle": "Note"
     },
     "orders": {
       "placeholder": "Sembra che tu sia il primo!"
+    },
+    "avatarModal": {
+      "title": "Scegli il tuo avatar"
     }
   }
 }

@@ -6,6 +6,7 @@ import { Product } from '../models/Product';
 import { groupByKeyQuantity } from '../core/utils';
 import { useAuth } from '../core/hooks';
 import locale from '../core/locale';
+import { avatars } from '../models/Avatars';
 
 const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit }: {
   order: OrderM;
@@ -33,27 +34,28 @@ const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit
     key={id}
     className='bg-white rounded-md p-3 border'>
     <div className='flex justify-between'>
-      <span className='font-bold text-lg'>
+      <span className='font-bold text-lg flex items-center mb-2'>
+        <img src={avatars[author.avatar ?? 0]} alt='avatar' className='h-10 w-10 mr-2 border' />
         {locale.formatString(locale.components.order.title, index.toString(), author.name)}
       </span>
 
       {isOwn
-      && <div className='flex'>
-        <IconButton
-          className='h-7 w-7'
-          color='white'
-          onClick={() => onEdit?.()}
-        >
-          <PencilIcon className='w-5 h-5 text-yellow-500' />
-        </IconButton>
+        && <div className='flex'>
+          <IconButton
+            className='h-7 w-7'
+            color='white'
+            onClick={() => onEdit?.()}
+          >
+            <PencilIcon className='w-5 h-5 text-yellow-500' />
+          </IconButton>
 
-        <IconButton
-          className='h-7 w-7 ml-3'
-          color='white'
-          onClick={() => onDelete?.()}>
-          <TrashIcon className='w-5 h-5 text-red-500' />
-        </IconButton>
-      </div>}
+          <IconButton
+            className='h-7 w-7 ml-3'
+            color='white'
+            onClick={() => onDelete?.()}>
+            <TrashIcon className='w-5 h-5 text-red-500' />
+          </IconButton>
+        </div>}
     </div>
 
     <div className='mt-2 space-y-3'>
