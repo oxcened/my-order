@@ -11,9 +11,12 @@ import Dropdown from './Dropdown';
 import DropdownMenu from './DropdownMenu';
 import AvatarModal from './AvatarModal';
 import { avatars } from '../models/Avatars';
+import { setUser } from '../redux/slices/auth.slice';
+import { useDispatch } from 'react-redux';
 
 const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
   const [showAvatarModal, setShowAvatarModal] = useState(false);
+  const dispatch = useDispatch();
 
   const onMenuClick = (id: string) => {
     switch (id) {
@@ -25,6 +28,13 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
         break;
     }
   };
+
+  const onAvatarSubmit = (avatar: number) => {
+    if (user) {
+      dispatch(setUser({ name: user.name, avatar }));
+      setShowAvatarModal(false);
+    }
+  }
 
   const menu = [
     {
@@ -68,8 +78,9 @@ const Navbar = ({ user, onLogout }: { user?: User, onLogout?: () => void }) => {
 
     <AvatarModal
       isOpen={showAvatarModal}
+      current={user?.avatar}
       onBackdropClick={() => setShowAvatarModal(false)}
-      onSubmit={() => setShowAvatarModal(false)} />
+      onSubmit={onAvatarSubmit} />
   </div>;
 };
 

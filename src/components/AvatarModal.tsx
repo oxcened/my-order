@@ -1,29 +1,28 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import Modal from './Modal';
-import { useDispatch } from 'react-redux';
 import locale from '../core/locale';
 import { avatars } from '../models/Avatars';
 import classNames from 'classnames';
 import Button from './Button';
-import { setUser } from '../redux/slices/auth.slice';
 import { useAuth } from '../core/hooks';
 
-export const AvatarModal = (props: { onSubmit?: () => void; } & ComponentPropsWithoutRef<typeof Modal>) => {
-  const dispatch = useDispatch();
+export const AvatarModal = (props: {
+  current?: number;
+  onSubmit?: (avatar: number) => void;
+} & ComponentPropsWithoutRef<typeof Modal>) => {
   const { user } = useAuth();
   const [current, setCurrent] = useState<number>();
 
   useEffect(() => {
     if (props.isOpen) {
-      setCurrent(user?.avatar);
+      setCurrent(props.current);
     }
-  }, [props.isOpen, user?.avatar]);
+  }, [props.isOpen, props.current]);
 
   const onSubmit = () => {
-    if (current !== undefined && user) {
-      dispatch(setUser({ name: user.name, avatar: current }));
-      props.onSubmit?.();
+    if (current !== undefined) {
+      props.onSubmit?.(current);
     }
   };
 
