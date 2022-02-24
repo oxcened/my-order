@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './src/styles/global.css';
 import Navbar from "./src/components/Navbar";
 import { Provider } from "react-redux";
@@ -26,6 +26,20 @@ export const wrapPageElement = ({ element }) => {
   const App = ({ element }) => {
     const { user, logout } = useAuth();
     const [showAvatarModal, setShowAvatarModal] = useState(false);
+    const [currentAvatar, setCurrentAvatar] = useState(0);
+    const [currentName, setCurrentName] = useState('');
+
+    useEffect(() => {
+      if (!user) {
+        setCurrentAvatar(0);
+        setCurrentName('');
+      }
+    }, [user]);
+
+    const onAvatarSubmit = (avatar) => {
+      setCurrentAvatar(avatar);
+      setShowAvatarModal(false);
+    }
 
     return <>
       <Helmet>
@@ -35,9 +49,17 @@ export const wrapPageElement = ({ element }) => {
       {element}
       <LoginModal
         isOpen={(!user || !user.name) && !showAvatarModal}
+        name={currentName}
+        currentAvatar={currentAvatar}
         onAvatarChoose={() => setShowAvatarModal(true)}
+        onNameChange={setCurrentName}
       />
-      <AvatarModal isOpen={showAvatarModal} />
+      <AvatarModal
+        isOpen={showAvatarModal}
+        current={currentAvatar}
+        onBackdropClick={() => setShowAvatarModal(false)}
+        onSubmit={onAvatarSubmit}
+      />
     </>;
   };
 
