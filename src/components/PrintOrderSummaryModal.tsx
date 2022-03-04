@@ -111,7 +111,7 @@ const PrintOrderSummaryModal = (
         className='w-full mt-6 justify-center'>
 
         {isLoading
-        && <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mr-2' />}
+          && <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mr-2' />}
         {locale.shared.submit}
       </Button>
 

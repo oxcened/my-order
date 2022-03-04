@@ -7,7 +7,7 @@ import LoadingCard from '../components/LoadingCard';
 import Button from '../components/Button';
 import { CloudUploadIcon } from '@heroicons/react/outline';
 import PrintOrderSummaryModal from '../components/PrintOrderSummaryModal';
-import { useFailureModal, useSuccessModal } from '../core/hooks';
+import { useAuth, useFailureModal, useSuccessModal } from '../core/hooks';
 import locale from '../core/locale';
 
 const Summary = () => {
@@ -18,6 +18,7 @@ const Summary = () => {
     children: locale.pages.summary.submitSuccess
   });
   const { renderModal: renderFailure, showModal: showFailure } = useFailureModal();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (printOrderSummaryRes.isSuccess) {
@@ -32,6 +33,16 @@ const Summary = () => {
       });
     }
   }, [printOrderSummaryRes]);
+
+  const onPrintConfirm = (data: {
+    amount: number;
+    orders: number;
+    paid: boolean;
+  }) => {
+    if (user) {
+      printOrderSummary({ ...data, author: user });
+    }
+  };
 
   const getProducts = () => {
     if (!data?.length) {
@@ -86,7 +97,7 @@ const Summary = () => {
       orders={data?.length}
       onCancel={() => setShowPrintModal(false)}
       onBackdropClick={() => setShowPrintModal(false)}
-      onConfirm={printOrderSummary}
+      onConfirm={onPrintConfirm}
     />
 
     {renderSuccess}

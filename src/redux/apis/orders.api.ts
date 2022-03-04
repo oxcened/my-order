@@ -20,6 +20,7 @@ import { DbCollection } from '../../models/DbCollection';
 import { RootState } from '../store';
 import { DateTime } from 'luxon';
 import { OrderDraft } from '../../models/OrderDraft';
+import { User } from '../../models/User';
 
 const ordersApi = createApi({
   reducerPath: 'orders',
@@ -108,6 +109,7 @@ const ordersApi = createApi({
       amount: number;
       orders: number;
       paid: boolean;
+      author: User;
     }>({
       queryFn: async (args) => {
         try {
