@@ -43,7 +43,7 @@ export const wrapPageElement = ({ element }) => {
 
     return <>
       <Helmet>
-        <title>WinkEat</title>
+        <title>MyOrder</title>
       </Helmet>
       <Navbar user={user} onLogout={logout} />
       {element}

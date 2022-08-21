@@ -1,8 +1,8 @@
 {
-  "name": "wink-eat",
+  "name": "my-order",
   "version": "1.0.0",
   "private": true,
-  "description": "WinkEat",
+  "description": "MyOrder",
   "author": "Alen Ajam",
   "keywords": [
     "gatsby"

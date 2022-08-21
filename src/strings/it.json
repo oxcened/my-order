@@ -1,6 +1,6 @@
 {
   "shared": {
-    "appName": "WinkEat",
+    "appName": "MyOrder",
     "submit": "Invia",
     "cancel": "Annulla",
     "ok": "Ok",
@@ -56,7 +56,7 @@
       "add": "Aggiungi all'ordine"
     },
     "loginModal": {
-      "title": "Benvenuto su WinkEat",
+      "title": "Benvenuto su MyOrder",
       "subtitle": "Per cominciare, inserisci il tuo nome"
     },
     "successModal": {
