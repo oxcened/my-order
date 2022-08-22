@@ -1,54 +1,32 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# my-order
 
-## 🚀 Quick start
+![](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
+![](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
+![](https://miro.medium.com/max/300/1*cR6tdWdsHIrTUHyOeVdNWw.png)
 
-1.  **Create a Gatsby site.**
+## Demo
+You can find it [here](https://myorderdemo-80b12.web.app/).
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+## Project setup
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+```
+npm run install
+```
 
-2.  **Start developing.**
+### Compiles and hot-reloads for development
 
-    Navigate into your new site’s directory and start it up.
+```
+npm run start
+```
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+### Compiles and minifies for production
 
-3.  **Open the code and start customizing!**
+```
+npm run build
+```
 
-    Your site is now running at http://localhost:8000!
+### Firebase configuration
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+Firebase config object has been left out on purpose, you may create and connect your own Firebase project to the app though!
 
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+Once you have the config object, create `.env.development` and `.env.production` files in the project root dir and place the object as a JSON string with the key `GATSBY_FIREBASE_CONFIG`. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
