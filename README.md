@@ -2,7 +2,6 @@
 
 ![](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
 ![](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
-![](https://miro.medium.com/max/300/1*cR6tdWdsHIrTUHyOeVdNWw.png)
 
 ## Demo
 You can find it [here](https://myorderdemo-80b12.web.app/).
