@@ -1,7 +1,11 @@
-# my-order
+# MyOrder
 
-![](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
-![](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
+[![medium story](https://img.shields.io/badge/Medium-Story-%23000?logo=medium)](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)
+
+MyOrder allows you to track orders effortlessly and provides a summary ready to be exported.
+
+![screenshot 1](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
+![screenshot 2](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
 
 ## Demo
 You can find it [here](https://myorderdemo-80b12.web.app/).
