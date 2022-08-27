@@ -1,6 +1,7 @@
 # MyOrder
 
 [![medium story](https://img.shields.io/badge/Medium-Story-%23000?logo=medium)](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)
+[![website status](https://img.shields.io/website?url=https%3A%2F%2Fmyorderdemo-80b12.web.app%2F)](https://myorderdemo-80b12.web.app/)
 
 MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
 
