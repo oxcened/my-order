@@ -82,7 +82,7 @@ Contributions are most welcome!
 2. If you'd like to fix an already existing issue, please leave a comment asking to work on it, so nobody else does.
 3. Once you get assigned an issue, you may work on it and then open a pull request titled `fix: #[number of issue] [description of issue]`.
 
-### Feature request
+### Feature requests
 1. If you have an idea to discuss with the community, feel free to open a discussion.
 1. For feature requests, you are free to open a new issue.
 1. All feature requests may not fit this project and will be subject to discussion!
