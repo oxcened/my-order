@@ -117,6 +117,7 @@ const PrintOrderSummaryModal = (
 
       <Button
         color='white'
+        type='button'
         className='w-full mt-2 justify-center'
         onClick={onCancel}>
         {locale.shared.cancel}
