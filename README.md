@@ -5,32 +5,80 @@
 
 MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
 
+Read the story behind it on [medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)!
+
 ![screenshot 1](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
 ![screenshot 2](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
 
+## Table of contents
+1. [Demo](#demo)
+1. [Run on your machine](#run-on-your-machine)
+1. [Build for production](#build-for-production)
+1. [Contribute](#contribute)
+1. [Maintainers](#maintainers)
+
 ## Demo
-You can find it [here](https://myorderdemo-80b12.web.app/).
+You can find a demo [here](https://myorderdemo-80b12.web.app/).
 
-## Project setup
+You may try out everything except for the `Submit to Google Sheets` feature located at `/summary` because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-monkey.gif).
 
-```
-npm run install
-```
+## Run on your machine
 
-### Compiles and hot-reloads for development
+1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
 
-```
-npm run start
-```
+    If you have that you can just run:
 
-### Compiles and minifies for production
+    ```
+    nvm use
+    ```
 
-```
-npm run build
-```
+1. Install dependencies
 
-### Firebase configuration
+    ```
+    npm run install
+    ```
 
-Firebase config object has been left out on purpose, you may create and connect your own Firebase project to the app though!
+1. Setup environment
 
-Once you have the config object, create `.env.development` and `.env.production` files in the project root dir and place the object as a JSON string with the key `GATSBY_FIREBASE_CONFIG`. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
+   1. This app is meant to work on top of a [Firebase](https://firebase.google.com/) project, so you should create your own.
+   1. Initialize [Firestore](https://firebase.google.com/docs/firestore/quickstart).
+   1. [Obtain the project config object](https://firebase.google.com/docs/web/learn-more#config-object).
+   1. Create an `.env.development` file in the root of the project.
+   1. Place inside of it the config object, as a reference see `.env.example`.
+
+1. Run the app
+    ```
+    npm run start
+    ```
+   
+## Build for production
+
+1. Setup environment
+    
+   The same steps as in the third step of [Run on your machine](#run-on-your-machine) apply, except the app will use `.env.production` this time. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
+
+1. Build the app
+    ```
+    npm run start
+    ```
+
+1. Serve the app
+    ```
+    npm run serve
+    ```
+   
+## Contribute
+Contributions are most welcome! 
+
+### Bug fixing
+1. Should you find a bug, please open an issue describing thoroughly what you encountered.
+2. If you'd like to fix an already existing issue, please leave a comment asking to work on it, so nobody else does.
+3. Once you get assigned an issue, you may work on it and then open a pull request titled `fix: #[number of issue] [description of issue]`.
+
+### Feature request
+1. If you have an idea to discuss with the community, feel free to open a discussion.
+1. For feature requests, you are free to open a new issue.
+1. All feature requests may not fit this project and will be subject to discussion!
+
+## Maintainers
+- [oxcened](https://github.com/oxcened)
