@@ -52,6 +52,13 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
     ```
    
 ## Build for production
+1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+
+   If you have that you can just run:
+
+    ```
+    nvm use
+    ```
 
 1. Setup environment
     
@@ -59,7 +66,7 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
 
 1. Build the app
     ```
-    npm run start
+    npm run build
     ```
 
 1. Serve the app
