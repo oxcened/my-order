@@ -62,7 +62,7 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
 
 1. Setup environment
     
-   The same steps as in the third step of [Run on your machine](#run-on-your-machine) apply, except the app will use `.env.production` this time. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
+   The same as the third step of [Run on your machine](#run-on-your-machine) applies, except the app will use `.env.production` this time. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
 
 1. Build the app
     ```
