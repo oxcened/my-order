@@ -13,13 +13,13 @@ describe('Button.tsx', () => {
     const onClick = jest.fn();
     render(<Button color='primary' onClick={onClick} />);
     fireEvent.click(screen.getByRole('button'));
-    expect(onClick).toBeCalledTimes(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   test("Should not call onClick if disabled", () => {
     const onClick = jest.fn();
     render(<Button disabled color='primary' onClick={onClick} />);
     fireEvent.click(screen.getByRole('button'));
-    expect(onClick).not.toBeCalled();
+    expect(onClick).not.toHaveBeenCalled();
   });
 });

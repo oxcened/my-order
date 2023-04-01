@@ -100,7 +100,7 @@ const PrintOrderSummaryModal = (
           onChange={onPaidChange}
         />
 
-        <label htmlFor='amount-settled' className='ml-4 cursor-pointer'>
+        <label htmlFor='amount-settled' className='ml-4 cursor-pointer select-none'>
           {locale.components.submitModal.amountSettled}
         </label>
       </div>
