@@ -12,7 +12,7 @@ describe('Accordion.tsx', () => {
     expect(screen.getByTestId('accordion')).toBeInTheDocument();
   });
 
-  test("Should render body if header is clicked", async () => {
+  test("Should not render body by default", async () => {
     const TestComponent = () => {
       const [isOpen, setOpen] = useState(false);
 
@@ -31,6 +31,26 @@ describe('Accordion.tsx', () => {
 
     render(<TestComponent />);
     expect(screen.getByTestId('accordion-body')).not.toBeVisible();
+  });
+
+  test("Should render body if header is clicked", async () => {
+    const TestComponent = () => {
+      const [isOpen, setOpen] = useState(false);
+
+      return (
+        <Accordion isOpen={isOpen} onOpenChange={() => setOpen(open => !open)}>
+          <AccordionHeader>
+            Title
+          </AccordionHeader>
+
+          <AccordionBody>
+            Body
+          </AccordionBody>
+        </Accordion>
+      );
+    };
+
+    render(<TestComponent />);
     await userEvent.click(screen.getByTestId('accordion-header'));
     expect(screen.getByTestId('accordion-body')).toBeVisible();
   });

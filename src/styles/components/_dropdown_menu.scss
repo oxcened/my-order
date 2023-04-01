@@ -1,18 +1,18 @@
-.user-container {
-  &.user-trans-enter {
+.dropdown-menu {
+  &.dropdown-trans-enter {
     opacity: 0;
   }
 
-  &.user-trans-enter-active {
+  &.dropdown-trans-enter-active {
     opacity: 1;
     transition: opacity 350ms ease;
   }
 
-  &.user-trans-exit {
+  &.dropdown-trans-exit {
     opacity: 1;
   }
 
-  &.user-trans-exit-active {
+  &.dropdown-trans-exit-active {
     opacity: 0;
     transition: opacity 350ms ease;
   }
