@@ -87,5 +87,15 @@ Contributions are most welcome!
 1. For feature requests, you are free to open a new issue.
 1. All feature requests may not fit this project and will be subject to discussion!
 
+### Testing
+
+I suggest making sure all tests run successfully before submitting a PR (even though they are run anyway on GitHub).
+
+To do so, run:
+
+```
+npm run test
+```
+
 ## Maintainers
 - [oxcened](https://github.com/oxcened)
