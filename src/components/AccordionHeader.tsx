@@ -10,6 +10,7 @@ const AccordionHeader = ({ children, isOpen, className, headerClassName, onClick
   onClick?: () => void;
 }) => {
   return <div
+    data-testid='accordion-header'
     className={classNames('p-3 text-xl flex justify-between items-center cursor-pointer', className)}
     onClick={onClick}
   >

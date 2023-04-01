@@ -58,6 +58,7 @@ const AccordionBody = ({ children, isOpen, className }: {
     {state => {
       return (
         <div
+          data-testid='accordion-body'
           className='accordion-body'
           style={style}>
           <div className={classNames('p-3 border-t', className)}>

@@ -30,7 +30,7 @@ const Accordion = ({ children, isOpen, className, onOpenChange }: {
     }
   });
 
-  return <div className={className}>
+  return <div className={className} data-testid='accordion'>
     {mChildren}
   </div>;
 }
