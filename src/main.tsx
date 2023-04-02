@@ -30,10 +30,7 @@ const router = createBrowserRouter([
       }
     }, {
       path: '/summary',
-      element: <Summary />,
-      loader: ({ params }) => {
-        return { isEdit: true, id: params.id };
-      }
+      element: <Summary />
     }]
   }
 ]);
