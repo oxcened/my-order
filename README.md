@@ -2,10 +2,12 @@
 
 [![medium story](https://img.shields.io/badge/Medium-Story-%23000?logo=medium)](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)
 [![website status](https://img.shields.io/website?url=https%3A%2F%2Fmyorderdemo-80b12.web.app%2F)](https://myorderdemo-80b12.web.app/)
+[![tests status](https://github.com/oxcened/my-order/actions/workflows/test.yml/badge.svg)](https://github.com/oxcened/my-order/actions/workflows/test.yml)
+[![pull requests are welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/oxcened/my-order#contribute)
 
 MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
 
-Read the story behind it on [medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)!
+Read the story behind it on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89).
 
 ![screenshot 1](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
 ![screenshot 2](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
@@ -15,6 +17,7 @@ Read the story behind it on [medium](https://medium.com/@alen.ajam/how-i-took-co
 1. [Run on your machine](#run-on-your-machine)
 1. [Build for production](#build-for-production)
 1. [Contribute](#contribute)
+1. [Roadmap](#roadmap)
 1. [Maintainers](#maintainers)
 
 ## Demo
