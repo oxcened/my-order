@@ -31,17 +31,19 @@ const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit
   const isOwn = user?.name === author.name;
 
   return <div
+    data-testid='order'
     key={id}
     className='bg-white rounded-md p-3 border'>
     <div className='flex justify-between'>
       <span className='font-bold text-lg flex items-center mb-2'>
         <img src={avatars[author.avatar ?? 0]} alt='avatar' className='h-10 w-10 mr-2 border' />
-        {locale.formatString(locale.components.order.title, index.toString(), author.name)}
+        <span data-testid='author-name'>{locale.formatString(locale.components.order.title, index.toString(), author.name)}</span>
       </span>
 
       {isOwn
         && <div className='flex'>
           <IconButton
+            data-testid='edit-button'
             className='h-7 w-7'
             color='white'
             onClick={() => onEdit?.()}
@@ -50,6 +52,7 @@ const Order = ({ order: { id, author, products, notes }, index, onDelete, onEdit
           </IconButton>
 
           <IconButton
+            data-testid='delete-button'
             className='h-7 w-7 ml-3'
             color='white'
             onClick={() => onDelete?.()}>
