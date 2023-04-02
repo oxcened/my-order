@@ -115,8 +115,13 @@ npm run test
 
 ## Roadmap
 
-- [ ] Write unit tests on all components
-- [ ] Add a page to consult orders of past days
+- [ ] Migrate from Gatsby to React + Vite.
+- [ ] Lazy load all routes.
+- [ ] Write unit tests on all components.
+- [ ] Add a page to consult orders of past days.
+- [ ] Add an admin panel:
+  - [ ] Add a page to manage restaurants and their menu.
+  - [ ] Allow to switch authentication method to one which is more secure
 
 ## Maintainers
 

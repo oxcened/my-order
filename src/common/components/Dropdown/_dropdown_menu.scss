@@ -1,0 +1,19 @@
+.dropdown-menu {
+  &.dropdown-trans-enter {
+    opacity: 0;
+  }
+
+  &.dropdown-trans-enter-active {
+    opacity: 1;
+    transition: opacity 350ms ease;
+  }
+
+  &.dropdown-trans-exit {
+    opacity: 1;
+  }
+
+  &.dropdown-trans-exit-active {
+    opacity: 0;
+    transition: opacity 350ms ease;
+  }
+}
