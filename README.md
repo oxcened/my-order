@@ -1,4 +1,4 @@
-# MyOrder
+# MyOrder 🍝🍛🍲
 
 [![repository license](https://img.shields.io/github/license/oxcened/my-order)](https://github.com/oxcened/my-order/blob/master/LICENSE.md)
 [![medium story](https://img.shields.io/badge/Medium-Story-%23000?logo=medium)](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)
