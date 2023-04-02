@@ -57,7 +57,7 @@ describe('Checkbox.tsx', () => {
     expect(screen.getByRole('checkbox')).not.toBeChecked();
   });
 
-  test("Should get checked if 'checked' prop is set to true", async () => {
+  test("Should get checked if checked is set to true", async () => {
     const onChange = jest.fn();
     const { rerender } = render(<Checkbox checked={false} onChange={onChange} />);
 
@@ -66,7 +66,7 @@ describe('Checkbox.tsx', () => {
     expect(screen.getByRole('checkbox')).toBeChecked();
   });
 
-  test("Should get unchecked if 'checked' prop is set to false", async () => {
+  test("Should get unchecked if checked is set to false", async () => {
     const onChange = jest.fn();
     const { rerender } = render(<Checkbox checked={true} onChange={onChange} />);
 

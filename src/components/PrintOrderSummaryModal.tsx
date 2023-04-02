@@ -72,6 +72,7 @@ const PrintOrderSummaryModal = (
         <CurrencyEuroIcon className='h-7 mr-3 text-gray-500' />
 
         <input
+          data-testid='price-input'
           className='w-full rounded-md shadow-inner bg-gray-100 p-3'
           placeholder={locale.components.submitModal.amountPlaceholder}
           value={amount}
@@ -85,6 +86,7 @@ const PrintOrderSummaryModal = (
         <UserGroupIcon className='h-7 mr-3 text-gray-500' />
 
         <input
+          data-testid='orders-input'
           className='w-full rounded-md shadow-inner bg-gray-100 p-3'
           placeholder={locale.components.submitModal.ordersPlaceholder}
           value={orders}
@@ -106,6 +108,7 @@ const PrintOrderSummaryModal = (
       </div>
 
       <Button
+        data-testid='submit-btn'
         disabled={!amount || !orders || isLoading}
         color='primary'
         className='w-full mt-6 justify-center'>
@@ -116,6 +119,7 @@ const PrintOrderSummaryModal = (
       </Button>
 
       <Button
+        data-testid='cancel-btn'
         color='white'
         type='button'
         className='w-full mt-2 justify-center'
