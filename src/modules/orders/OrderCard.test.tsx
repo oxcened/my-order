@@ -28,7 +28,7 @@ jest.mock('@/common/images/avatars/avatars', () => ({
   getAvatar: () => ''
 }));
 
-describe('Order.tsx', () => {
+describe('OrderCard.tsx', () => {
   test("Should render order component", () => {
     render(<TestComponent order={order} index={1} />);
     expect(screen.getByTestId('order')).toBeInTheDocument();

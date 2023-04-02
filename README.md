@@ -116,6 +116,8 @@ npm run test
 ## Roadmap
 
 - [ ] Migrate from Gatsby to React + Vite.
+- [ ] Improve the desktop UI/UX.
+- [ ] Improve the navigation UX.
 - [ ] Lazy load all routes.
 - [ ] Write unit tests on all components.
 - [ ] Add a page to consult orders of past days.
