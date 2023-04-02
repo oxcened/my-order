@@ -6,50 +6,34 @@ import AccordionHeader from './AccordionHeader';
 import AccordionBody from './AccordionBody';
 import userEvent from '@testing-library/user-event';
 
+const TestComponent = () => {
+  const [isOpen, setOpen] = useState(false);
+
+  return (
+    <Accordion isOpen={isOpen} onOpenChange={() => setOpen(open => !open)}>
+      <AccordionHeader>
+        Title
+      </AccordionHeader>
+
+      <AccordionBody>
+        Body
+      </AccordionBody>
+    </Accordion>
+  );
+};
+
 describe('Accordion.tsx', () => {
   test("Should render accordion", () => {
-    render(<Accordion />);
+    render(<TestComponent />);
     expect(screen.getByTestId('accordion')).toBeInTheDocument();
   });
 
   test("Should not render body by default", async () => {
-    const TestComponent = () => {
-      const [isOpen, setOpen] = useState(false);
-
-      return (
-        <Accordion isOpen={isOpen} onOpenChange={() => setOpen(open => !open)}>
-          <AccordionHeader>
-            Title
-          </AccordionHeader>
-
-          <AccordionBody>
-            Body
-          </AccordionBody>
-        </Accordion>
-      );
-    };
-
     render(<TestComponent />);
     expect(screen.getByTestId('accordion-body')).not.toBeVisible();
   });
 
   test("Should render body if header is clicked", async () => {
-    const TestComponent = () => {
-      const [isOpen, setOpen] = useState(false);
-
-      return (
-        <Accordion isOpen={isOpen} onOpenChange={() => setOpen(open => !open)}>
-          <AccordionHeader>
-            Title
-          </AccordionHeader>
-
-          <AccordionBody>
-            Body
-          </AccordionBody>
-        </Accordion>
-      );
-    };
-
     render(<TestComponent />);
     await userEvent.click(screen.getByTestId('accordion-header'));
     expect(screen.getByTestId('accordion-body')).toBeVisible();

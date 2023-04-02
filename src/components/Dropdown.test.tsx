@@ -5,37 +5,28 @@ import Dropdown from './Dropdown';
 import Button from './Button';
 import DropdownMenu, { TRANSITION_TIMEOUT } from './DropdownMenu';
 
+const TestComponent = () => (
+  <Dropdown id='dropdown'>
+    <Button
+      color='white'
+      id='dropdown-toggle'
+    >
+      Open
+    </Button>
+
+    <DropdownMenu options={[]} />
+  </Dropdown>
+);
+
 describe('Dropdown.tsx', () => {
   test("Should render dropdown button", () => {
-    render(
-      <Dropdown id='dropdown'>
-        <Button
-          color='white'
-          id='dropdown-toggle'
-        >
-          Open
-        </Button>
-
-        <DropdownMenu options={[]} />
-      </Dropdown>
-    );
+    render(<TestComponent />);
 
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
   test("Should render menu if button is clicked", async () => {
-    render(
-      <Dropdown id='dropdown'>
-        <Button
-          color='white'
-          id='dropdown-toggle'
-        >
-          Open
-        </Button>
-
-        <DropdownMenu options={[]} />
-      </Dropdown>
-    );
+    render(<TestComponent />);
 
     expect(screen.queryByTestId('dropdown-menu')).not.toBeInTheDocument();
     await userEvent.click(screen.getByRole('button'));
@@ -43,18 +34,7 @@ describe('Dropdown.tsx', () => {
   });
 
   test("Should unrender menu on click outside", async () => {
-    render(
-      <Dropdown id='dropdown'>
-        <Button
-          color='white'
-          id='dropdown-toggle'
-        >
-          Open
-        </Button>
-
-        <DropdownMenu options={[]} />
-      </Dropdown>
-    );
+    render(<TestComponent />);
 
     // Open the dropdown
     await userEvent.click(screen.getByRole('button'));
