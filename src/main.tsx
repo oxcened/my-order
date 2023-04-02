@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import getStore from '@/common/utils/store';
 import Layout from '@/common/components/Layout';
 import OrderDetail from '@/modules/orderDetail/OrderDetail';
-import Summary from '@/summary/summary';
+import Summary from '@/modules/summary/Summary';
 
 const router = createBrowserRouter([
   {
