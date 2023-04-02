@@ -97,5 +97,10 @@ To do so, run:
 npm run test
 ```
 
+## Roadmap
+
+- [ ] Write unit tests on all components
+- [ ] Add a page to consult orders of past days
+
 ## Maintainers
 - [oxcened](https://github.com/oxcened)
