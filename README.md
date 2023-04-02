@@ -74,7 +74,7 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 
    The same as the third step of [Run on your machine](#run-on-your-machine) applies, except the app will
    use `.env.production` this time. Learn
-   more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
+   more [here](https://vitejs.dev/guide/env-and-mode.html).
 
 1. Build the app
     ```
