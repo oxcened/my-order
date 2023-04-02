@@ -32,7 +32,7 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 
 ## Run on your machine
 
-1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
 
    If you have that you can just run:
 
@@ -62,7 +62,7 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 
 ## Build for production
 
-1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
 
    If you have that you can just run:
 
