@@ -47,14 +47,15 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
     npm run install
     ```
 
-1. Setup environment
+1. Setup firebase
 
     1. This app is meant to work on top of a [Firebase](https://firebase.google.com/) project, so you should create your
        own.
     1. Initialize [Firestore](https://firebase.google.com/docs/firestore/quickstart).
     1. [Obtain the project config object](https://firebase.google.com/docs/web/learn-more#config-object).
     1. Create an `.env.development` file in the root of the project.
-    1. Place inside of it the config object, as a reference see `.env.example`.
+    1. Place inside of it the config object like in `.env.example`.
+    1. Create a `.firebaserc` file in the root of the project like `.firebaserc.example`.
 
 1. Run the app
     ```
