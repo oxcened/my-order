@@ -20,15 +20,11 @@ const router = createBrowserRouter([
     }, {
       path: '/order/new',
       element: <OrderDetail />,
-      loader: ({ params }) => {
-        return { isEdit: false, id: undefined };
-      }
+      loader: () => ({ isEdit: false, id: undefined })
     }, {
       path: '/order/:id',
       element: <OrderDetail />,
-      loader: ({ params }) => {
-        return { isEdit: true, id: params.id };
-      }
+      loader: ({ params }) => ({ isEdit: true, id: params.id })
     }, {
       path: '/summary',
       element: <Summary />
