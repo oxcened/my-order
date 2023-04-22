@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import TestComponent from '@/modules/orders/OrderCard';
+import TestComponent from '@/modules/orders/OrderCard/OrderCard';
 import userEvent from '@testing-library/user-event';
 import { Order } from '@/modules/orders/Order';
 import { User } from '@/modules/auth/User';

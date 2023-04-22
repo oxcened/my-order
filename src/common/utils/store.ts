@@ -5,11 +5,13 @@ import storage from 'redux-persist/lib/storage';
 import ordersApi from '@/modules/orders/orders.api';
 import authSlice from '@/modules/auth/auth.slice';
 import restaurantsApi from '@/modules/orderDetail/restaurants.api';
+import avatarModalSlice from '@/modules/auth/AvatarModal/avatarModal.slice';
 
 const reducerMap = {
   [ordersApi.reducerPath]: ordersApi.reducer,
   [restaurantsApi.reducerPath]: restaurantsApi.reducer,
-  [authSlice.name]: authSlice.reducer
+  [authSlice.name]: authSlice.reducer,
+  [avatarModalSlice.name]: avatarModalSlice.reducer
 };
 
 const reducer = combineReducers(reducerMap);
@@ -32,7 +34,7 @@ export default (preloadedState = {}) => {
         }
       })
         .concat(ordersApi.middleware)
-        .concat(restaurantsApi.middleware)
+        .concat(restaurantsApi.middleware);
     }
   });
 

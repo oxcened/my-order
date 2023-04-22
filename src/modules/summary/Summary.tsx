@@ -9,7 +9,7 @@ import { Product } from '@/modules/orders/Product';
 import { groupByKeyQuantity } from '@/common/utils/misc';
 import Button from '@/common/components/Button/Button';
 import LoadingCard from '@/common/components/LoadingCard';
-import PrintOrderSummaryModal from '@/modules/summary/PrintOrderSummaryModal';
+import PrintSummaryModal from '@/modules/summary/PrintSummaryModal/PrintSummaryModal';
 
 const Summary = () => {
   const { data, isLoading } = ordersApi.useGetTodayOrdersQuery();
@@ -92,7 +92,7 @@ const Summary = () => {
         {getProducts()}
       </div>}
 
-    <PrintOrderSummaryModal
+    <PrintSummaryModal
       isOpen={showPrintModal}
       isLoading={printOrderSummaryRes.isLoading}
       orders={data?.length}

@@ -8,7 +8,7 @@ import { Product } from '@/modules/orders/Product';
 import { useSuccessModal } from '@/common/utils/hooks';
 import ProductModal from '@/modules/orderDetail/ProductModal';
 import restaurantsApi from '@/modules/orderDetail/restaurants.api';
-import OrderMenu from '@/common/components/OrderMenu';
+import OrderMenu from '@/modules/orderDetail/OrderMenu';
 
 const OrderDetail = () => {
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ const OrderDetail = () => {
       });
     }
   }, [makeOrderResult, updateOrderResult]);
-  
+
   const onOpenProduct = (product: Product, quantity?: number, isEdit?: boolean) => {
     setShowProductModal(true);
     setProductModalPayload({

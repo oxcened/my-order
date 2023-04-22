@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
-import TestComponent from './PrintOrderSummaryModal';
+import TestComponent from './PrintSummaryModal';
 
 describe('PrintOrderSummaryModal.tsx', () => {
   test("Should render modal", () => {

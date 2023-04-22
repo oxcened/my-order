@@ -8,7 +8,7 @@ import Button from '@/common/components/Button/Button';
 import Modal from '@/common/components/Modal/Modal';
 import spinner from '@/common/images/spinner.svg';
 
-const PrintOrderSummaryModal = (
+const PrintSummaryModal = (
   {
     orders: pOrders,
     isLoading,
@@ -131,4 +131,4 @@ const PrintOrderSummaryModal = (
   </Modal>;
 };
 
-export default PrintOrderSummaryModal;
+export default PrintSummaryModal;

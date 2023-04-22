@@ -14,6 +14,13 @@ export const authSlice = createSlice({
     setUser: (state, { payload }: PayloadAction<AuthState['user']>) => {
       state.user = payload;
     },
+    setAvatar: (state, { payload }: PayloadAction<User['avatar']>) => {
+      if (state.user) {
+        state.user.avatar = payload;
+      } else {
+        console.error('Cannot set avatar on empty user');
+      }
+    },
     cleanUser: (state) => {
       state.user = undefined;
     }
@@ -22,4 +29,4 @@ export const authSlice = createSlice({
 
 export default authSlice;
 
-export const { setUser, cleanUser } = authSlice.actions;
+export const { setUser, setAvatar, cleanUser } = authSlice.actions;

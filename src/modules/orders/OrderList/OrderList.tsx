@@ -1,6 +1,6 @@
 import * as React from 'react';
-import OrderComponent from '@/modules/orders/OrderCard';
-import LoadingCard from './LoadingCard';
+import OrderCard from '@/modules/orders/OrderCard/OrderCard';
+import LoadingCard from '@/common/components/LoadingCard';
 import locale from '@/common/utils/locale';
 import { useNavigate } from 'react-router-dom';
 import { Order } from '@/modules/orders/Order';
@@ -28,7 +28,7 @@ const OrderList = (
     }
 
     return orders.map((order, index) => {
-      return <OrderComponent
+      return <OrderCard
         key={order.id}
         order={order}
         index={index + 1}

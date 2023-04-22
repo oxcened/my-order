@@ -7,7 +7,7 @@ import { useAuth } from '@/modules/auth/useAuth';
 import { useConfirmModal } from '@/common/utils/hooks';
 import ordersApi from '@/modules/orders/orders.api';
 import Button from '@/common/components/Button/Button';
-import OrderList from '@/common/components/OrderList';
+import OrderList from '@/modules/orders/OrderList/OrderList';
 import { useNavigate } from 'react-router-dom';
 
 const Orders = () => {

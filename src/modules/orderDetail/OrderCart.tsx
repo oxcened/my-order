@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CheckCircleIcon } from '@heroicons/react/solid';
 import locale from '@/common/utils/locale';
 import { Product } from '@/modules/orders/Product';
 import { groupByKey } from '@/common/utils/misc';

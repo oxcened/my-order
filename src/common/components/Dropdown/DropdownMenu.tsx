@@ -21,7 +21,7 @@ const DropdownMenu = ({ open, options, onClick }: DropdownMenuProps) => {
       <div data-testid='dropdown-menu' className='dropdown-menu absolute top-11 right-0 shadow-md rounded-md pt-1 w-56'>
         {options.map(o => {
           return (
-            <Button color='light' className='w-full py-4' onClick={() => onClick?.(o.id)}>
+            <Button key={o.id} color='light' className='w-full py-4' onClick={() => onClick?.(o.id)}>
               {o.icon}
               <span className='ml-2'>{o.label}</span>
             </Button>

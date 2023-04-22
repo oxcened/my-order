@@ -9,8 +9,8 @@ const LoadingCard = (props: { className?: string }) => {
     <div className='space-y-3 mt-3'>
       {new Array(3)
         .fill(undefined)
-        .map(() => (
-          <div className='bg-primary-500 h-5 w-32 rounded-md bg-opacity-60' />
+        .map((value, index) => (
+          <div key={index} className='bg-primary-500 h-5 w-32 rounded-md bg-opacity-60' />
         ))}
     </div>
   </div>;

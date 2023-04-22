@@ -9,7 +9,7 @@ const Button = (props: ButtonProps) => {
   const enabledClasses = {
     'bg-primary-100 text-primary-500 hover:bg-primary-200': props.color === 'primary',
     'bg-white hover:bg-gray-200': props.color === 'light',
-    'bg-white bg-opacity-10 text-red-500 hover:bg-gray-200': props.color === 'danger',
+    'bg-white bg-opacity-10 text-red-500 hover:bg-gray-200': props.color === 'danger'
   };
 
   const classes = classNames(

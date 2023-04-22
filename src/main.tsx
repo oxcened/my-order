@@ -5,14 +5,14 @@ import Orders from './modules/orders/Orders';
 import './main.css';
 import { Provider } from 'react-redux';
 import getStore from '@/common/utils/store';
-import Layout from '@/common/components/Layout';
+import Root from '@/common/components/Root';
 import OrderDetail from '@/modules/orderDetail/OrderDetail';
 import Summary from '@/modules/summary/Summary';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layout />,
+    element: <Root />,
     children: [{
       path: '/',
       element: <Orders />
