@@ -1,10 +1,11 @@
 # MyOrder 🍝🍛🍲
 
-[![repository license](https://img.shields.io/github/license/oxcened/my-order)](https://github.com/oxcened/my-order/blob/master/LICENSE.md)
 [![medium story](https://img.shields.io/badge/Medium-Story-%23000?logo=medium)](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89)
+[![repository license](https://img.shields.io/github/license/oxcened/my-order)](https://github.com/oxcened/my-order/blob/master/LICENSE.md)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/oxcened/my-order#contribute)
+[![latest release](https://img.shields.io/github/v/release/oxcened/my-order)](https://github.com/oxcened/my-order/releases)
 [![website status](https://img.shields.io/website?url=https%3A%2F%2Fmyorderdemo-80b12.web.app%2F)](https://myorderdemo-80b12.web.app/)
 [![tests status](https://github.com/oxcened/my-order/actions/workflows/test.yml/badge.svg)](https://github.com/oxcened/my-order/actions/workflows/test.yml)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](https://github.com/oxcened/my-order#contribute)
 
 MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
 
