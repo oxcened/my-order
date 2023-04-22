@@ -8,12 +8,14 @@
 
 MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
 
-Read the story behind it on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89).
+Read the story behind it
+on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89).
 
 ![screenshot 1](https://miro.medium.com/max/300/1*Vk0dtrl4eHHAKmUhKkryMw.png)
 ![screenshot 2](https://miro.medium.com/max/300/1*XsmPd_zjpHLbfnaIt0oROw.png)
 
 ## Table of contents
+
 1. [Demo](#demo)
 1. [Run on your machine](#run-on-your-machine)
 1. [Build for production](#build-for-production)
@@ -22,15 +24,17 @@ Read the story behind it on [Medium](https://medium.com/@alen.ajam/how-i-took-co
 1. [Maintainers](#maintainers)
 
 ## Demo
+
 You can find a demo [here](https://myorderdemo-80b12.web.app/).
 
-You may try out everything except for the `Submit to Google Sheets` feature located at `/summary` because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-monkey.gif).
+You may try out everything except for the `Submit to Google Sheets` feature located at `/summary`
+because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-monkey.gif).
 
 ## Run on your machine
 
-1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
 
-    If you have that you can just run:
+   If you have that you can just run:
 
     ```
     nvm use
@@ -44,19 +48,21 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
 
 1. Setup environment
 
-   1. This app is meant to work on top of a [Firebase](https://firebase.google.com/) project, so you should create your own.
-   1. Initialize [Firestore](https://firebase.google.com/docs/firestore/quickstart).
-   1. [Obtain the project config object](https://firebase.google.com/docs/web/learn-more#config-object).
-   1. Create an `.env.development` file in the root of the project.
-   1. Place inside of it the config object, as a reference see `.env.example`.
+    1. This app is meant to work on top of a [Firebase](https://firebase.google.com/) project, so you should create your
+       own.
+    1. Initialize [Firestore](https://firebase.google.com/docs/firestore/quickstart).
+    1. [Obtain the project config object](https://firebase.google.com/docs/web/learn-more#config-object).
+    1. Create an `.env.development` file in the root of the project.
+    1. Place inside of it the config object, as a reference see `.env.example`.
 
 1. Run the app
     ```
     npm run start
     ```
-   
+
 ## Build for production
-1. Use the right node version (`14.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
 
    If you have that you can just run:
 
@@ -65,8 +71,10 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
     ```
 
 1. Setup environment
-    
-   The same as the third step of [Run on your machine](#run-on-your-machine) applies, except the app will use `.env.production` this time. Learn more [here](https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/).
+
+   The same as the third step of [Run on your machine](#run-on-your-machine) applies, except the app will
+   use `.env.production` this time. Learn
+   more [here](https://vitejs.dev/guide/env-and-mode.html).
 
 1. Build the app
     ```
@@ -77,16 +85,20 @@ You may try out everything except for the `Submit to Google Sheets` feature loca
     ```
     npm run serve
     ```
-   
+
 ## Contribute
-Contributions are most welcome! 
+
+Contributions are most welcome!
 
 ### Bug fixing
+
 1. Should you find a bug, please open an issue describing thoroughly what you encountered.
 2. If you'd like to fix an already existing issue, please leave a comment asking to work on it, so nobody else does.
-3. Once you get assigned an issue, you may work on it and then open a pull request titled `fix: #[number of issue] [description of issue]`.
+3. Once you get assigned an issue, you may work on it and then open a pull request
+   titled `fix: #[number of issue] [description of issue]`.
 
 ### Feature requests
+
 1. If you have an idea to discuss with the community, feel free to open a discussion.
 1. For feature requests, you are free to open a new issue.
 1. All feature requests may not fit this project and will be subject to discussion!
@@ -103,10 +115,18 @@ npm run test
 
 ## Roadmap
 
-- [ ] Write unit tests on all components
-- [ ] Add a page to consult orders of past days
+- [ ] Migrate from Gatsby to React + Vite.
+- [ ] Improve the desktop UI/UX.
+- [ ] Improve the navigation UX.
+- [ ] Lazy load all routes.
+- [ ] Write unit tests on all components.
+- [ ] Add a page to consult orders of past days.
+- [ ] Add an admin panel:
+  - [ ] Add a page to manage restaurants and their menu.
+  - [ ] Allow to switch authentication method to one which is more secure
 
 ## Maintainers
+
 - [oxcened](https://github.com/oxcened)
 
 ## License
