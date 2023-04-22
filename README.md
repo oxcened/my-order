@@ -22,6 +22,7 @@ on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunc
 1. [Contribute](#contribute)
 1. [Roadmap](#roadmap)
 1. [Maintainers](#maintainers)
+1. [License](#license)
 
 ## Demo
 
