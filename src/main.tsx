@@ -8,6 +8,7 @@ import getStore from '@/common/utils/store';
 import Root from '@/common/components/Root';
 import OrderDetail from '@/modules/orderDetail/OrderDetail';
 import Summary from '@/modules/summary/Summary';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const router = createBrowserRouter([
   {
@@ -36,12 +37,14 @@ const router = createBrowserRouter([
 ]);
 
 const Main = () => {
-  const { store } = getStore();
+  const { store, persistor } = getStore();
 
   return (
     <React.StrictMode>
       <Provider store={store}>
-        <RouterProvider router={router} />
+        <PersistGate persistor={persistor}>
+          <RouterProvider router={router} />
+        </PersistGate>
       </Provider>
     </React.StrictMode>
   );
