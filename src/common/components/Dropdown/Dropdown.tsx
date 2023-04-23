@@ -36,14 +36,14 @@ const Dropdown = ({ children, id }: {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   const mChildren = React.Children.map(children, child => {
-    if (React.isValidElement<ButtonProps>(child) && child.type === Button) {
-      return React.cloneElement<HTMLProps<HTMLElement>>(child, {
+    if (React.isValidElement<React.HTMLProps<HTMLElement>>(child) && child.props.id === `${id}-toggle`) {
+      return React.cloneElement(child, {
         onClick: () => setOpenDropdown(state => !state)
       });
     }
 
     if (React.isValidElement<DropdownMenuProps>(child) && child.type === DropdownMenu) {
-      return React.cloneElement<ComponentPropsWithoutRef<typeof DropdownMenu>>(child, {
+      return React.cloneElement(child, {
         open: openDropdown
       });
     }

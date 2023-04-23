@@ -9,6 +9,7 @@ import { useAppSelector } from '@/common/utils/hooks';
 import { useDispatch } from 'react-redux';
 import { setAvatar as setCurrent, showAvatarModal } from '@/modules/auth/AvatarModal/avatarModal.slice';
 import { User } from '@/modules/auth/User';
+import { twMerge } from 'tailwind-merge';
 
 export const AvatarModal = () => {
   const { user, setAvatar } = useAuth();
@@ -32,7 +33,8 @@ export const AvatarModal = () => {
   return <Modal isOpen={isOpen} onBackdropClick={onClose}>
     <p className='text-xl font-bold'>{locale.components.avatarModal.title}</p>
 
-    <div className='grid gap-3 grid-cols-[repeat(auto-fit,3rem)] justify-center py-5'>
+    <div
+      className='grid gap-3 grid-cols-[repeat(auto-fit,3rem)] justify-center my-3 max-h-[calc(100vh-10rem)] overflow-auto'>
       {getAllAvatars().map((a, i) => {
         const isCurrent = i === current;
         return (
@@ -40,9 +42,10 @@ export const AvatarModal = () => {
             key={a}
             src={a}
             alt={`avatar_${a}`}
-            className={classNames('border cursor-pointer', {
-              'bg-primary-200 border-primary-500': isCurrent
-            })}
+            className={twMerge(
+              'border cursor-pointer rounded-full',
+              isCurrent && 'bg-gray-200 border-black animate-spin'
+            )}
             onClick={() => onChange(i)}
           />
         );
@@ -50,7 +53,7 @@ export const AvatarModal = () => {
     </div>
 
     <Button
-      color='primary'
+      color='dark'
       className='w-full justify-center'
       disabled={current === undefined}
       onClick={onSubmit}

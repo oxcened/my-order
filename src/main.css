@@ -15,13 +15,7 @@
 
 body {
     @apply h-full;
-
-    background: #fcfbfb;
     font-family: Nunito, sans-serif;
-}
-
-main {
-    @apply px-4 py-6 sm:py-8 sm:px-8;
 }
 
 .aspect-ratio-1 {

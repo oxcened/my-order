@@ -26,22 +26,22 @@ export const LoginModal = () => {
     }
   };
 
-  return <Modal isOpen={isOpen}>
+  return <Modal isOpen={isOpen} className='max-w-sm'>
     <p className='text-xl font-bold'>{locale.components.loginModal.title}</p>
     <p className='text-gray-500'>{locale.components.loginModal.subtitle}</p>
 
     <form onSubmit={onSubmit}>
-      <div className='flex items-center mt-3'>
+      <div className='flex items-center mt-5'>
         <img
           src={getAvatar(avatarDraft)}
           alt='avatar'
-          className='h-12 aspect-ratio-1 mr-3 cursor-pointer shadow-inner rounded-md bg-gray-100 p-1'
+          className='h-12 aspect-ratio-1 mr-3 cursor-pointer rounded-full border'
           onClick={() => dispatch(showAvatarModal(true))}
         />
 
         <input
           required
-          className='w-full rounded-md shadow-inner bg-gray-100 p-3'
+          className='w-full rounded-xl border p-3'
           placeholder={locale.shared.userPlaceholder}
           value={name}
           onChange={({ target: { value } }) => setName(value)}
@@ -50,7 +50,9 @@ export const LoginModal = () => {
 
       <Button
         color='primary'
-        className='w-full mt-3 justify-center'>
+        className='w-full mt-5 justify-center'
+        disabled={!name}
+      >
         {locale.shared.confirm}
       </Button>
     </form>

@@ -18,10 +18,12 @@ const DropdownMenu = ({ open, options, onClick }: DropdownMenuProps) => {
       in={open}
       classNames='dropdown-trans'
       timeout={TRANSITION_TIMEOUT}>
-      <div data-testid='dropdown-menu' className='dropdown-menu absolute top-11 right-0 shadow-md rounded-md pt-1 w-56'>
+      <div
+        data-testid='dropdown-menu'
+        className='dropdown-menu absolute top-11 right-0 border rounded-xl py-2 w-56 bg-white mt-2'>
         {options.map(o => {
           return (
-            <Button key={o.id} color='light' className='w-full py-4' onClick={() => onClick?.(o.id)}>
+            <Button key={o.id} color='light' className='w-full py-4 rounded-none' onClick={() => onClick?.(o.id)}>
               {o.icon}
               <span className='ml-2'>{o.label}</span>
             </Button>

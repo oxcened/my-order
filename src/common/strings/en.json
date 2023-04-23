@@ -1,6 +1,6 @@
 {
   "shared": {
-    "appName": "MyOrder",
+    "appName": "myorder",
     "submit": "Submit",
     "cancel": "Cancel",
     "ok": "Ok",
@@ -12,13 +12,8 @@
   },
   "pages": {
     "index": {
-      "title": {
-        "night": "Good night, {0}",
-        "morning": "Good morning, {0}",
-        "afternoon": "Good afternoon, {0}",
-        "evening": "Good evening, {0}"
-      },
-      "subtitle": "Today's orders",
+      "title": "What are you eating today? 🍕",
+      "subtitle": "{0} other people ordered today",
       "summaryButton": "Summary",
       "makeOrderButton": "Place Order"
     },
@@ -56,8 +51,8 @@
       "add": "Add to order"
     },
     "loginModal": {
-      "title": "Welcome to MyOrder",
-      "subtitle": "To get started, please enter your name down below"
+      "title": "Welcome to myorder",
+      "subtitle": "To get started, please enter your name."
     },
     "successModal": {
       "title": "Thank you!"

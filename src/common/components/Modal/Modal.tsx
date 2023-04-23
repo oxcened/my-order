@@ -46,7 +46,7 @@ const Modal = ({ children, isOpen, className, onBackdropClick }: {
         unmountOnExit
       >
         <div
-          className={classNames('w-full max-w-md bg-white m-auto rounded-md p-4', className)}
+          className={classNames('w-full max-w-md bg-white m-auto rounded-xl p-4', className)}
           onClick={e => e.stopPropagation()}
         >
           {children}

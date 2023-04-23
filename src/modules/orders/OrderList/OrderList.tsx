@@ -19,7 +19,7 @@ const OrderList = (
       return new Array(3)
         .fill(undefined)
         .map((value, index) => {
-          return <LoadingCard key={index} />
+          return <LoadingCard key={index} index={index} />;
         });
     }
 
@@ -31,14 +31,15 @@ const OrderList = (
       return <OrderCard
         key={order.id}
         order={order}
-        index={index + 1}
+        index={index}
         onDelete={() => onDelete?.(order)}
         onEdit={() => navigate(`/order/${order.id}`)}
       />;
     });
   };
 
-  return <div className='mt-4 sm:mt-6 mb-14 sm:mb-0 grid md:grid-cols-2 xl:grid-cols-3 gap-5 max-w-md md:max-w-4xl xl:max-w-7xl'>
+  return <div
+    className='mb-14 sm:mb-0 flex flex-col max-w-screen-sm divide-y mt-4'>
     {mOrders()}
   </div>;
 };

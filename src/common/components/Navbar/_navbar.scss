@@ -16,4 +16,8 @@
     opacity: 0;
     transition: opacity 350ms ease;
   }
+
+  &.user-trans-exit-done {
+    visibility: hidden;
+  }
 }
