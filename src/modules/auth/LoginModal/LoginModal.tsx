@@ -49,7 +49,7 @@ export const LoginModal = () => {
       </div>
 
       <Button
-        color='primary'
+        color='dark'
         className='w-full mt-5 justify-center'
         disabled={!name}
       >
