@@ -1,4 +1,4 @@
-import { MinusIcon, PlusIcon, ShoppingBagIcon, XIcon } from '@heroicons/react/outline';
+import { ChevronLeftIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import locale from '@/common/utils/locale';
@@ -6,6 +6,7 @@ import IconButton from '@/common/components/IconButton';
 import Button from '@/common/components/Button/Button';
 import Modal from '@/common/components/Modal/Modal';
 import { Product } from '@/modules/orders/Product';
+import { twMerge } from 'tailwind-merge';
 
 const ProductModal = (
   {
@@ -16,6 +17,7 @@ const ProductModal = (
     onUpdate,
     onDelete,
     onConfirm,
+    className,
     ...props
   }: {
     product?: Product,
@@ -47,39 +49,47 @@ const ProductModal = (
   };
 
   return <Modal
-    className="text-center"
+    containerClass="z-30"
+    className={twMerge("text-center", className)}
     {...props}
   >
     {product
       && <>
-        <div className="flex">
-          <div className="flex-1" />
-          <div className="text-xl font-bold flex-1">{product.title}</div>
-          <div className="flex-1">
-            <IconButton color="light" className="ml-auto p-1" onClick={onConfirm}>
-              <XIcon className="h-6" />
-            </IconButton>
-          </div>
+        <div className="grid grid-cols-[38px,1fr,38px] gap-5 items-center">
+          <Button
+            outline
+            className="px-2 py-2"
+            color="light"
+            onClick={onConfirm}
+          >
+            <ChevronLeftIcon className="h-5" />
+          </Button>
+
+          <span className="font-medium">
+            {product.title}
+          </span>
         </div>
 
         <div className="flex items-center justify-center space-x-5 mt-8">
           <IconButton
-            color="primary"
-            className="w-7 h-7"
+            outline
+            color="light"
+            className="w-8 h-8"
             disabled={quantity < 2}
             onClick={() => setQuantity(q => q - 1)}
           >
-            <MinusIcon className="h-5 text-primary-500" />
+            <MinusIcon className="h-5" />
           </IconButton>
 
           <p className="text-3xl">{quantity}</p>
 
           <IconButton
-            color="primary"
-            className="w-7 h-7"
+            outline
+            color="light"
+            className="w-8 h-8"
             onClick={() => setQuantity(q => q + 1)}
           >
-            <PlusIcon className="h-5 text-primary-500" />
+            <PlusIcon className="h-5" />
           </IconButton>
         </div>
 
@@ -94,7 +104,7 @@ const ProductModal = (
             </Button>}
 
           <Button
-            color="primary"
+            color="dark"
             className="w-full justify-center"
             onClick={onSubmitClick}
           >

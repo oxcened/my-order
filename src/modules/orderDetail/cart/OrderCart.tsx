@@ -3,19 +3,33 @@ import locale from '@/common/utils/locale';
 import { Product } from '@/modules/orders/Product';
 import { groupByKey } from '@/common/utils/misc';
 import Button from '@/common/components/Button/Button';
+import { ChevronLeftIcon } from '@heroicons/react/outline';
 
-const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onMakeOrder, onNotesChange }: {
-  order: Product[];
-  notes: string;
-  isEdit?: boolean;
-  loadingMakeOrder?: boolean;
-  onProductClick?: (product: Product, quantity: number) => void;
-  onMakeOrder?: (notes: string) => void;
-  onNotesChange?: (value: string) => void;
-}) => {
+const OrderCart = (
+  {
+    order,
+    notes,
+    loadingMakeOrder,
+    isEdit,
+    containerClass,
+    onProductClick,
+    onMakeOrder,
+    onNotesChange,
+    onBackButtonClick
+  }: {
+    order: Product[];
+    notes: string;
+    isEdit?: boolean;
+    loadingMakeOrder?: boolean;
+    containerClass?: string;
+    onProductClick?: (product: Product, quantity: number) => void;
+    onMakeOrder?: (notes: string) => void;
+    onNotesChange?: (value: string) => void;
+    onBackButtonClick?: () => void;
+  }) => {
   const getOrderProducts = () => {
     if (!order.length) {
-      return <p className='my-3 text-gray-500'>{locale.components.orderCart.placeholer}</p>;
+      return <p className="my-3 text-gray-500">{locale.components.orderCart.placeholer}</p>;
     }
 
     const mapped = Object.entries(groupByKey(order, 'id'))
@@ -27,47 +41,51 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
     return mapped.map(([product, quantity]) => {
       return <div
         key={product.id}
-        className='py-3 flex items-center cursor-pointer'
+        className="py-3 flex items-center cursor-pointer"
         onClick={() => onProductClick?.(product, quantity)}
       >
-        <div className='bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center'>
+        <div className="bg-gray-100 rounded-full font-bold block text-sm h-6 w-6 grid place-content-center">
           {quantity}
         </div>
 
-        <span className='ml-3'>{product.title}</span>
+        <span className="ml-3">{product.title}</span>
       </div>;
     });
   };
 
-  return <div className='flex-1 hidden sm:block sm:max-w-md'>
-    <p className='text-lg'>{locale.components.orderCart.title}</p>
+  return <div className={containerClass}>
+    <div className="flex items-center gap-3 border-b pb-3 mb-3 sm:border-none sm:p-0 sm:m-0">
+      <Button
+        outline
+        className="sm:hidden px-2 py-2"
+        color="light"
+        onClick={onBackButtonClick}
+      >
+        <ChevronLeftIcon className="h-5" />
+      </Button>
 
-    <div className='divide-y mt-2 sm:mt-3'>
+      <p className="text-lg">{locale.components.orderCart.title}</p>
+    </div>
+
+    <div className="divide-y mt-2 sm:mt-3">
       {getOrderProducts()}
     </div>
 
     <input
-      className='w-full rounded-md border p-3 mt-2'
+      className="w-full rounded-md border p-3 mt-2"
       placeholder={locale.components.orderCart.notesPlaceholder}
       value={notes}
-      type='text'
+      type="text"
       onChange={event => onNotesChange?.(event.target.value)}
     />
 
     <Button
-      color='primary'
-      className='mt-2 w-full justify-center hidden'
+      color="primary"
+      className="mt-5 w-full justify-center sm:hidden"
       disabled={!order.length || loadingMakeOrder}
       onClick={() => onMakeOrder?.(notes)}
     >
-      <div className='mr-2'>
-        {/*{loadingMakeOrder
-          ? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mt-0.5 -mb-0.5' />
-          : <CheckCircleIcon className='h-5' />}*/}
-      </div>
-      {isEdit
-        ? locale.components.orderCart.update
-        : locale.components.orderCart.submit}
+      {locale.pages.orderDetail.submitOrder}
     </Button>
   </div>;
 };

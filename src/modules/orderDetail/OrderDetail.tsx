@@ -9,6 +9,7 @@ import { twMerge } from 'tailwind-merge';
 import { useCart } from '@/modules/orderDetail/cart/useCart';
 import Button from '@/common/components/Button/Button';
 import locale from '@/common/utils/locale';
+import Modal from '@/common/components/Modal/Modal';
 
 export type HeaderProps = {
   title?: string;
@@ -88,6 +89,7 @@ const OrderDetail = () => {
         onAddProduct={openProduct} />
 
       <OrderCart
+        containerClass="flex-1 hidden sm:block sm:max-w-md"
         order={order}
         notes={notes}
         isEdit={isEdit}
@@ -98,10 +100,12 @@ const OrderDetail = () => {
       />
     </div>
 
-    <Button color="primary" onClick={openCart} className="rounded-full fixed bottom-0 right-0 m-5 sm:hidden">
-      {locale.pages.orderDetail.openCartButton}
-      <span className="bg-black/10 rounded-full px-1.5 ml-2">{order.length}</span>
-    </Button>
+    {!!order.length && (
+      <Button color="primary" onClick={openCart} className="rounded-full fixed bottom-0 right-0 m-5 sm:hidden">
+        {locale.pages.orderDetail.openCartButton}
+        <span className="bg-black/10 rounded-full px-1.5 ml-2">{order.length}</span>
+      </Button>
+    )}
 
     <ProductModal
       isOpen={isProductModalOpen}
@@ -114,6 +118,24 @@ const OrderDetail = () => {
       onUpdate={updateProduct}
       onConfirm={cleanOpenedProduct}
     />
+
+    <Modal
+      isOpen={isCartOpen}
+      containerClass="p-0"
+      className="max-w-none h-full rounded-none transition-none"
+    >
+      <OrderCart
+        containerClass="mt-2"
+        order={order}
+        notes={notes}
+        isEdit={isEdit}
+        loadingMakeOrder={postOrderResult.isLoading}
+        onProductClick={(p, q) => openProduct(p, q, true)}
+        onMakeOrder={makeOrder}
+        onNotesChange={setNotes}
+        onBackButtonClick={closeCart}
+      />
+    </Modal>
 
     {makeSuccessModal}
     {updateSuccessModal}

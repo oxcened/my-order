@@ -2,7 +2,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { ComponentProps, useEffect, useState } from 'react';
 import { Product } from '@/modules/orders/Product';
 import ProductModal from '@/modules/orderDetail/ProductModal';
-import { useSuccessModal } from '@/common/utils/hooks';
+import { useMediaQuery, useSuccessModal } from '@/common/utils/hooks';
 import locale from '@/common/utils/locale';
 import ordersApi from '@/modules/orders/orders.api';
 
@@ -13,6 +13,13 @@ export const useCart = () => {
   const [order, setOrder] = useState<Product[]>([]);
   const [notes, setNotes] = useState<string>('');
   const [isProductModalOpen, setProductModalOpen] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 640px)');
+
+  useEffect(() => {
+    if (!isMobile && isCartOpen) {
+      setCartOpen(false);
+    }
+  }, [isMobile, isCartOpen]);
 
   const [productModalPayload, setProductModalPayload] =
     useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();

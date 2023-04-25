@@ -6,10 +6,11 @@ import './_modal.scss';
 
 const ANIM_DURATON_MS = 350;
 
-const Modal = ({ children, isOpen, className, onBackdropClick }: {
+const Modal = ({ children, isOpen, className, containerClass, onBackdropClick }: {
   children?: React.ReactNode;
   isOpen?: boolean;
   className?: string;
+  containerClass?: string;
   onBackdropClick?: () => void;
 }) => {
   const [innerOpen, setInnerOpen] = useState(false);
@@ -29,20 +30,21 @@ const Modal = ({ children, isOpen, className, onBackdropClick }: {
   return <CSSTransition
     in={isOpen}
     timeout={ANIM_DURATON_MS}
-    classNames='modal-transition'
+    classNames="modal-transition"
     unmountOnExit
   >
     <div
       className={classNames(
-        'top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 fixed flex p-3 overflow-x-hidden overflow-y-auto z-20'
+        'top-0 bottom-0 left-0 right-0 bg-black bg-opacity-50 fixed flex p-3 overflow-x-hidden overflow-y-auto z-20',
+        containerClass
       )}
-      role='dialog'
+      role="dialog"
       onClick={onBackdropClick}
     >
       <CSSTransition
         in={innerOpen}
         timeout={ANIM_DURATON_MS}
-        classNames='modal-inner-transition'
+        classNames="modal-inner-transition"
         unmountOnExit
       >
         <div

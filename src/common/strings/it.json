@@ -39,8 +39,6 @@
     },
     "orderCart": {
       "title": "Il tuo ordine",
-      "submit": "Inserisci ordine",
-      "update": "Aggiorna ordine",
       "placeholer": "Il tuo ordine è vuoto.",
       "notesPlaceholder": "Inserisci note per l'ordine (opzionale)"
     },
