@@ -2,7 +2,7 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { ClipboardListIcon, DotsHorizontalIcon, PlusIcon } from '@heroicons/react/outline';
 import locale from '@/common/utils/locale';
-import { useConfirmModal } from '@/common/utils/hooks';
+import { useConfirmModal, useDocumentScroll } from '@/common/utils/hooks';
 import ordersApi from '@/modules/orders/orders.api';
 import Button from '@/common/components/Button/Button';
 import OrderList from '@/modules/orders/OrderList/OrderList';
@@ -12,25 +12,14 @@ import IconButton from '@/common/components/IconButton';
 import Dropdown from '@/common/components/Dropdown/Dropdown';
 import DropdownMenu from '@/common/components/Dropdown/DropdownMenu';
 
-const getScroll = () => !!document.documentElement.scrollTop;
-
 export type HeaderProps = {
   ordersLength: number;
   onMakeOrder?: () => void;
 };
 
 const Header = ({ ordersLength, onMakeOrder }: HeaderProps) => {
-  const [isScrolled, setScrolled] = useState(() => getScroll());
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const listener = () => setScrolled(getScroll());
-    document.addEventListener('scroll', listener);
-
-    return () => {
-      document.removeEventListener('scroll', listener);
-    };
-  }, []);
+  const isScrolled = useDocumentScroll();
 
   return (
     <div className={twMerge('bg-white z-10 py-5 sticky top-[79px]', isScrolled && 'shadow-sm')}>

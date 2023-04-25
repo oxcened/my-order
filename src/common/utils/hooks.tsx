@@ -5,6 +5,7 @@ import locale from './locale';
 import ConfirmModal from '@/common/components/ConfirmModal';
 import FeedbackModal from '@/common/components/FeedbackModal';
 import { RootState } from '@/common/utils/store';
+import { useNavigate } from 'react-router-dom';
 
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
@@ -82,4 +83,25 @@ export const useSuccessModal: typeof useFeedbackModal = (props) =>
   useFeedbackModal({ title: locale.components.successModal.title, ...props, isSuccess: true });
 
 export const useFailureModal: typeof useFeedbackModal = (props) =>
-  useFeedbackModal({ title: locale.components.failureModal.title, children: locale.components.failureModal.description, ...props, isSuccess: false });
+  useFeedbackModal({
+    title: locale.components.failureModal.title,
+    children: locale.components.failureModal.description, ...props,
+    isSuccess: false
+  });
+
+const getScroll = () => !!document.documentElement.scrollTop;
+
+export const useDocumentScroll = () => {
+  const [isScrolled, setScrolled] = useState(() => getScroll());
+
+  useEffect(() => {
+    const listener = () => setScrolled(getScroll());
+    document.addEventListener('scroll', listener);
+
+    return () => {
+      document.removeEventListener('scroll', listener);
+    };
+  }, []);
+
+  return isScrolled;
+};

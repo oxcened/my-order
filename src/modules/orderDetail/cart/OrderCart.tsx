@@ -15,7 +15,7 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
 }) => {
   const getOrderProducts = () => {
     if (!order.length) {
-      return <p className='my-3'>{locale.components.orderCart.placeholer}</p>;
+      return <p className='my-3 text-gray-500'>{locale.components.orderCart.placeholer}</p>;
     }
 
     const mapped = Object.entries(groupByKey(order, 'id'))
@@ -39,15 +39,15 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
     });
   };
 
-  return <div className='flex-1 sm:max-w-md'>
-    <p className='text-3xl md:text-4xl lg:text-5xl'>{locale.components.orderCart.title}</p>
+  return <div className='flex-1 hidden sm:block sm:max-w-md'>
+    <p className='text-lg'>{locale.components.orderCart.title}</p>
 
-    <div className='bg-white border rounded-md px-3 py-1 divide-y mt-2 sm:mt-3'>
+    <div className='divide-y mt-2 sm:mt-3'>
       {getOrderProducts()}
     </div>
 
     <input
-      className='w-full rounded-md shadow-inner bg-gray-100 p-3 mt-2'
+      className='w-full rounded-md border p-3 mt-2'
       placeholder={locale.components.orderCart.notesPlaceholder}
       value={notes}
       type='text'
@@ -56,7 +56,7 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
 
     <Button
       color='primary'
-      className='mt-2 w-full justify-center'
+      className='mt-2 w-full justify-center hidden'
       disabled={!order.length || loadingMakeOrder}
       onClick={() => onMakeOrder?.(notes)}
     >

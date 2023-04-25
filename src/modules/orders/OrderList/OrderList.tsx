@@ -23,10 +23,6 @@ const OrderList = (
         });
     }
 
-    if (!orders.length) {
-      return <span className='text-gray-500'>{locale.components.orders.placeholder}</span>;
-    }
-
     return orders.map((order, index) => {
       return <OrderCard
         key={order.id}

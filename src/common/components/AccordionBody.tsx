@@ -62,7 +62,7 @@ const AccordionBody = ({ children, isOpen, className }: AccordionBodyProps) => {
           data-testid='accordion-body'
           className='accordion-body'
           style={style}>
-          <div className={classNames('p-3 border-t', className)}>
+          <div className={classNames('py-3 border-t', className)}>
             {children}
           </div>
         </div>

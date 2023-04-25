@@ -41,7 +41,7 @@ export const LoginModal = () => {
 
         <input
           required
-          className='w-full rounded-xl border p-3'
+          className='w-full rounded-md border p-3'
           placeholder={locale.shared.userPlaceholder}
           value={name}
           onChange={({ target: { value } }) => setName(value)}

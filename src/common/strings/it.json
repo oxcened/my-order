@@ -25,7 +25,9 @@
     },
     "orderDetail": {
       "orderPlaceSuccess": "Il tuo ordine è stato inserito",
-      "orderUpdateSuccess": "Il tuo ordine è stato aggiornato"
+      "orderUpdateSuccess": "Il tuo ordine è stato aggiornato",
+      "openCartButton": "Vedi ordine",
+      "submitOrder": "Invia ordine"
     }
   },
   "components": {
@@ -39,7 +41,7 @@
       "title": "Il tuo ordine",
       "submit": "Inserisci ordine",
       "update": "Aggiorna ordine",
-      "placeholer": "Scegli qualcosa dal Menù per iniziare",
+      "placeholer": "Il tuo ordine è vuoto.",
       "notesPlaceholder": "Inserisci note per l'ordine (opzionale)"
     },
     "orderMenu": {
@@ -72,9 +74,6 @@
     "order": {
       "title": "{1}",
       "notesTitle": "Note"
-    },
-    "orders": {
-      "placeholder": "Sembra che tu sia il primo!"
     },
     "avatarModal": {
       "title": "Scegli il tuo avatar"

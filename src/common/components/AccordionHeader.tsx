@@ -13,7 +13,7 @@ export type AccordionHeaderProps = {
 const AccordionHeader = ({ children, isOpen, className, headerClassName, onClick }: AccordionHeaderProps) => {
   return <div
     data-testid='accordion-header'
-    className={classNames('p-3 text-xl flex justify-between items-center cursor-pointer', className)}
+    className={classNames('py-3 text-xl flex justify-between items-center cursor-pointer', className)}
     onClick={onClick}
   >
     <span className={headerClassName}>{children}</span>

@@ -25,7 +25,9 @@
     },
     "orderDetail": {
       "orderPlaceSuccess": "Your order has been placed",
-      "orderUpdateSuccess": "Your order has been updated"
+      "orderUpdateSuccess": "Your order has been updated",
+      "openCartButton": "See order",
+      "submitOrder": "Submit order"
     }
   },
   "components": {
@@ -39,7 +41,7 @@
       "title": "Your order",
       "submit": "Place order",
       "update": "Update order",
-      "placeholer": "Pick something from the Menu to get started",
+      "placeholer": "Your order is empty.",
       "notesPlaceholder": "Insert order notes (optional)"
     },
     "orderMenu": {
@@ -72,9 +74,6 @@
     "order": {
       "title": "{1}",
       "notesTitle": "Notes"
-    },
-    "orders": {
-      "placeholder": "Looks like you are the first one!"
     },
     "avatarModal": {
       "title": "Choose your avatar"
