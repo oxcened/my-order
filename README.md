@@ -7,7 +7,7 @@
 [![website status](https://img.shields.io/website?url=https%3A%2F%2Fmyorderdemo-80b12.web.app%2F)](https://myorderdemo-80b12.web.app/)
 [![tests status](https://github.com/oxcened/my-order/actions/workflows/test.yml/badge.svg)](https://github.com/oxcened/my-order/actions/workflows/test.yml)
 
-MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.
+MyOrder allows groups to track food orders and export daily summaries to Google Sheets.
 
 Read the story behind it
 on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunchtime-with-an-app-f6d70c31cb89).
