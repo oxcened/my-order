@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useState } from 'react';
-import Accordion, { AccordionProps } from '@/common/components/Accordion/Accordion';
+import Accordion, { AccordionProps } from '@/common/components/accordion/Accordion';
 
 const AccordionList = ({ children }: {
   children?: React.ReactNode;

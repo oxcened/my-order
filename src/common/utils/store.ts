@@ -2,10 +2,9 @@ import { combineReducers, configureStore, StateFromReducersMapObject } from '@re
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import ordersApi from '@/modules/orders/orders.api';
-import authSlice from '@/modules/auth/auth.slice';
-import restaurantsApi from '@/modules/orderDetail/restaurants.api';
-import avatarModalSlice from '@/modules/auth/AvatarModal/avatarModal.slice';
+import { ordersApi } from '@/modules/orders';
+import { authSlice, avatarModalSlice } from '@/modules/auth';
+import { restaurantsApi } from '@/modules/orderDetail';
 
 const reducerMap = {
   [ordersApi.reducerPath]: ordersApi.reducer,

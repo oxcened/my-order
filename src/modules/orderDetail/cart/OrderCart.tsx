@@ -1,9 +1,9 @@
 import * as React from 'react';
 import locale from '@/common/utils/locale';
-import { Product } from '@/modules/orders/Product';
 import { groupByKey } from '@/common/utils/misc';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 import { ChevronLeftIcon } from '@heroicons/react/outline';
+import { Product } from '@/modules/orderDetail';
 
 const OrderCart = (
   {

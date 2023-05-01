@@ -3,7 +3,7 @@ import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
 import DropdownMenu, { TRANSITION_TIMEOUT } from './DropdownMenu';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 
 const TestComponent = () => (
   <Dropdown id='dropdown'>

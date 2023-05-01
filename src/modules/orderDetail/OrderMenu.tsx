@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { PlusIcon } from '@heroicons/react/solid';
 import locale from '@/common/utils/locale';
-import { Menu } from '@/modules/orderDetail/Menu';
-import { Product } from '@/modules/orders/Product';
-import Accordion from '@/common/components/Accordion/Accordion';
-import LoadingAccordion from '@/common/components/LoadingAccordion';
-import AccordionList from '@/common/components/AccordionList';
-import AccordionBody from '@/common/components/AccordionBody';
-import AccordionHeader from '@/common/components/AccordionHeader';
-import IconButton from '@/common/components/IconButton';
+import { Menu, Product } from '@/modules/orderDetail';
+import Accordion from '@/common/components/accordion/Accordion';
+import LoadingAccordion from '@/common/components/loadingAccordion/LoadingAccordion';
+import AccordionList from '@/common/components/accordion/AccordionList';
+import AccordionBody from '@/common/components/accordion/AccordionBody';
+import AccordionHeader from '@/common/components/accordion/AccordionHeader';
+import IconButton from '@/common/components/iconButton/IconButton';
 
 const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   menu?: Menu;

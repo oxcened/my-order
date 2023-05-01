@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import Accordion from './Accordion';
 import userEvent from '@testing-library/user-event';
-import AccordionHeader from '@/common/components/AccordionHeader';
-import AccordionBody from '@/common/components/AccordionBody';
+import AccordionHeader from '@/common/components/accordion/AccordionHeader';
+import AccordionBody from '@/common/components/accordion/AccordionBody';
 
 const TestComponent = () => {
   const [isOpen, setOpen] = useState(false);

@@ -1,10 +1,9 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { ComponentProps, useEffect, useState } from 'react';
-import { Product } from '@/modules/orders/Product';
-import ProductModal from '@/modules/orderDetail/ProductModal';
+import { Product, ProductModal } from '@/modules/orderDetail';
 import { useMediaQuery, useSuccessModal } from '@/common/utils/hooks';
 import locale from '@/common/utils/locale';
-import ordersApi from '@/modules/orders/orders.api';
+import { ordersApi } from '@/modules/orders';
 
 export const useCart = () => {
   const navigate = useNavigate();

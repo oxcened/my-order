@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
 import locale from '@/common/utils/locale';
-import Button from '@/common/components/Button/Button';
-import Modal from '@/common/components/Modal/Modal';
+import Button from '@/common/components/button/Button';
+import Modal from '@/common/components/modal/Modal';
 import { twMerge } from 'tailwind-merge';
 
 const ConfirmModal = (

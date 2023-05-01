@@ -3,7 +3,7 @@ import { createApi } from '@reduxjs/toolkit/query/react';
 import { collection, getDocsFromServer, limit, query } from 'firebase/firestore';
 import { firestore as db } from '@/common/utils/firebase';
 import { DbCollection } from '@/common/models/DbCollection';
-import { Menu } from '@/modules/orderDetail/Menu';
+import { Menu } from '@/modules/orderDetail';
 
 const restaurantsApi = createApi({
   reducerPath: 'restaurants',

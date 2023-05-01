@@ -1,7 +1,7 @@
 import { CSSTransition } from 'react-transition-group';
 import * as React from 'react';
 import './_dropdown_menu.scss';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 
 export const TRANSITION_TIMEOUT = 350;
 

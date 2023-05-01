@@ -1,7 +1,7 @@
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/solid';
 import * as React from 'react';
 import { ComponentPropsWithoutRef } from 'react';
-import Modal from '@/common/components/Modal/Modal';
+import Modal from '@/common/components/modal/Modal';
 
 const FeedbackModal = (props: {
   title?: string;

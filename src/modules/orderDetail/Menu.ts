@@ -1,5 +1,3 @@
-import { Product } from '@/modules/orders/Product';
-
 export type Menu = {
   title: string;
   categories: {
@@ -7,4 +5,10 @@ export type Menu = {
     title: string;
     products: Product[];
   }[];
+};
+
+export type Product = {
+  id: string;
+  title: string;
+  description?: string;
 };

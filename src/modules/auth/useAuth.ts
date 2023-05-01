@@ -1,9 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useAppSelector } from '@/common/utils/hooks';
-import { cleanUser, setAvatar, setUser } from '@/modules/auth/auth.slice';
-import { User } from '@/modules/auth/User';
+import { cleanUser, setAvatar, setUser, User, cleanAvatarModal } from '@/modules/auth';
 import { getAvatar } from '@/common/images/avatars/avatars';
-import { clean } from '@/modules/auth/AvatarModal/avatarModal.slice';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
@@ -16,7 +14,7 @@ export const useAuth = () => {
     getAvatarImage: () => getAvatar(user?.avatar),
     logout: () => {
       dispatch(cleanUser());
-      dispatch(clean());
+      dispatch(cleanAvatarModal());
     }
   };
 };

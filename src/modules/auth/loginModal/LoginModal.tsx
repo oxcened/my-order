@@ -2,12 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import locale from '@/common/utils/locale';
-import Modal from '@/common/components/Modal/Modal';
+import Modal from '@/common/components/modal/Modal';
 import { DEFAULT_AVATAR, getAvatar } from '@/common/images/avatars/avatars';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 import { useAppSelector } from '@/common/utils/hooks';
-import { clean, showAvatarModal } from '@/modules/auth/AvatarModal/avatarModal.slice';
-import { useAuth } from '@/modules/auth/useAuth';
+import { cleanAvatarModal, showAvatarModal, useAuth } from '@/modules/auth';
 
 export const LoginModal = () => {
   const isOpen = useAppSelector(state => !state.auth.user && !state.avatarModal.isAvatarModalOpen);
@@ -22,26 +21,26 @@ export const LoginModal = () => {
     if (name) {
       setUser({ name: name, avatar: avatarDraft ?? DEFAULT_AVATAR });
       setName('');
-      dispatch(clean());
+      dispatch(cleanAvatarModal());
     }
   };
 
-  return <Modal isOpen={isOpen} className='max-w-sm'>
-    <p className='text-xl font-bold'>{locale.components.loginModal.title}</p>
-    <p className='text-gray-500'>{locale.components.loginModal.subtitle}</p>
+  return <Modal isOpen={isOpen} className="max-w-sm">
+    <p className="text-xl font-bold">{locale.components.loginModal.title}</p>
+    <p className="text-gray-500">{locale.components.loginModal.subtitle}</p>
 
     <form onSubmit={onSubmit}>
-      <div className='flex items-center mt-5'>
+      <div className="flex items-center mt-5">
         <img
           src={getAvatar(avatarDraft)}
-          alt='avatar'
-          className='h-12 aspect-ratio-1 mr-3 cursor-pointer rounded-full border'
+          alt="avatar"
+          className="h-12 aspect-ratio-1 mr-3 cursor-pointer rounded-full border"
           onClick={() => dispatch(showAvatarModal(true))}
         />
 
         <input
           required
-          className='w-full rounded-md border p-3'
+          className="w-full rounded-md border p-3"
           placeholder={locale.shared.userPlaceholder}
           value={name}
           onChange={({ target: { value } }) => setName(value)}
@@ -49,8 +48,8 @@ export const LoginModal = () => {
       </div>
 
       <Button
-        color='dark'
-        className='w-full mt-5 justify-center'
+        color="dark"
+        className="w-full mt-5 justify-center"
         disabled={!name}
       >
         {locale.shared.confirm}

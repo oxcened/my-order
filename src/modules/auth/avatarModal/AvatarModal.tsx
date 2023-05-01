@@ -1,17 +1,14 @@
 import * as React from 'react';
-import classNames from 'classnames';
-import { useAuth } from '@/modules/auth/useAuth';
 import locale from '@/common/utils/locale';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 import { DEFAULT_AVATAR, getAllAvatars } from '@/common/images/avatars/avatars';
-import Modal from '@/common/components/Modal/Modal';
+import Modal from '@/common/components/modal/Modal';
 import { useAppSelector } from '@/common/utils/hooks';
 import { useDispatch } from 'react-redux';
-import { setAvatar as setCurrent, showAvatarModal } from '@/modules/auth/AvatarModal/avatarModal.slice';
-import { User } from '@/modules/auth/User';
+import { setModalAvatar as setCurrent, showAvatarModal, User, useAuth } from '@/modules/auth';
 import { twMerge } from 'tailwind-merge';
 
-export const AvatarModal = () => {
+const AvatarModal = () => {
   const { user, setAvatar } = useAuth();
   const isOpen = useAppSelector(state => state.avatarModal.isAvatarModalOpen);
   const current = useAppSelector(state => state.avatarModal.avatar ?? state.auth.user?.avatar ?? DEFAULT_AVATAR);
@@ -31,10 +28,10 @@ export const AvatarModal = () => {
   };
 
   return <Modal isOpen={isOpen} onBackdropClick={onClose}>
-    <p className='text-xl font-bold'>{locale.components.avatarModal.title}</p>
+    <p className="text-xl font-bold">{locale.components.avatarModal.title}</p>
 
     <div
-      className='grid gap-3 grid-cols-[repeat(auto-fit,3rem)] justify-center my-3 max-h-[calc(100vh-10rem)] overflow-auto'>
+      className="grid gap-3 grid-cols-[repeat(auto-fit,3rem)] justify-center my-3 max-h-[calc(100vh-10rem)] overflow-auto">
       {getAllAvatars().map((a, i) => {
         const isCurrent = i === current;
         return (
@@ -53,8 +50,8 @@ export const AvatarModal = () => {
     </div>
 
     <Button
-      color='dark'
-      className='w-full justify-center'
+      color="dark"
+      className="w-full justify-center"
       disabled={current === undefined}
       onClick={onSubmit}
     >{locale.shared.ok}</Button>

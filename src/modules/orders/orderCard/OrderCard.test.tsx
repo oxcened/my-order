@@ -1,9 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
-import TestComponent from '@/modules/orders/OrderCard/OrderCard';
+import { OrderCard as TestComponent, Order } from '@/modules/orders';
 import userEvent from '@testing-library/user-event';
-import { Order } from '@/modules/orders/Order';
-import { User } from '@/modules/auth/User';
+import { User } from '@/modules/auth';
 
 const order = {
   id: '123',
@@ -18,7 +17,7 @@ const order = {
   }]
 } as Order;
 
-jest.mock('@/modules/auth/useAuth', () => ({
+jest.mock('@/modules/auth', () => ({
   useAuth: () => ({
     user: order.author as User
   })

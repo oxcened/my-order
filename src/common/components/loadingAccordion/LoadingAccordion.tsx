@@ -1,6 +1,6 @@
 import * as React from 'react';
-import AccordionHeader from './AccordionHeader';
-import Accordion from '@/common/components/Accordion/Accordion';
+import Accordion from '@/common/components/accordion/Accordion';
+import AccordionHeader from '@/common/components/accordion/AccordionHeader';
 
 export const LoadingAccordion = () => {
   return <Accordion className='animate-pulse'>

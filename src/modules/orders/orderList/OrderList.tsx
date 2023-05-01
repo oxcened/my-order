@@ -1,9 +1,7 @@
 import * as React from 'react';
-import OrderCard from '@/modules/orders/OrderCard/OrderCard';
-import LoadingCard from '@/common/components/LoadingCard';
-import locale from '@/common/utils/locale';
+import { OrderCard, Order } from '@/modules/orders';
+import LoadingCard from '@/common/components/loadingCard/LoadingCard';
 import { useNavigate } from 'react-router-dom';
-import { Order } from '@/modules/orders/Order';
 
 const OrderList = (
   { orders, isLoading, onDelete }: {
@@ -35,7 +33,7 @@ const OrderList = (
   };
 
   return <div
-    className='mb-14 sm:mb-0 flex flex-col max-w-screen-sm divide-y mt-4'>
+    className="mb-14 sm:mb-0 flex flex-col max-w-screen-sm divide-y mt-4">
     {mOrders()}
   </div>;
 };

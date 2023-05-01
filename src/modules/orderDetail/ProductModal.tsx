@@ -2,10 +2,10 @@ import { ChevronLeftIcon, MinusIcon, PlusIcon } from '@heroicons/react/outline';
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import locale from '@/common/utils/locale';
-import IconButton from '@/common/components/IconButton';
-import Button from '@/common/components/Button/Button';
-import Modal from '@/common/components/Modal/Modal';
-import { Product } from '@/modules/orders/Product';
+import IconButton from '@/common/components/iconButton/IconButton';
+import Button from '@/common/components/button/Button';
+import Modal from '@/common/components/modal/Modal';
+import { Product } from '@/modules/orderDetail';
 import { twMerge } from 'tailwind-merge';
 
 const ProductModal = (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentPropsWithoutRef, HTMLProps, useEffect, useState } from 'react';
 import DropdownMenu, { DropdownMenuProps } from './DropdownMenu';
-import Button, { ButtonProps } from '@/common/components/Button/Button';
+import Button, { ButtonProps } from '@/common/components/button/Button';
 
 const Dropdown = ({ children, id }: {
   children?: React.ReactNode;

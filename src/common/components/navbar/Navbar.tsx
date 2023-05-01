@@ -5,11 +5,10 @@ import { CSSTransition } from 'react-transition-group';
 import locale from '@/common/utils/locale';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Dropdown from '@/common/components/Dropdown/Dropdown';
-import DropdownMenu from '@/common/components/Dropdown/DropdownMenu';
-import Button from '@/common/components/Button/Button';
-import { useAuth } from '@/modules/auth/useAuth';
-import { showAvatarModal } from '@/modules/auth/AvatarModal/avatarModal.slice';
+import Dropdown from '@/common/components/dropdown/Dropdown';
+import DropdownMenu from '@/common/components/dropdown/DropdownMenu';
+import Button from '@/common/components/button/Button';
+import { useAuth, showAvatarModal } from '@/modules/auth';
 
 const Navbar = () => {
   const dispatch = useDispatch();

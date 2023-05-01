@@ -3,9 +3,9 @@ import { ChangeEventHandler, ComponentPropsWithoutRef, FormEventHandler, useEffe
 import { CurrencyEuroIcon } from '@heroicons/react/outline';
 import { UserGroupIcon } from '@heroicons/react/solid';
 import locale from '@/common/utils/locale';
-import Checkbox from '@/common/components/Checkbox/Checkbox';
-import Button from '@/common/components/Button/Button';
-import Modal from '@/common/components/Modal/Modal';
+import Checkbox from '@/common/components/checkbox/Checkbox';
+import Button from '@/common/components/button/Button';
+import Modal from '@/common/components/modal/Modal';
 import spinner from '@/common/images/spinner.svg';
 
 const PrintSummaryModal = (

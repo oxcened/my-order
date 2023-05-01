@@ -1,6 +1,6 @@
 import * as React from 'react';
-import AccordionHeader, { AccordionHeaderProps } from '@/common/components/AccordionHeader';
-import AccordionBody, { AccordionBodyProps } from '@/common/components/AccordionBody';
+import AccordionHeader, { AccordionHeaderProps } from '@/common/components/accordion/AccordionHeader';
+import AccordionBody, { AccordionBodyProps } from '@/common/components/accordion/AccordionBody';
 
 export type AccordionProps = {
   children?: React.ReactNode;

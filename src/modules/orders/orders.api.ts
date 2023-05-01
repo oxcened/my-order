@@ -16,11 +16,10 @@ import {
 import { httpsCallable } from 'firebase/functions';
 import { firestore as db, functions } from '@/common/utils/firebase';
 import { DateTime } from 'luxon';
-import { Order } from '@/modules/orders/Order';
+import { Order, OrderDraft } from '@/modules/orders';
 import { DbCollection } from '@/common/models/DbCollection';
-import { OrderDraft } from '@/modules/orders/OrderDraft';
 import { RootState } from '@/common/utils/store';
-import { User } from '@/modules/auth/User';
+import { User } from '@/modules/auth';
 
 const ordersApi = createApi({
   reducerPath: 'orders',
@@ -43,7 +42,7 @@ const ordersApi = createApi({
             return {
               ...d.data(),
               id: d.id
-            } as Order
+            } as Order;
           })
         };
       }
@@ -56,9 +55,9 @@ const ordersApi = createApi({
           const order = await getDocFromServer(ref);
 
           if (order.exists()) {
-            return { data: order.data() as Order }
+            return { data: order.data() as Order };
           } else {
-            return { error: new Error('Not found') }
+            return { error: new Error('Not found') };
           }
         } catch (e) {
           console.error(e);
@@ -122,7 +121,7 @@ const ordersApi = createApi({
           if (res.data.updates.updatedRows > 0) {
             return {
               data: void 0
-            }
+            };
           } else {
             return { error: new Error('Something went wrong during submission') };
           }

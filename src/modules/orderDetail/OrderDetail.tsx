@@ -1,15 +1,11 @@
 import * as React from 'react';
-import OrderCart from './cart/OrderCart';
 import { useLoaderData } from 'react-router-dom';
 import { useDocumentScroll } from '@/common/utils/hooks';
-import ProductModal from '@/modules/orderDetail/ProductModal';
-import restaurantsApi from '@/modules/orderDetail/restaurants.api';
-import OrderMenu from '@/modules/orderDetail/OrderMenu';
+import { ProductModal, restaurantsApi, useCart, OrderMenu, OrderCart } from '@/modules/orderDetail';
 import { twMerge } from 'tailwind-merge';
-import { useCart } from '@/modules/orderDetail/cart/useCart';
-import Button from '@/common/components/Button/Button';
+import Button from '@/common/components/button/Button';
 import locale from '@/common/utils/locale';
-import Modal from '@/common/components/Modal/Modal';
+import Modal from '@/common/components/modal/Modal';
 
 export type HeaderProps = {
   title?: string;
