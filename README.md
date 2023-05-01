@@ -120,7 +120,7 @@ npm run test
 
 - [x] Migrate from Gatsby to React + Vite.
 - [ ] Improve the desktop UI/UX.
-- [ ] Version control the cloud function that exports the report to Google Sheets.
+- [ ] Version control the cloud function that exports reports to Google Sheets.
 - [ ] Improve the navigation UX.
 - [ ] Lazy load all routes.
 - [ ] Write unit tests on all components.
