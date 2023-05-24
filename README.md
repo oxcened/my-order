@@ -45,7 +45,7 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 1. Install dependencies
 
     ```
-    npm run install
+    npm install
     ```
 
 1. Setup firebase
