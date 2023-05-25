@@ -1,6 +1,6 @@
 {
   "name": "my-order",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "description": "MyOrder allows you to track food orders effortlessly and provides a summary ready to be exported.",
   "type": "module",
