@@ -60,7 +60,7 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 
 1. Run the app
     ```
-    npm run start
+    npm run dev
     ```
 
 ## Build for production
@@ -84,9 +84,9 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
     npm run build
     ```
 
-1. Serve the app
+1. Run the app
     ```
-    npm run serve
+    npm run preview
     ```
 
 ## Contribute
