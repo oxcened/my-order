@@ -18,8 +18,7 @@ on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunc
 ## Table of contents
 
 1. [Demo](#demo)
-1. [Run on your machine](#run-on-your-machine)
-1. [Build for production](#build-for-production)
+1. [How to use](#how-to-use)
 1. [Contribute](#contribute)
 1. [Roadmap](#roadmap)
 1. [Maintainers](#maintainers)
@@ -32,23 +31,51 @@ You can find a demo [here](https://myorderdemo-80b12.web.app/).
 You may try out everything except for the `Submit to Google Sheets` feature located at `/summary`
 because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-monkey.gif).
 
-## Run on your machine
+## How to use
 
-1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
+### Preliminary
 
-   If you have that you can just run:
+1. Clone on your machine using SSH or HTTPS.
+
+   Using SSH (suggested):
+
+   ```
+    git@github.com:oxcened/my-order.git
+    ```
+
+   Using HTTPS:
+
+    ```
+    git clone https://github.com/oxcened/my-order
+    ```
+
+1. Enter folder:
+
+    ```
+    cd my-order
+    ```
+
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm). If you have that you can just run:
 
     ```
     nvm use
     ```
 
-1. Install dependencies
+1. Install dependencies:
 
     ```
-    npm install
+    npm i
     ```
 
-1. Setup firebase
+### Run on your machine
+
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm). If you have that you can just run:
+
+    ```
+    nvm use
+    ```
+
+1. Setup firebase:
 
     1. This app is meant to work on top of a [Firebase](https://firebase.google.com/) project, so you should create your
        own.
@@ -58,33 +85,34 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
     1. Place inside of it the config object like in `.env.example`.
     1. Create a `.firebaserc` file in the root of the project like `.firebaserc.example`.
 
-1. Run the app
+1. Run the app:
+   
     ```
     npm run dev
     ```
 
-## Build for production
+### Build for production
 
-1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm).
-
-   If you have that you can just run:
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm). If you have that you can just run:
 
     ```
     nvm use
     ```
 
-1. Setup environment
+1. Setup environment:
 
    The same as the third step of [Run on your machine](#run-on-your-machine) applies, except the app will
    use `.env.production` this time. Learn
    more [here](https://vitejs.dev/guide/env-and-mode.html).
 
-1. Build the app
+1. Build the app:
+   
     ```
     npm run build
     ```
 
-1. Run the app
+1. Run the app:
+   
     ```
     npm run preview
     ```
