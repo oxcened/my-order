@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { PlusIcon } from '@heroicons/react/solid';
 import locale from '@/common/utils/locale';
-import { Menu } from '@/modules/orderDetail/Menu';
-import { Product } from '@/modules/orders/Product';
+import { Menu } from '../models';
+import { Product } from '../models';
 import Accordion from '@/common/components/Accordion/Accordion';
 import LoadingAccordion from '@/common/components/LoadingAccordion';
 import AccordionList from '@/common/components/AccordionList';
@@ -19,14 +19,14 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
     const mProducts = products.map(p => {
       return <div
         key={p.id}
-        className='bg-white p-3 border rounded-md sm:max-w-md cursor-pointer'
+        className="bg-white p-3 border rounded-md sm:max-w-md cursor-pointer"
         onClick={() => onAddProduct?.(p)}
       >
-        <div className='flex justify-between'>
-          <span className='font-bold text-md'>{p.title}</span>
+        <div className="flex justify-between">
+          <span className="font-bold text-md">{p.title}</span>
 
-          <IconButton className='w-7 h-7' color='primary'>
-            <PlusIcon className='w-4' />
+          <IconButton className="w-7 h-7" color="primary">
+            <PlusIcon className="w-4" />
           </IconButton>
         </div>
 
@@ -35,18 +35,18 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
     });
 
     return <Accordion key={id} id={id}>
-      <AccordionHeader className='font-bold'>
+      <AccordionHeader className="font-bold">
         {title}
       </AccordionHeader>
 
-      <AccordionBody className='space-y-3'>
+      <AccordionBody className="space-y-3">
         {mProducts}
       </AccordionBody>
     </Accordion>;
   });
 
-  return <div className='flex-1 mt-6 sm:mt-0 sm:mr-10'>
-    <p className='text-3xl md:text-4xl lg:text-5xl pb-1'>{menu
+  return <div className="flex-1 mt-6 sm:mt-0 sm:mr-10">
+    <p className="text-3xl md:text-4xl lg:text-5xl pb-1">{menu
       ? locale.formatString(locale.components.orderMenu.namedTitle, menu.title)
       : locale.components.orderMenu.title}</p>
 
@@ -62,4 +62,6 @@ const OrderMenu = ({ menu, isLoading, onAddProduct }: {
   </div>;
 };
 
-export default OrderMenu;
+export {
+  OrderMenu
+};

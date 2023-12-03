@@ -1,12 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
-import TestComponent from './PrintSummaryModal';
+import { PrintSummaryModal as TestComponent } from './PrintSummaryModal';
 
 describe('PrintOrderSummaryModal.tsx', () => {
   test("Should render modal", () => {
     render(<TestComponent isOpen={true} />);
-
     expect(screen.getByRole('dialog')).toBeInTheDocument();
   });
 

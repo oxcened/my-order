@@ -1,32 +1,29 @@
 import * as React from 'react';
 import { ComponentProps, useEffect, useState } from 'react';
-import OrderCart from './OrderCart';
+import { OrderCart } from '../OrderCart/OrderCart';
 import locale from '@/common/utils/locale';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import ordersApi from '@/modules/orders/orders.api';
-import { Product } from '@/modules/orders/Product';
+import { Product } from '../models';
 import { useSuccessModal } from '@/common/utils/hooks';
-import ProductModal from '@/modules/orderDetail/ProductModal';
-import restaurantsApi from '@/modules/orderDetail/restaurants.api';
-import OrderMenu from '@/modules/orderDetail/OrderMenu';
+import { ProductModal } from '../ProductModal/ProductModal';
+import { api } from '../api';
+import { OrderMenu } from '../OrderMenu/OrderMenu';
 
 const OrderDetail = () => {
   const navigate = useNavigate();
-  const { isEdit, id } = useLoaderData() as { isEdit: boolean; id?: string; };
+  const loaderData = useLoaderData() as { isEdit: true; id: string; } | { isEdit: false };
 
-  const { data: menu, isLoading } = restaurantsApi.useGetRestaurantMenuQuery();
+  const { data: menu, isLoading } = api.useGetRestaurantMenuQuery();
   const [getOrder, {
     data: cachedOrder,
     error: cachedOrderError
-  }] = ordersApi.useLazyGetOrderQuery();
-  const [makeOrder, makeOrderResult] = ordersApi.useLazyMakeOrderQuery();
-  const [updateOrder, updateOrderResult] = ordersApi.useLazyUpdateOrderQuery();
+  }] = api.useLazyGetOrderQuery();
+  const [makeOrder, makeOrderResult] = api.useLazyMakeOrderQuery();
+  const [updateOrder, updateOrderResult] = api.useLazyUpdateOrderQuery();
 
   const [order, setOrder] = useState<Product[]>([]);
   const [notes, setNotes] = useState<string>('');
-
   const [showProductModal, setShowProductModal] = useState(false);
-
   const [productModalPayload, setProductModalPayload] =
     useState<Readonly<Pick<ComponentProps<typeof ProductModal>, 'product' | 'quantity' | 'isEdit'>>>();
 
@@ -38,8 +35,8 @@ const OrderDetail = () => {
   });
 
   useEffect(() => {
-    if (id) {
-      getOrder(id);
+    if (loaderData.isEdit && loaderData.id) {
+      getOrder(loaderData.id);
     }
   }, []);
 
@@ -123,9 +120,9 @@ const OrderDetail = () => {
   };
 
   const onMakeOrder = (notes: string) => {
-    if (isEdit && id) {
+    if (loaderData.isEdit && loaderData.id) {
       updateOrder({
-        id,
+        id: loaderData.id,
         order: {
           products: order,
           notes
@@ -140,11 +137,11 @@ const OrderDetail = () => {
   };
 
   return <main>
-    <div className='flex w-full flex-col sm:flex-row-reverse'>
+    <div className="flex w-full flex-col sm:flex-row-reverse">
       <OrderCart
         order={order}
         notes={notes}
-        isEdit={isEdit}
+        isEdit={loaderData.isEdit}
         loadingMakeOrder={makeOrderResult.isLoading}
         onProductClick={(p, q) => onOpenProduct(p, q, true)}
         onMakeOrder={onMakeOrder}
@@ -174,4 +171,6 @@ const OrderDetail = () => {
   </main>;
 };
 
-export default OrderDetail;
+export {
+  OrderDetail
+};

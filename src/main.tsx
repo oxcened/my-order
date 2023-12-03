@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Orders from './modules/orders/Orders';
 import './main.css';
 import { Provider } from 'react-redux';
 import getStore from '@/common/utils/store';
 import Root from '@/common/components/Root';
-import OrderDetail from '@/modules/orderDetail/OrderDetail';
-import Summary from '@/modules/summary/Summary';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Orders } from '@/modules/orders';
+import { OrderDetail } from '@/modules/orderDetail';
+import { Summary } from '@/modules/summary';
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     }, {
       path: '/order/new',
       element: <OrderDetail />,
-      loader: () => ({ isEdit: false, id: undefined })
+      loader: () => ({ isEdit: false })
     }, {
       path: '/order/:id',
       element: <OrderDetail />,
@@ -46,4 +46,4 @@ const Main = () => {
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(<Main />);
+ReactDOM.createRoot(document.getElementById('root')!).render(<Main />);
