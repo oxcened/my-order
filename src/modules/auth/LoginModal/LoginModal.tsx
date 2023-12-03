@@ -7,7 +7,7 @@ import { DEFAULT_AVATAR, getAvatar } from '@/common/images/avatars/avatars';
 import Button from '@/common/components/Button/Button';
 import { useAppSelector } from '@/common/utils/hooks';
 import { clean, showAvatarModal } from '../AvatarModal/slice';
-import { useAuth } from '../useAuth';
+import { useAuth } from '../hooks';
 
 const LoginModal = () => {
   const isOpen = useAppSelector(state => !state.auth.user && !state.avatarModal.isAvatarModalOpen);
