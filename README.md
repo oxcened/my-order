@@ -18,12 +18,13 @@ on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunc
 ## Table of contents
 
 1. [Demo](#demo)
-1. [How to use](#how-to-use)
-2. [Tech stack](#tech-stack)
-1. [Contribute](#contribute)
-1. [Roadmap](#roadmap)
-1. [Maintainers](#maintainers)
-1. [License](#license)
+2. [How to use](#how-to-use)
+3. [Tech stack](#tech-stack)
+4. Modularization(#modularization)
+5. [Contribute](#contribute)
+6. [Roadmap](#roadmap)
+7. [Maintainers](#maintainers)
+8. [License](#license)
 
 ## Demo
 
@@ -141,6 +142,29 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 5. TailwindCSS
 6. Redux.js & Toolkit & RTK Query
 7. Jest & Testing Library
+
+## Modularization
+
+The app is fully modularized.
+
+A module is a folder contained in [src/modules](src/modules) that takes responsibility for a single domain.
+
+Each module is a self-contained unit that takes care of every aspect of its domain.
+
+From UI to business logic: components, full page components, models, apis, slices, styles, and so on.
+
+A module must follow a set of rules:
+
+- Based on [Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), a module should be responsible for at most one domain.
+- If only one module requires a resource, that resource should be contained in the module.
+- A module must contain an `index.ts` file in its root. This file represents the public interface of the module.
+- If another part of the codebase needs a module's resource, that resource may be exported from the `index.ts`.
+- A module should only expose what's strictly necessary, in order to abstract away the internal functioning of the module.
+- A module can import another module's resource, but only through its `index.ts`. For instance: `import { User } from '@/modules/auth'`.
+- Imports from outside of a module must always be done through its `index.ts`. This allows the internal functioning of a module to be changed without impacting usages from outside.
+- Imports from inside of the module must never use the `index.ts`. This is because the index is specifically meant for usage from outside.
+
+Any other file that doesn't belong to a specific module and is generally common to the project, is placed in [/src/common](/src/common).
 
 ## Contribute
 
