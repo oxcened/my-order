@@ -137,9 +137,10 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
 1. TypeScript v4.9
 2. Vite.js v4
 3. React v18
-4. Redux.js & RTK Query
+4. React Router v6
 5. TailwindCSS
-6. Jest & Testing Library
+6. Redux.js & Toolkit & RTK Query
+7. Jest & Testing Library
 
 ## Contribute
 
