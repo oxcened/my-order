@@ -117,6 +117,20 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
     npm run preview
     ```
 
+### Run tests
+
+1. Use the correct node version (`18.x`). I suggest using [nvm](https://github.com/nvm-sh/nvm). If you have that you can just run:
+
+    ```
+    nvm use
+    ```
+    
+1. Run tests:
+   
+    ```
+    npm run test
+    ```
+
 ## Contribute
 
 Contributions are most welcome!
