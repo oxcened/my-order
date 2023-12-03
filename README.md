@@ -19,6 +19,7 @@ on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunc
 
 1. [Demo](#demo)
 1. [How to use](#how-to-use)
+2. [Tech stack](#tech-stack)
 1. [Contribute](#contribute)
 1. [Roadmap](#roadmap)
 1. [Maintainers](#maintainers)
@@ -130,6 +131,15 @@ because [it costs money](https://media.tenor.com/5Z-o3OKSPFIAAAAC/adult-swim-mon
     ```
     npm run test
     ```
+
+## Tech stack
+
+1. TypeScript v4.9
+2. Vite.js v4
+3. React v18
+4. Redux.js & RTK Query
+5. TailwindCSS
+6. Jest & Testing Library
 
 ## Contribute
 
