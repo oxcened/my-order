@@ -20,7 +20,7 @@ on [Medium](https://medium.com/@alen.ajam/how-i-took-control-of-my-companys-lunc
 1. [Demo](#demo)
 2. [How to use](#how-to-use)
 3. [Tech stack](#tech-stack)
-4. Modularization(#modularization)
+4. [Modularization](#modularization)
 5. [Contribute](#contribute)
 6. [Roadmap](#roadmap)
 7. [Maintainers](#maintainers)
