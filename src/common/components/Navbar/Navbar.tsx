@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom';
 import Dropdown from '@/common/components/Dropdown/Dropdown';
 import DropdownMenu from '@/common/components/Dropdown/DropdownMenu';
 import Button from '@/common/components/Button/Button';
-import { useAuth } from '@/modules/auth/useAuth';
-import { showAvatarModal } from '@/modules/auth/AvatarModal/avatarModal.slice';
+import { useAuth } from '@/modules/auth';
+import { showAvatarModal } from '@/modules/auth';
 
 const Navbar = () => {
   const dispatch = useDispatch();

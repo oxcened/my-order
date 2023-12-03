@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DEFAULT_AVATAR } from '@/common/images/avatars/avatars';
 
 type AvatarModalState = {
   isAvatarModalOpen: boolean;
@@ -10,7 +9,7 @@ const initialState: AvatarModalState = {
   isAvatarModalOpen: false
 };
 
-export const avatarModalSlice = createSlice({
+const slice = createSlice({
   name: 'avatarModal',
   initialState,
   reducers: {
@@ -24,10 +23,15 @@ export const avatarModalSlice = createSlice({
   }
 });
 
-export default avatarModalSlice;
-
-export const {
+const {
   showAvatarModal,
   setAvatar,
   clean
-} = avatarModalSlice.actions;
+} = slice.actions;
+
+export {
+  slice,
+  showAvatarModal,
+  setAvatar,
+  clean
+}

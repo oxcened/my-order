@@ -3,7 +3,11 @@ import { getFirestore } from "firebase/firestore";
 import { getFunctions } from "firebase/functions";
 
 const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG ?? '{}');
-
 const app = initializeApp(firebaseConfig);
-export const firestore = getFirestore(app);
-export const functions = getFunctions(app);
+const firestore = getFirestore(app);
+const functions = getFunctions(app);
+
+export {
+  firestore,
+  functions
+};

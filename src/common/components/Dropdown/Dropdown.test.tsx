@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import userEvent from '@testing-library/user-event';
 import Dropdown from './Dropdown';
-import DropdownMenu, { TRANSITION_TIMEOUT } from './DropdownMenu';
+import DropdownMenu from './DropdownMenu';
 import Button from '@/common/components/Button/Button';
 
 const TestComponent = () => (

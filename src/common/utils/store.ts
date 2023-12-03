@@ -2,14 +2,15 @@ import { combineReducers, configureStore, StateFromReducersMapObject } from '@re
 import { setupListeners } from '@reduxjs/toolkit/query';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import ordersApi from '@/modules/orders/orders.api';
-import authSlice from '@/modules/auth/auth.slice';
-import restaurantsApi from '@/modules/orderDetail/restaurants.api';
-import avatarModalSlice from '@/modules/auth/AvatarModal/avatarModal.slice';
+import { ordersApi } from '@/modules/orders';
+import { orderDetailApi } from '@/modules/orderDetail';
+import { summaryApi } from '@/modules/summary';
+import { authSlice, avatarModalSlice } from '@/modules/auth';
 
 const reducerMap = {
   [ordersApi.reducerPath]: ordersApi.reducer,
-  [restaurantsApi.reducerPath]: restaurantsApi.reducer,
+  [orderDetailApi.reducerPath]: orderDetailApi.reducer,
+  [summaryApi.reducerPath]: summaryApi.reducer,
   [authSlice.name]: authSlice.reducer,
   [avatarModalSlice.name]: avatarModalSlice.reducer
 };
@@ -34,7 +35,8 @@ export default (preloadedState = {}) => {
         }
       })
         .concat(ordersApi.middleware)
-        .concat(restaurantsApi.middleware);
+        .concat(orderDetailApi.middleware)
+        .concat(summaryApi.middleware);
     }
   });
 

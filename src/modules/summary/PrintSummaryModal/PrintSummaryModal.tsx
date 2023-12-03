@@ -7,6 +7,7 @@ import Checkbox from '@/common/components/Checkbox/Checkbox';
 import Button from '@/common/components/Button/Button';
 import Modal from '@/common/components/Modal/Modal';
 import spinner from '@/common/images/spinner.svg';
+import { SummaryOrderDraft } from '../models';
 
 const PrintSummaryModal = (
   {
@@ -19,11 +20,7 @@ const PrintSummaryModal = (
     orders?: number,
     isLoading?: boolean,
     onCancel?: () => void;
-    onConfirm?: (data: {
-      amount: number;
-      orders: number;
-      paid: boolean;
-    }) => void;
+    onConfirm?: (data: SummaryOrderDraft) => void;
   } & ComponentPropsWithoutRef<typeof Modal>) => {
   const [amount, setAmount] = useState<number>();
   const [paid, setPaid] = useState(false);
@@ -58,72 +55,72 @@ const PrintSummaryModal = (
   };
 
   return <Modal
-    className='text-center'
+    className="text-center"
     {...props}
   >
 
-    <p className='text-xl font-bold'>
+    <p className="text-xl font-bold">
       {locale.components.submitModal.title}
     </p>
 
-    <form onSubmit={onSubmit} className='mt-6'>
-      <div className='flex items-center'>
-        <CurrencyEuroIcon className='h-7 mr-3 text-gray-500' />
+    <form onSubmit={onSubmit} className="mt-6">
+      <div className="flex items-center">
+        <CurrencyEuroIcon className="h-7 mr-3 text-gray-500" />
 
         <input
-          data-testid='price-input'
-          className='w-full rounded-md shadow-inner bg-gray-100 p-3'
+          data-testid="price-input"
+          className="w-full rounded-md shadow-inner bg-gray-100 p-3"
           placeholder={locale.components.submitModal.amountPlaceholder}
           value={amount}
-          type='number'
+          type="number"
           step={.01}
           onChange={onAmountChange}
         />
       </div>
 
-      <div className='flex items-center pt-4'>
-        <UserGroupIcon className='h-7 mr-3 text-gray-500' />
+      <div className="flex items-center pt-4">
+        <UserGroupIcon className="h-7 mr-3 text-gray-500" />
 
         <input
-          data-testid='orders-input'
-          className='w-full rounded-md shadow-inner bg-gray-100 p-3'
+          data-testid="orders-input"
+          className="w-full rounded-md shadow-inner bg-gray-100 p-3"
           placeholder={locale.components.submitModal.ordersPlaceholder}
           value={orders}
-          type='number'
+          type="number"
           onChange={onOrdersChange}
         />
       </div>
 
-      <div className='flex pt-6 items-center'>
+      <div className="flex pt-6 items-center">
         <Checkbox
-          id='amount-settled'
+          id="amount-settled"
           checked={paid}
           onChange={onPaidChange}
         />
 
-        <label htmlFor='amount-settled' className='ml-4 cursor-pointer select-none'>
+        <label htmlFor="amount-settled" className="ml-4 cursor-pointer select-none">
           {locale.components.submitModal.amountSettled}
         </label>
       </div>
 
       <Button
-        data-testid='submit-btn'
+        data-testid="submit-btn"
         disabled={!amount || !orders || isLoading}
-        color='primary'
-        className='w-full mt-6 justify-center'>
+        color="primary"
+        className="w-full mt-6 justify-center">
 
         {isLoading && (
-          <img src={spinner} alt='loading' className='h-5 w-5 mr-2' />
+          <img src={spinner} alt="loading" className="h-5 w-5 mr-2" />
         )}
 
         {locale.shared.submit}
       </Button>
 
       <Button
-        data-testid='cancel-btn'
-        color='light'
-        type='button'
-        className='w-full mt-2 justify-center'
+        data-testid="cancel-btn"
+        color="light"
+        type="button"
+        className="w-full mt-2 justify-center"
         onClick={onCancel}>
         {locale.shared.cancel}
       </Button>
@@ -131,4 +128,6 @@ const PrintSummaryModal = (
   </Modal>;
 };
 
-export default PrintSummaryModal;
+export {
+  PrintSummaryModal
+};

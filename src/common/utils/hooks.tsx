@@ -1,4 +1,4 @@
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import * as React from 'react';
 import { ComponentPropsWithoutRef, useEffect, useState } from 'react';
 import locale from './locale';

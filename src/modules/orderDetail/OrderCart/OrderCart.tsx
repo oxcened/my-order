@@ -1,6 +1,6 @@
 import * as React from 'react';
 import locale from '@/common/utils/locale';
-import { Product } from '@/modules/orders/Product';
+import { Product } from '../models';
 import { groupByKey } from '@/common/utils/misc';
 import Button from '@/common/components/Button/Button';
 
@@ -60,11 +60,7 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
       disabled={!order.length || loadingMakeOrder}
       onClick={() => onMakeOrder?.(notes)}
     >
-      <div className='mr-2'>
-        {/*{loadingMakeOrder
-          ? <FontAwesomeIcon icon={faCircleNotch} className='animate-spin h-4 w-5 mt-0.5 -mb-0.5' />
-          : <CheckCircleIcon className='h-5' />}*/}
-      </div>
+      {/*TODO bind loader icon to loadingMakeOrder*/}
       {isEdit
         ? locale.components.orderCart.update
         : locale.components.orderCart.submit}
@@ -72,4 +68,6 @@ const OrderCart = ({ order, notes, loadingMakeOrder, isEdit, onProductClick, onM
   </div>;
 };
 
-export default OrderCart;
+export {
+  OrderCart
+};
