@@ -1,6 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { useAuth } from '../useAuth';
+import { useAuth } from '../hooks';
 import locale from '@/common/utils/locale';
 import Button from '@/common/components/Button/Button';
 import { DEFAULT_AVATAR, getAllAvatars } from '@/common/images/avatars/avatars';
